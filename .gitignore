@@ -5,3 +5,5 @@ composer.lock
 !.htaccess
 !.gitignore
 !.gitkeep
+vendor/*
+src/tests/*
