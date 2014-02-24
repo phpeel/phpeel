@@ -6,4 +6,4 @@ composer.lock
 !.gitignore
 !.gitkeep
 vendor/*
-src/tests/*
+src/tests/metrics/*
