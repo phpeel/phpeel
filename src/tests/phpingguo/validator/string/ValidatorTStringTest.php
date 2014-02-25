@@ -1,6 +1,6 @@
 <?php
-use Phpingguo\System\Validator\String\Other\TextString;
 use Phpingguo\System\Validator\Options;
+use Phpingguo\System\Validator\String\Other\TextString;
 
 class ValidatorTStringTest extends PHPUnit_Framework_TestCase
 {
@@ -102,7 +102,7 @@ class ValidatorTStringTest extends PHPUnit_Framework_TestCase
      */
     public function testValidate($value, $expected, $options, $exception, $init)
     {
-        isset($exception) && $this->setExpectedException("Phpingguo\System\Exceptions\\" . $exception);
+        isset($exception) && $this->setExpectedException("Phpingguo\\System\\Validator\\" . $exception);
         
         $this->assertSame($expected, (new TextString())->validate($value, $init($options)));
     }

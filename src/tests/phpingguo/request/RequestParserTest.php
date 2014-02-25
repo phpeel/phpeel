@@ -24,9 +24,9 @@ class RequestParserTest extends PHPUnit_Framework_TestCase
             [ HttpMethod::GET, '', [], [ 1.0, 'top', 'index' ], false, true, null ],
             [ HttpMethod::GET, '/', [], [ 1.0, 'top', 'index' ], false, true, null ],
             [ HttpMethod::GET, '/v1.0/top/index', [], [ 1.0, 'top', 'index' ], true, true, null ],
-            [ HttpMethod::GET, '/a/b/c/d', [], [], false, true, 'SystemFatalErrorException' ],
-            [ HttpMethod::GET, '/v100/top/index', [], [], true, true, 'UnsupportedOperationException' ],
-            [ HttpMethod::GET, '/v1.0/top/index', [], [], false, true, 'UnsupportedOperationException' ],
+            [ HttpMethod::GET, '/a/b/c/d', [], [], false, true, 'RuntimeException' ],
+            [ HttpMethod::GET, '/v100/top/index', [], [], true, true, 'RuntimeException' ],
+            [ HttpMethod::GET, '/v1.0/top/index', [], [], false, true, 'LogicException' ],
         ];
     }
     
@@ -42,7 +42,7 @@ class RequestParserTest extends PHPUnit_Framework_TestCase
         $_SERVER['REQUEST_METHOD']	= $method;
         
         isset($path_info) && $_SERVER['PATH_INFO'] = $path_info;
-        isset($exception) && $this->setExpectedException((strpos($exception, '\\') === 0 ? "" : "Phpingguo\\System\\Exceptions\\") . $exception);
+        isset($exception) && $this->setExpectedException($exception);
         count($params) > 0 && $_REQUEST = $params;
         
         Config::set('sys.versioning.allowed', $versioning);

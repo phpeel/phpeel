@@ -3,13 +3,13 @@ namespace Phpingguo\System\Validator\String;
 
 use Phpingguo\System\Enums\Charset;
 use Phpingguo\System\Enums\ValidationError;
-use Phpingguo\System\Exceptions\ValidationErrorException;
 use Phpingguo\System\Exts\Lib\Common\Arrays;
 use Phpingguo\System\Exts\Lib\Common\String as CString;
 use Phpingguo\System\Exts\Lib\Type\String\Text;
 use Phpingguo\System\Validator\IValidator;
 use Phpingguo\System\Validator\Options;
 use Phpingguo\System\Validator\TraitCommonValidator;
+use Phpingguo\System\Validator\ValidationErrorException;
 
 /**
  * 文字列の検証を行うクラスの基本機能を提供する抽象クラスです。

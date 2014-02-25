@@ -1,16 +1,15 @@
 <?php
 namespace Phpingguo\System\Request;
 
-use Phpingguo\System\Core\Config;
 use Phpingguo\System\Core\AuraDIWrapper;
+use Phpingguo\System\Core\Config;
 use Phpingguo\System\Enums\EnumFullName;
-use Phpingguo\System\Exceptions\SecurityViolationException;
-use Phpingguo\System\Exceptions\ValidationErrorException;
 use Phpingguo\System\Exts\Lib\Common\Arrays;
 use Phpingguo\System\Exts\Lib\EnumClassGenerator as EnumClassGen;
 use Phpingguo\System\Exts\Lib\Type\Generics\GenericList;
 use Phpingguo\System\Validator\IValidator;
 use Phpingguo\System\Validator\Options;
+use Phpingguo\System\Validator\ValidationErrorException;
 
 /**
  * クライアントからサーバーへのリクエストしたデータを保持するクラスです。
@@ -128,7 +127,7 @@ final class Request
      * @param Variable|String $type	値を取得するパラメータの型のインスタンスまたは名前
      * @param String $name			値を取得するパラメータの名前
      * 
-     * @throws SecurityViolationException	バリデーションを通過していないパラメータを取得しようとした場合
+     * @throws LogicException	バリデーションを通過していないパラメータを取得しようとした場合
      * （※"sys.security.validation_forced"が有効の時のみ）
      * 
      * @return mixed シーンへ渡すパラメータ一覧から指定した名前の値を返します。
@@ -138,7 +137,7 @@ final class Request
         $param_value = $this->getRequestData()->getParameter($name);
         
         if (Config::get('sys.security.validation_forced', true) && in_array($name, $this->validated) === false) {
-            throw new SecurityViolationException('Access to parameter value that has not passed validation.');
+            throw new \LogicException('The parameter value that has not passed validation is not usable.');
         }
         
         return is_null($param_value) ? null : $this->createParamValue($type, $param_value);
@@ -163,7 +162,7 @@ final class Request
      * @param String $name				検証の対象となるパラメータの名前
      * @param Options $options			検証時に利用されるオプション設定
      * 
-     * @throws SecurityViolationException	存在しないパラメータを検証しようとした場合
+     * @throws RuntimeException	存在しないパラメータを検証しようとした場合
      * 
      * @return Boolean|Array 検証に成功した時は true を、失敗した時はその理由を含む配列を、
      * それ以外の場合は false を返します。
@@ -175,7 +174,7 @@ final class Request
         $param_value = $this->getRequestData()->getParameter($name);
         
         if (is_null($param_value)) {
-            throw new SecurityViolationException('Access to nil parameter value.');
+            throw new \RuntimeException('A parameter that attempting to validate is not exist.');
         }
         
         $exec_method = is_array($param_value) ? 'doArrayValidate' : 'execValidation';
@@ -187,8 +186,8 @@ final class Request
      * シーンへ渡すパラメータの値を一括で複数検証します。
      * 
      * @param Validator|String $type	検証の種類
-     * @param String $name					検証の対象となるパラメータの名前
-     * @param Options $options				検証時に利用されるオプション設定
+     * @param String $name				検証の対象となるパラメータの名前
+     * @param Options $options			検証時に利用されるオプション設定
      * 
      * @throws InvalidArgumentException	メソッドに渡した引数の内容が正しくない場合
      * 
@@ -272,7 +271,7 @@ final class Request
                 Arrays::addWhen(in_array($param_name, $this->validated) === false, $this->validated, $param_name);
             }
         } catch (ValidationErrorException $e) {
-            $result = [ $param_name => $e->getErrorTypes() ];
+            $result = [ $param_name => $e->getErrorLists() ];
         }
         
         return $result;

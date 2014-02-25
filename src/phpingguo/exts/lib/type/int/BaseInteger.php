@@ -1,8 +1,8 @@
 <?php
 namespace Phpingguo\System\Exts\Lib\Type\Int;
 
-use Phpingguo\System\Core\Config;
 use Phpingguo\System\Core\AuraDIWrapper;
+use Phpingguo\System\Core\Config;
 use Phpingguo\System\Exts\Lib\Type\IScalarValue;
 use Phpingguo\System\Exts\Lib\Type\TraitScalarValue;
 use Phpingguo\System\Exts\Lib\Type\TraitSignedNumber;

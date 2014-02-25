@@ -1,6 +1,6 @@
 <?php
-use Phpingguo\System\Validator\String\Latin\Ascii;
 use Phpingguo\System\Validator\Options;
+use Phpingguo\System\Validator\String\Latin\Ascii;
 
 class ValidatorAsciiTest extends PHPUnit_Framework_TestCase
 {
@@ -109,7 +109,7 @@ class ValidatorAsciiTest extends PHPUnit_Framework_TestCase
      */
     public function testValidate($value, $expected, $options, $exception, $init)
     {
-        isset($exception) && $this->setExpectedException("Phpingguo\System\Exceptions\\" . $exception);
+        isset($exception) && $this->setExpectedException("Phpingguo\\System\\Validator\\" . $exception);
         
         $this->assertSame($expected, (new Ascii())->validate($value, $init($options)));
     }

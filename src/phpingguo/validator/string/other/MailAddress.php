@@ -2,9 +2,8 @@
 namespace Phpingguo\System\Validator\String\Other;
 
 use Phpingguo\System\Enums\ValidationError;
-use Phpingguo\System\Exceptions\RfcMailViolationException;
-use Phpingguo\System\Validator\String\BaseString;
 use Phpingguo\System\Validator\Options;
+use Phpingguo\System\Validator\String\BaseString;
 
 /**
  * RFC準拠のメールアドレスかどうかを検証するクラスです。
@@ -29,7 +28,7 @@ final class MailAddress extends BaseString
      * 
      * @param String $mail_address	違反チェックを行うメールアドレス
      * 
-     * @throws RfcMailViolationException	RFCに違反するメールアドレスの場合
+     * @throws RuntimeException	RFCに違反するメールアドレスの場合
      * 
      * @return ValidationError|null RFCに違反していなかった場合は null を、それ以外はエラー理由を返します。
      */
@@ -45,7 +44,7 @@ final class MailAddress extends BaseString
         if ($this->isValidLength($mail_address, $at_index) === false ||
             preg_match($this->getMatchPattern(), $mail_address) !== 1
         ) {
-            throw new RfcMailViolationException();
+            throw new \RuntimeException('A mail address inputted is violated RFC.');
         }
         
         return null;

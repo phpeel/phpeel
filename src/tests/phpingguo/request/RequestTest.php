@@ -58,7 +58,7 @@ class RequestTest extends PHPUnit_Framework_TestCase
         return [
             [ Variable::STRING, Validator::TEXT, [ 'whitespace' ], 'name', '緒方 智絵里', null, null ],
             [ Variable::STRING, Validator::TEXT, [ 'whitespace' ], '397cherry', [ '前川 みく', '安部 菜々', '緒方 智絵里' ], null, null ],
-            [ Variable::STRING, Validator::TEXT, [ 'whitespace' ], 'name2', '緒方 智絵里', null, 'SecurityViolationException' ],
+            [ Variable::STRING, Validator::TEXT, [ 'whitespace' ], 'name2', '緒方 智絵里', null, 'LogicException' ],
         ];
     }
     
@@ -74,7 +74,7 @@ class RequestTest extends PHPUnit_Framework_TestCase
         $_SERVER['REQUEST_METHOD']	= HttpMethod::GET;
         $_SERVER['PATH_INFO']		= '/top/index';
         
-        isset($exception) && $this->setExpectedException((strpos($exception, '\\') === 0 ? "" : "Phpingguo\\System\\Exceptions\\") . $exception);
+        isset($exception) && $this->setExpectedException($exception);
         
         Server::capture();
         Client::capture();
@@ -121,7 +121,7 @@ class RequestTest extends PHPUnit_Framework_TestCase
         return [
             [ Variable::TEXT, Validator::TEXT, 'v_name1', '緒方 智絵里', [], [], null ],
             [ Variable::TEXT, Validator::TEXT, 'v_name2', '緒方 智絵里', [ 'whitespace' ], true, null ],
-            [ Variable::TEXT, Validator::TEXT, 'v_name3', null, [], [], 'SecurityViolationException' ],
+            [ Variable::TEXT, Validator::TEXT, 'v_name3', null, [], [], 'RuntimeException' ],
             [ Variable::TEXT, Validator::TEXT, 'v_name4', [ '前川 みく', '安部 菜々', '緒方 智絵里' ], [], [], null ],
             [ Variable::TEXT, Validator::TEXT, 'v_name5', [ '前川 みく', '安部 菜々', '緒方 智絵里' ], [ 'whitespace' ], true, null ],
             [ Variable::TEXT, Validator::TEXT, 'v_name6', [ '前川 みく', '', '緒方 智絵里' ], [ 'whitespace', 'nullable' ], false, null ],
@@ -141,7 +141,7 @@ class RequestTest extends PHPUnit_Framework_TestCase
         Server::capture();
         Client::capture();
         
-        isset($exception) && $this->setExpectedException((strpos($exception, '\\') === 0 ? "" : "Phpingguo\\System\\Exceptions\\") . $exception);
+        isset($exception) && $this->setExpectedException($exception);
         
         $instance	= Request::getInstance(true);
         isset($value) && $instance->setParameter($p_type, $name, $value);
@@ -164,8 +164,8 @@ class RequestTest extends PHPUnit_Framework_TestCase
             [ [ Validator::TEXT, 'mv_name1', [ 'whitespace' ] ], [ 'mv_name1' => '安部 菜々' ], null ],
             [ [ Validator::TEXT, 'mv_name2', [] ], [ 'mv_name2' => '安部 菜々' ], null ],
             [ [ Validator::TEXT, 'mv_name3', [ 'nullable' ] ], [ 'mv_name3' => '' ], null ],
-            [ [], [], '\InvalidArgumentException'],
-            [ [ Validator::TEXT, 'mv_name4', [], Validator::TEXT ], [], '\InvalidArgumentException'],
+            [ [], [], 'InvalidArgumentException'],
+            [ [ Validator::TEXT, 'mv_name4', [], Validator::TEXT ], [], 'InvalidArgumentException'],
             [ [ Validator::TEXT, 'mv_name5_1', [  ], Validator::TEXT, 'mv_name5_2', [  ] ], [ 'mv_name5_1' => '安部 菜々', 'mv_name5_2' => '緒方 智絵里' ], null ],
         ];
     }
@@ -182,8 +182,7 @@ class RequestTest extends PHPUnit_Framework_TestCase
         Server::capture();
         Client::capture();
         
-        isset($exception) && $this->setExpectedException(
-            (strpos($exception, '\\') === 0 ? "" : "Phpingguo\\System\\Exceptions\\") . $exception);
+        isset($exception) && $this->setExpectedException($exception);
         
         $instance	= Request::getInstance(true);
         

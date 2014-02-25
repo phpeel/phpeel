@@ -5,8 +5,6 @@ use Phpingguo\System\Core\AuraDIWrapper;
 use Phpingguo\System\Core\Client;
 use Phpingguo\System\Core\Config;
 use Phpingguo\System\Core\Server;
-use Phpingguo\System\Exceptions\SystemFatalErrorException;
-use Phpingguo\System\Exceptions\UnsupportedOperationException;
 use Phpingguo\System\Exts\Lib\Common\Arrays;
 use Phpingguo\System\Exts\Lib\Common\String as CString;
 
@@ -73,7 +71,7 @@ final class RequestParser
     /**
      * クライアントのリクエストを解析したデータを取得します。
      * 
-     * @throws SystemFatalErrorException	不正なリクエストデータの場合
+     * @throws RuntimeException	不正なリクエストデータの場合
      * 
      * @return RequestData クライアントのリクエストを解析したデータを返します。
      */
@@ -82,7 +80,7 @@ final class RequestParser
         $path_info_list = array_values(array_filter(explode('/', Server::PATH_INFO('')), 'strlen'));
         
         if (Arrays::checkSize($path_info_list, 3, 0) === false) {
-            throw new SystemFatalErrorException();
+            throw new \RuntimeException('Client has sent an invalid request information.');
         }
         
         $method = Server::REQUEST_METHOD();
@@ -118,8 +116,8 @@ final class RequestParser
      * 
      * @param Array $path_info_list	リクエストデータのパス情報配列
      * 
-     * @throws UnsupportedOperationException	バージョニングURLを許容していないにも関わらず使用した、または、
-     * バージョン番号セパレータが存在しなかった場合
+     * @throws LogicException	バージョニングURLを許容していないにも関わらず使用した場合
+     * @throws RuntimeException	バージョン番号セパレータが存在しなかった場合
      * 
      * @return Float|null クライアントがリクエストした API のバージョンを返します。
      */
@@ -131,12 +129,10 @@ final class RequestParser
             return null;
         } elseif (Config::get('sys.versioning.allowed', false) === false) {
             // バージョニングURLを許容していないにも関わらず使用した場合
-            throw new UnsupportedOperationException('Versioning url address');
+            throw new \LogicException('"Versioning url address" function is invalid.');
         } elseif (strpos($matches[1], $separator) === false) {
             // バージョン番号セパレータが存在しなかった場合
-            throw new UnsupportedOperationException(
-                'Versioning Number Separator except for "' . $separator . '"'
-            );
+            throw new \RuntimeException('The api version number valid is not contain in url address requested.');
         }
         
         return floatval(str_replace($separator, '.', $matches[1]));
