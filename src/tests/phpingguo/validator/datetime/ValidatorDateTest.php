@@ -62,7 +62,7 @@ class ValidatorDateTest extends PHPUnit_Framework_TestCase
      */
     public function testValidate($value, $expected, $options, $exception, $init)
     {
-        isset($exception) && $this->setExpectedException("Phpingguo\System\Exceptions\\" . $exception);
+        isset($exception) && $this->setExpectedException("Phpingguo\\System\\Validator\\" . $exception);
         
         $this->assertSame($expected, (new Date())->validate($value, $init($options)));
     }

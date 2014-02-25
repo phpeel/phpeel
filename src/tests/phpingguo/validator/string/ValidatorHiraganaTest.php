@@ -1,6 +1,6 @@
 <?php
-use Phpingguo\System\Validator\String\Kana\Hiragana;
 use Phpingguo\System\Validator\Options;
+use Phpingguo\System\Validator\String\Kana\Hiragana;
 
 class ValidatorHiraganaTest extends PHPUnit_Framework_TestCase
 {
@@ -102,7 +102,7 @@ class ValidatorHiraganaTest extends PHPUnit_Framework_TestCase
      */
     public function testValidate($value, $expected, $options, $exception, $init)
     {
-        isset($exception) && $this->setExpectedException("Phpingguo\System\Exceptions\\" . $exception);
+        isset($exception) && $this->setExpectedException("Phpingguo\\System\\Validator\\" . $exception);
         
         $this->assertSame($expected, (new Hiragana())->validate($value, $init($options)));
     }

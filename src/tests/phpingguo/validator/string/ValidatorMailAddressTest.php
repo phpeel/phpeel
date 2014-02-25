@@ -1,6 +1,6 @@
 <?php
-use Phpingguo\System\Validator\String\Other\MailAddress;
 use Phpingguo\System\Validator\Options;
+use Phpingguo\System\Validator\String\Other\MailAddress;
 
 class ValidatorMailAddressTest extends PHPUnit_Framework_TestCase
 {
@@ -26,16 +26,16 @@ class ValidatorMailAddressTest extends PHPUnit_Framework_TestCase
             [ '_abcedfghi_@xyz.com', true, [], null ],
             [ '"ab..cd..ef"@xyz.com', true, [], null ],
             [ '"ab[cd]ef"@xyz.com', true, [], null ],
-            [ '.@xyz.com', false, [], 'RfcMailViolationException' ],
-            [ '.a@xyz.com', false, [], 'RfcMailViolationException' ],
-            [ '.abc@xyz.com', false, [], 'RfcMailViolationException' ],
-            [ 'a.@xyz.com', false, [], 'RfcMailViolationException' ],
-            [ 'abc.@xyz.com', false, [], 'RfcMailViolationException' ],
-            [ 'ab..cd..ef@xyz.com', false, [], 'RfcMailViolationException' ],
-            [ 'abc...def@xyz.com', false, [], 'RfcMailViolationException' ],
-            [ 'abc....def@xyz.com', false, [], 'RfcMailViolationException' ],
-            [ '.ab..cd..ef.@xyz.com', false, [], 'RfcMailViolationException' ],
-            [ 'a[bcde]f@xyz.com', false, [], 'RfcMailViolationException' ],
+            [ '.@xyz.com', false, [], '\RuntimeException' ],
+            [ '.a@xyz.com', false, [], '\RuntimeException' ],
+            [ '.abc@xyz.com', false, [], '\RuntimeException' ],
+            [ 'a.@xyz.com', false, [], '\RuntimeException' ],
+            [ 'abc.@xyz.com', false, [], '\RuntimeException' ],
+            [ 'ab..cd..ef@xyz.com', false, [], '\RuntimeException' ],
+            [ 'abc...def@xyz.com', false, [], '\RuntimeException' ],
+            [ 'abc....def@xyz.com', false, [], '\RuntimeException' ],
+            [ '.ab..cd..ef.@xyz.com', false, [], '\RuntimeException' ],
+            [ 'a[bcde]f@xyz.com', false, [], '\RuntimeException' ],
             [ 'a', false, [], 'ValidationErrorException' ],
             [ 'A', false, [], 'ValidationErrorException' ],
             [ 'abc', false, [ 'notPreg' => '/xyz/' ], 'ValidationErrorException' ],
@@ -66,7 +66,8 @@ class ValidatorMailAddressTest extends PHPUnit_Framework_TestCase
      */
     public function testValidate($value, $expected, $options, $exception, $init)
     {
-        isset($exception) && $this->setExpectedException("Phpingguo\System\Exceptions\\" . $exception);
+        isset($exception) && $this->setExpectedException(
+            (strpos($exception, '\\') === 0 ? "" : "Phpingguo\\System\\Validator\\") . $exception);
     
         $this->assertSame($expected, (new MailAddress())->validate($value, $init($options)));
     }
