@@ -127,7 +127,7 @@ final class Request
      * @param Variable|String $type	値を取得するパラメータの型のインスタンスまたは名前
      * @param String $name			値を取得するパラメータの名前
      * 
-     * @throws LogicException	バリデーションを通過していないパラメータを取得しようとした場合
+     * @throws \LogicException	バリデーションを通過していないパラメータを取得しようとした場合
      * （※"sys.security.validation_forced"が有効の時のみ）
      * 
      * @return mixed シーンへ渡すパラメータ一覧から指定した名前の値を返します。
@@ -162,7 +162,7 @@ final class Request
      * @param String $name				検証の対象となるパラメータの名前
      * @param Options $options			検証時に利用されるオプション設定
      * 
-     * @throws RuntimeException	存在しないパラメータを検証しようとした場合
+     * @throws \RuntimeException	存在しないパラメータを検証しようとした場合
      * 
      * @return Boolean|Array 検証に成功した時は true を、失敗した時はその理由を含む配列を、
      * それ以外の場合は false を返します。
@@ -189,7 +189,7 @@ final class Request
      * @param String $name				検証の対象となるパラメータの名前
      * @param Options $options			検証時に利用されるオプション設定
      * 
-     * @throws InvalidArgumentException	メソッドに渡した引数の内容が正しくない場合
+     * @throws \InvalidArgumentException	メソッドに渡した引数の内容が正しくない場合
      * 
      * @return Boolean|Array 検証した全てのパラメータの値が正しいものであれば true を、
      * エラー情報がある場合はその配列を、エラー情報が無く nullable 許可時に検証した値のうち

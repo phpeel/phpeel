@@ -37,7 +37,7 @@ final class AuraDIWrapper
     /**
      * AuraDIWrapper クラスのインスタンスを初期化します。
      * 
-     * @return Aura\Di\Container 初期化したクラスが保持する DI コンテナのインスタンスを返します。
+     * @return \Aura\Di\Container 初期化したクラスが保持する DI コンテナのインスタンスを返します。
      */
     public static function init()
     {
