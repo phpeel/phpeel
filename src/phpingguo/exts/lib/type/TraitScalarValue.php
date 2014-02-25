@@ -48,7 +48,7 @@ trait TraitScalarValue
      * @final [オーバーライド禁止]
      * @return mixed インスタンスが持つ固有の型の値を返します。
      */
-    final protected function getInstanseValue()
+    final protected function getInstanceValue()
     {
         return $this->instance_value;
     }

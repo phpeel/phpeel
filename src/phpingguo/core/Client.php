@@ -17,9 +17,9 @@ final class Client
     // ---------------------------------------------------------------------------------------------
     // class fields
     // ---------------------------------------------------------------------------------------------
-    private static $request_vals = [];
-    private static $get_vals     = [];
-    private static $post_vals    = [];
+    private static $request_list = [];
+    private static $get_list     = [];
+    private static $post_list    = [];
     
     // ---------------------------------------------------------------------------------------------
     // public class methods
@@ -32,7 +32,7 @@ final class Client
     public static function capture()
     {
         $result = static::initValues();
-        static::invalidSuperGlovalVariables();
+        static::invalidSuperGlobalVariables();
         
         return (bool)$result;
     }
@@ -62,9 +62,9 @@ final class Client
      */
     private static function initValues()
     {
-        $result = Arrays::copyWhen(Arrays::isValid($_REQUEST), static::$request_vals, $_REQUEST);
-        $result |= Arrays::copyWhen(Arrays::isValid($_GET), static::$get_vals, $_GET);
-        $result |= Arrays::copyWhen(Arrays::isValid($_POST), static::$post_vals, $_POST);
+        $result = Arrays::copyWhen(Arrays::isValid($_REQUEST), static::$request_list, $_REQUEST);
+        $result |= Arrays::copyWhen(Arrays::isValid($_GET), static::$get_list, $_GET);
+        $result |= Arrays::copyWhen(Arrays::isValid($_POST), static::$post_list, $_POST);
         
         return $result;
     }
@@ -72,7 +72,7 @@ final class Client
     /**
      * クライアントに関するスーパーグローバル変数を無効化します。
      */
-    private static function invalidSuperGlovalVariables()
+    private static function invalidSuperGlobalVariables()
     {
         Arrays::clear($_REQUEST);
         Arrays::clear($_GET);
@@ -99,7 +99,7 @@ final class Client
      */
     private static function getRequestParams()
     {
-        return static::$request_vals ?: [];
+        return static::$request_list ?: [];
     }
     
     /**
@@ -111,6 +111,6 @@ final class Client
      */
     private static function getGetPostParams($method_value)
     {
-        return (($method_value === HttpMethod::GET) ? static::$get_vals : static::$post_vals) ?: [];
+        return (($method_value === HttpMethod::GET) ? static::$get_list : static::$post_list) ?: [];
     }
 }

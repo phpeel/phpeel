@@ -60,7 +60,7 @@ abstract class BaseInteger implements IScalarValue
      */
     final public function getValue($base_value = null)
     {
-        $value = $this->hasInstanceValue() ? $this->getInstanseValue() : $this->getIntegerValue($base_value);
+        $value = $this->hasInstanceValue() ? $this->getInstanceValue() : $this->getIntegerValue($base_value);
         
         if (is_null($value)) {
             throw new \InvalidArgumentException(__METHOD__ . ' only accepts integer.');
