@@ -2,12 +2,12 @@
 namespace Phpingguo\System\Validator\DateTime;
 
 use Phpingguo\System\Enums\ValidationError;
-use Phpingguo\System\Exceptions\ValidationErrorException;
 use Phpingguo\System\Exts\Lib\Common\Arrays;
 use Phpingguo\System\Exts\Lib\Common\String;
 use Phpingguo\System\Validator\IValidator;
 use Phpingguo\System\Validator\Options;
 use Phpingguo\System\Validator\TraitCommonValidator;
+use Phpingguo\System\Validator\ValidationErrorException;
 
 /**
  * 日時型の値を検証するクラスの基本機能を提供する抽象クラスです。
