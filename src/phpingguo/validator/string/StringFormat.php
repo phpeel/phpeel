@@ -25,7 +25,7 @@ abstract class StringFormat extends BaseString
     /**
      * StringFormat クラスの新しいインスタンスを初期化します。
      * 
-     * @param String $regex	正規表現検索する文字列
+     * @param String $regex 正規表現検索する文字列
      */
     public function __construct($regex)
     {
@@ -73,7 +73,7 @@ abstract class StringFormat extends BaseString
      * 全角文字を許容するかどうかを取得します。
      * 
      * @final [オーバーライド禁止]
-     * @return Boolean 全角文字を許容する場合は true を、それ以外の場合は false を返します。
+     * @return Boolean 全角文字を許容する場合は true。それ以外の場合は false。
      */
     final protected function getAllowFullSize()
     {
@@ -84,7 +84,7 @@ abstract class StringFormat extends BaseString
      * 全角文字を許容するかどうかを設定します。
      * 
      * @final [オーバーライド禁止]
-     * @param Boolean $enable	全角文字を許容するかどうか
+     * @param Boolean $enable 全角文字を許容するかどうか
      */
     final protected function setAllowFullSize($enable)
     {
@@ -95,7 +95,7 @@ abstract class StringFormat extends BaseString
      * 正規表現文字を取得します。
      * 
      * @final [オーバーライド禁止]
-     * @return String 正規表現文字を返します。
+     * @return String 正規表現文字
      */
     final protected function getRegexString()
     {
@@ -106,7 +106,7 @@ abstract class StringFormat extends BaseString
      * 正規表現文字を設定します。
      * 
      * @final [オーバーライド禁止]
-     * @param String $string	正規表現文字
+     * @param String $string 正規表現文字
      */
     final protected function setRegexString($string)
     {
@@ -116,9 +116,9 @@ abstract class StringFormat extends BaseString
     /**
      * 検証に使用する正規表現パターンのリストを取得します。
      * 
-     * @param Options $options	検証時に利用するオプションの設定
+     * @param Options $options 検証時に利用するオプションの設定
      * 
-     * @return Array 検証に使用する正規表現パターンのリストを返します。
+     * @return Array 検証に使用する正規表現パターンのリスト
      */
     private function getRegexPattern(Options $options)
     {
@@ -143,11 +143,11 @@ abstract class StringFormat extends BaseString
     /**
      * 入力文字列から許可する文字を削除したものを取得します。
      * 
-     * @param String $haystack				検索対象の文字列
-     * @param Callable $get_pattern_text	正規表現パターン文字列
-     * @param Array $pattern				正規表現パターン配列
+     * @param String $haystack           検索対象の文字列
+     * @param Callable $get_pattern_text 正規表現パターン文字列
+     * @param Array $pattern             正規表現パターン配列
      * 
-     * @return String 入力文字列から許可する文字を削除したものを返します。
+     * @return String 許可する文字を削除した入力文字列
      */
     private function getRemovedAllowChars($haystack, callable $get_pattern_text, array $pattern)
     {
@@ -157,11 +157,11 @@ abstract class StringFormat extends BaseString
     /**
      * 入力文字列に許可しない文字が含まれているかどうかを判定します。
      * 
-     * @param String $haystack				検索対象の文字列
-     * @param Callable $get_pattern_text	正規表現パターン文字列
-     * @param Array $pattern				正規表現パターン配列
+     * @param String $haystack           検索対象の文字列
+     * @param Callable $get_pattern_text 正規表現パターン文字列
+     * @param Array $pattern             正規表現パターン配列
      * 
-     * @return Boolean 許可しない文字が含まれていない場合は true を、それ以外の場合は false を返します。
+     * @return Boolean 許可しない文字が含まれていない場合は true。それ以外の場合は false。
      */
     private function isDenyContain($haystack, callable $get_pattern_text, array $pattern)
     {
@@ -171,9 +171,9 @@ abstract class StringFormat extends BaseString
     /**
      * 入力文字列に制御文字が含まれているかどうかを判定します。
      * 
-     * @param String $haystack	検索対象の文字列
+     * @param String $haystack 検索対象の文字列
      * 
-     * @return Boolean 制御文字が含まれている場合は true を、それ以外の場合は false を返します。
+     * @return Boolean 制御文字が含まれている場合は true。それ以外の場合は false。
      */
     private function isExistControlChar($haystack)
     {
@@ -183,10 +183,10 @@ abstract class StringFormat extends BaseString
     /**
      * 入力文字列に設定済みの正規表現文字列が含まれていないかどうかを判定します。
      * 
-     * @param String $haystack	検索対象の文字列
-     * @param String $regex		正規表現文字列
+     * @param String $haystack 検索対象の文字列
+     * @param String $regex    正規表現文字列
      * 
-     * @return Boolean 正規表現文字列が含まれていない場合は true を、それ以外の場合は false を返します。
+     * @return Boolean 正規表現文字列が含まれていない場合は true。それ以外の場合は false。
      */
     private function isNotRegexContain($haystack, $regex)
     {
@@ -196,9 +196,9 @@ abstract class StringFormat extends BaseString
     /**
      * 全角文字列の長さと幅が一致するかどうかのチェックを行います。
      * 
-     * @param String $value	検査対象となる文字列
+     * @param String $value 検査対象となる文字列
      * 
-     * @return Boolean 長さと幅が正しく一致した場合は true を、それ以外の場合は false を返します。
+     * @return Boolean 長さと幅が正しく一致した場合は true。それ以外の場合は false。
      */
     private function checkString($value)
     {
@@ -213,9 +213,9 @@ abstract class StringFormat extends BaseString
     /**
      * 入力文字列から半角ASCIIおよび半角カタカナを取り除いた文字列を取得します。
      * 
-     * @param String $value	対象となる文字列
+     * @param String $value 対象となる文字列
      * 
-     * @return String 半角ASCIIおよび半角カタカナを取り除いたものを返します。
+     * @return String 半角ASCIIおよび半角カタカナを取り除いた入力文字列
      */
     private function getRemovedHalfWidth($value)
     {

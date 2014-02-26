@@ -31,10 +31,10 @@ final class Options
     /**
      * Options クラスの新しいインスタンスを初期化します。
      * 
-     * @param Boolean $nullable [初期値=false]		Nullに該当する値を許容するかどうか
-     * @param Boolean $white_space [初期値=false]	空白文字に該当する文字列を許容するかどうか
-     * @param Boolean $new_line [初期値=false]		改行コードを許容するかどうか
-     * @param Boolean $width [初期値=false]			文字列の長さを幅で判定するかどうか
+     * @param Boolean $nullable [初期値=false]    Nullに該当する値を許容するかどうか
+     * @param Boolean $white_space [初期値=false] 空白文字に該当する文字列を許容するかどうか
+     * @param Boolean $new_line [初期値=false]    改行コードを許容するかどうか
+     * @param Boolean $width [初期値=false]       文字列の長さを幅で判定するかどうか
      */
     public function __construct($nullable = false, $white_space = false, $new_line = false, $width = false)
     {
@@ -50,9 +50,9 @@ final class Options
     /**
      * Options クラスのインスタンスを取得します。
      * 
-     * @param Boolean $force_init [初期値=false]	強制的に初期化するかどうか
+     * @param Boolean $force_init [初期値=false] 強制的に初期化するかどうか
      * 
-     * @return Options このクラスのインスタンスを返します。
+     * @return Options このクラスのインスタンス
      */
     public static function getInstance($force_init = false)
     {
@@ -67,7 +67,7 @@ final class Options
     /**
      * Nullに該当する値を許容する設定にします。
      * 
-     * @return Options 設定後の自分自身のインスタンスを返します。
+     * @return Options 設定後の自分自身のインスタンス
      */
     public function nullable()
     {
@@ -79,7 +79,7 @@ final class Options
     /**
      * Nullに該当する値を許容するかどうかを判定します。
      * 
-     * @return Boolean Nullに該当する値を許容する場合は true を、それ以外の場合は false を返します。
+     * @return Boolean Nullに該当する値を許容する場合は true。それ以外の場合は false。
      */
     public function isNullable()
     {
@@ -90,7 +90,7 @@ final class Options
      * [文字列型バリデーターのみ設定有効]
      * 空白文字に該当する値を許容する設定にします。
      * 
-     * @return Options 設定後の自分自身のインスタンスを返します。
+     * @return Options 設定後の自分自身のインスタンス
      */
     public function whitespace()
     {
@@ -102,7 +102,7 @@ final class Options
     /**
      * 空白文字に該当する値を許容するかどうかを判定します。
      * 
-     * @return Boolean 空白文字に該当する値を許容する場合は true を、それ以外の場合は false を返します。
+     * @return Boolean 空白文字に該当する値を許容する場合は true。それ以外の場合は false。
      */
     public function isWhiteSpace()
     {
@@ -113,7 +113,7 @@ final class Options
      * [文字列型バリデーターのみ設定有効]
      * 改行を許容する設定にします。
      * 
-     * @return Options 設定後の自分自身のインスタンスを返します。
+     * @return Options 設定後の自分自身のインスタンス
      */
     public function newLine()
     {
@@ -125,7 +125,7 @@ final class Options
     /**
      * 改行を許容するかどうかを判定します。
      * 
-     * @return Boolean 改行を許容する場合は true を、それ以外の場合は false を返します。
+     * @return Boolean 改行を許容する場合は true。それ以外の場合は false。
      */
     public function isNewLine()
     {
@@ -136,7 +136,7 @@ final class Options
      * [文字列型バリデーターのみ設定有効]
      * 文字列の長さを数ではなく幅で判定する設定にします。
      * 
-     * @return Options 設定後の自分自身のインスタンスを返します。
+     * @return Options 設定後の自分自身のインスタンス
      */
     public function width()
     {
@@ -148,7 +148,7 @@ final class Options
     /**
      * 文字列の長さを幅で判定するかどうかを判定します。
      * 
-     * @return Boolean 文字列の長さを幅で判定する場合は true を、それ以外の場合は false を返します。
+     * @return Boolean 文字列の長さを幅で判定する場合は true。それ以外の場合は false。
      */
     public function isWidth()
     {
@@ -159,7 +159,7 @@ final class Options
      * [文字列型バリデーターのみ設定有効]
      * 文字列に絵文字を含むことを許容する設定にします。
      * 
-     * @return Options 設定後の自分自身のインスタンスを返します。
+     * @return Options 設定後の自分自身のインスタンス
      */
     public function emoji()
     {
@@ -171,7 +171,7 @@ final class Options
     /**
      * 文字列に絵文字が含まれることが許容されているかどうかを判定します。
      * 
-     * @return Boolean 絵文字が含まれても良い場合は true を、それ以外の場合は false を返します。
+     * @return Boolean 絵文字が含まれても良い場合は true。それ以外の場合は false。
      */
     public function isAllowEmoji()
     {
@@ -181,9 +181,9 @@ final class Options
     /**
      * 検証時に許容する最小値を設定します。
      * 
-     * @param mixed $value	検証時に許容する最小値
+     * @param mixed $value 検証時に許容する最小値
      * 
-     * @return Options 設定後の自分自身のインスタンスを返します。
+     * @return Options 設定後の自分自身のインスタンス
      */
     public function min($value)
     {
@@ -195,7 +195,7 @@ final class Options
     /**
      * 検証時に許容する最小値の値を取得します。
      * 
-     * @return mixed 検証時に許容する最小値の値を返します。
+     * @return mixed 検証時に許容する最小値の値
      */
     public function getMinValue()
     {
@@ -205,9 +205,9 @@ final class Options
     /**
      * 検証時に許容する最大値を設定します。
      * 
-     * @param mixed $value	検証時に許容する最大値
+     * @param mixed $value 検証時に許容する最大値
      * 
-     * @return Options 設定後の自分自身のインスタンスを返します。
+     * @return Options 設定後の自分自身のインスタンス
      */
     public function max($value)
     {
@@ -219,7 +219,7 @@ final class Options
     /**
      * 検証時に許容する最大値の値を取得します。
      * 
-     * @return mixed 検証時に許容する最大値の値を返します。
+     * @return mixed 検証時に許容する最大値の値
      */
     public function getMaxValue()
     {
@@ -230,9 +230,9 @@ final class Options
      * [文字列型バリデーターのみ設定有効]
      * 検証時にマッチすべき文字列を正規表現で指定します。
      * 
-     * @param String $value		検証時にマッチすべき文字列の正規表現
+     * @param String $value 検証時にマッチすべき文字列の正規表現
      * 
-     * @return Options 設定後の自分自身のインスタンスを返します。
+     * @return Options 設定後の自分自身のインスタンス
      */
     public function preg($value)
     {
@@ -244,7 +244,7 @@ final class Options
     /**
      * 検証時にマッチすべき文字列を正規表現形式で取得します。
      * 
-     * @return String 検証時にマッチすべき文字列を正規表現形式で返します。
+     * @return String 検証時にマッチすべき文字列の正規表現形式
      */
     public function getPregValue()
     {
@@ -255,9 +255,9 @@ final class Options
      * [文字列型バリデーターのみ設定有効]
      * 検証時にマッチしてはいけない文字列を正規表現で指定します。
      * 
-     * @param String $value		検証時にマッチしてはいけない文字列の正規表現
+     * @param String $value 検証時にマッチしてはいけない文字列の正規表現
      * 
-     * @return Options 設定後の自分自身のインスタンスを返します。
+     * @return Options 設定後の自分自身のインスタンス
      */
     public function notPreg($value)
     {
@@ -269,7 +269,7 @@ final class Options
     /**
      * 検証時にマッチしてはいけない文字列を正規表現形式で取得します。
      * 
-     * @return String 検証時にマッチしてはいけない文字列を正規表現形式で返します。
+     * @return String 検証時にマッチしてはいけない文字列の正規表現形式
      */
     public function getNotPregValue()
     {
@@ -280,9 +280,9 @@ final class Options
      * [文字列型バリデーターのみ設定有効]
      * 検証時に使用するNGワードリストを指定します。
      * 
-     * @param array $list	検証時に使用するNGワードリスト
+     * @param array $list 検証時に使用するNGワードリスト
      * 
-     * @return Options 設定後の自分自身のインスタンスを返します。
+     * @return Options 設定後の自分自身のインスタンス
      */
     public function ngword(array $list)
     {
@@ -294,7 +294,7 @@ final class Options
     /**
      * 検証時に使用するNGワードリストを取得します。
      * 
-     * @return Array 検証時に使用するNGワードリストを返します。
+     * @return Array 検証時に使用するNGワードリスト
      */
     public function getNgWordList()
     {
@@ -307,7 +307,7 @@ final class Options
     /**
      * 検証オプションを初期化します。
      * 
-     * @return Options 初期化後の自分自身のインスタンスを返します。
+     * @return Options 初期化後の自分自身のインスタンス
      */
     private function allReset()
     {

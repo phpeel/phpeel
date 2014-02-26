@@ -19,7 +19,7 @@ trait TraitSignedNumber
     /**
      * 取得する値に符号なしであることを許すかどうかを設定します。
      * 
-     * @param Boolean $unsigned [初期値=false]	取得する値に符号なしを許すかどうか
+     * @param Boolean $unsigned [初期値=false] 取得する値に符号なしを許すかどうか
      */
     private function setAllowUnsigned($unsigned = false)
     {
@@ -29,8 +29,7 @@ trait TraitSignedNumber
     /**
      * 取得する値に符号なしであることを許すかどうかを取得します。
      * 
-     * @return Boolean 取得する値に符号なしであることを許す場合は true を、
-     * それ以外は false を返します。
+     * @return Boolean 取得する値に符号なしであることを許す場合は true。それ以外の場合は false。
      */
     private function getAllowUnsigned()
     {

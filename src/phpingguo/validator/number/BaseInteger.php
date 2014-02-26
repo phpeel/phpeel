@@ -46,11 +46,11 @@ abstract class BaseInteger implements IValidator
     /**
      * 指定した変数のエラーチェックを行います。
      *
-     * @param mixed $value		エラーチェック対象となる変数
-     * @param Options $options	エラーチェックに利用するオプションの設定
+     * @param mixed $value     エラーチェック対象となる変数
+     * @param Options $options エラーチェックに利用するオプションの設定
      *
      * @return Boolean|Array 入力値が無効(null、空配列、長さ0の文字列)の場合に、nullable オプションが
-     * 有効の時は false を、それ以外の時はエラー理由を返します。
+     * 有効の時は false。それ以外の時はエラー理由。
      */
     private function checkError($value, Options $options)
     {
@@ -70,9 +70,9 @@ abstract class BaseInteger implements IValidator
     /**
      * クラスごとに用意された専用のチェックを行います。
      * 
-     * @param Integer $value	チェック対象の値
+     * @param Integer $value チェック対象の値
      * 
-     * @return ValidationError チェックに失敗した場合はそのエラー理由を、それ以外の場合は null を返します。
+     * @return ValidationError チェックに失敗した場合はそのエラー理由。それ以外の場合は null。
      */
     private function doExclusiveErrorCheck($value)
     {
@@ -88,11 +88,11 @@ abstract class BaseInteger implements IValidator
     /**
      * 入力値の最大値と最小値の範囲チェックを行います。
      * 
-     * @param Integer $value	範囲チェックを行う入力値
-     * @param Options $options	検証時実行オプションのデータ
+     * @param Integer $value   範囲チェックを行う入力値
+     * @param Options $options 検証時実行オプションのデータ
      * 
-     * @return Array(ValidationError) 最小値または最大値を超えている場合はその理由含んだ配列を、
-     * それ以外であれば空配列を返します。
+     * @return Array(ValidationError) 最小値または最大値を超えている場合はその理由含んだ配列。
+     * それ以外であれば空配列。
      */
     private function checkValueRange($value, Options $options)
     {
@@ -110,11 +110,11 @@ abstract class BaseInteger implements IValidator
     /**
      * 許容最小値または許容最大値を取得します。
      * 
-     * @param String $method_name			境界値を取得するメソッドの名前
-     * @param Options $options				検証時に利用するオプションの設定
-     * @param Integer $default [初期値=0]	オプション設定の値がない場合の初期値
+     * @param String $method_name                   境界値を取得するメソッドの名前
+     * @param Options $options                      検証時に利用するオプションの設定
+     * @param Integer $default [初期値=PHP_INT_MAX] オプション設定の値がない場合の初期値
      * 
-     * @return Integer 許容最小値または許容最大値を返します。
+     * @return Integer 許容最小値または許容最大値
      */
     private function getLimitValue($method_name, Options $options, $default = PHP_INT_MAX)
     {

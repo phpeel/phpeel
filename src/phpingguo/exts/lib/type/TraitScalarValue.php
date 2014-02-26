@@ -35,7 +35,7 @@ trait TraitScalarValue
      * スカラータイプクラスのデフォルト値を設定します。
      * 
      * @final [オーバーライド禁止]
-     * @param mixed $value	スカラータイプクラスのデフォルト値
+     * @param mixed $value スカラータイプクラスのデフォルト値
      */
     final protected function setDefaultValue($value)
     {
@@ -46,7 +46,7 @@ trait TraitScalarValue
      * インスタンスが持つ固有の型の値を取得します。
      * 
      * @final [オーバーライド禁止]
-     * @return mixed インスタンスが持つ固有の型の値を返します。
+     * @return mixed インスタンスが持つ固有の型の値
      */
     final protected function getInstanceValue()
     {
@@ -57,7 +57,7 @@ trait TraitScalarValue
      * インスタンスが持つ固有の型の値を設定します。
      *
      * @final [オーバーライド禁止]
-     * @param mixed $value	インスタンスが持つ固有の型の値
+     * @param mixed $value インスタンスが持つ固有の型の値
      */
     final protected function setInstanceValue($value)
     {
@@ -71,7 +71,7 @@ trait TraitScalarValue
      * インスタンスが持つ固有の型の値を所持しているかどうかを判別します。
      * 
      * @final [オーバーライド禁止]
-     * @return Boolean インスタンスが値を保持している場合は true を、それ以外の場合は false を返します。
+     * @return Boolean インスタンスが値を保持している場合は true。それ以外の場合は false。
      */
     final protected function hasInstanceValue()
     {
@@ -82,9 +82,9 @@ trait TraitScalarValue
      * インスタンスが使用するキャッシュ値を取得します。
      * 
      * @final [オーバーライド禁止]
-     * @param Boolean $is_after_clear [初期値=false]	取得した後にキャッシュ値をクリアするかどうか
+     * @param Boolean $is_after_clear [初期値=false] 取得した後にキャッシュ値をクリアするかどうか
      * 
-     * @return mixed インスタンスが使用するキャッシュ値を返します。
+     * @return mixed インスタンスが使用するキャッシュ値
      */
     final protected function getCacheValue($is_after_clear = false)
     {
@@ -99,7 +99,7 @@ trait TraitScalarValue
      * なお、null は値として指定できません。値をクリアする場合は clearCacheValue をコールして下さい。
      * 
      * @final [オーバーライド禁止]
-     * @param mixed $value	インスタンスが使用するキャッシュ値
+     * @param mixed $value インスタンスが使用するキャッシュ値
      * 
      * @see TraitScalarValue::clearCacheValue()
      */

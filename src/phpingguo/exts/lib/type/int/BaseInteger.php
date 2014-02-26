@@ -26,8 +26,8 @@ abstract class BaseInteger implements IScalarValue
     /**
      * BaseInteger クラスの新しいインスタンスを初期化します。
      * 
-     * @param Integer|UnsignedInt $value [初期値=null]	インスタンスが保持する整数型の値
-     * @param Boolean $unsigned [初期値=false]			取得する値に符号なしを許すかどうか
+     * @param Integer|UnsignedInt $value [初期値=null] インスタンスが保持する整数型の値
+     * @param Boolean $allow_unsigned [初期値=false]   取得する値に符号なしを許すかどうか
      */
     public function __construct($value = null, $allow_unsigned = false)
     {
@@ -43,7 +43,7 @@ abstract class BaseInteger implements IScalarValue
      * BaseInteger クラスのインスタンスを取得します。
      * 
      * @final [オーバーライド禁止]
-     * @return BaseInteger 生成した、または、生成済みのインスタンスを返します。
+     * @return BaseInteger 生成した、または、生成済みのインスタンス
      */
     final public static function getInstance()
     {
@@ -104,9 +104,9 @@ abstract class BaseInteger implements IScalarValue
     /**
      * 指定した引数の値を整数型としての値として取得します。
      * 
-     * @param mixed $base_value	整数型の値を取得する変数
+     * @param mixed $base_value 整数型の値を取得する変数
      * 
-     * @return Integer 値を取得できる場合はその値を、そうでない場合は null を返します。
+     * @return Integer 値を取得できる場合はその値。そうでない場合は null。
      */
     private function getIntegerValue($base_value)
     {

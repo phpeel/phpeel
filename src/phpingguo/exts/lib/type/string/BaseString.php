@@ -88,9 +88,9 @@ abstract class BaseString implements IExtendScalarValue
     /**
      * 引数 $base_value の値を文字列型の値として取得します。
      * 
-     * @param mixed $base_value	文字列型の値を取得する変数
+     * @param mixed $base_value 文字列型の値を取得する変数
      * 
-     * @return String|null 値を取得できる場合は文字列型としての値を、そうでない場合は null を返します。
+     * @return String|null 値を取得できる場合は文字列型としての値。そうでない場合は null。
      */
     private function getStringValue($base_value)
     {

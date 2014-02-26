@@ -35,7 +35,7 @@ abstract class BaseDateTime implements IValidator
     /**
      * BaseDateTime クラスの新しいインスタンスを初期化します。
      *
-     * @param String $format	日時フォーマットを表す文字列
+     * @param String $format 日時フォーマットを表す文字列
      */
     public function __construct($format)
     {
@@ -66,7 +66,7 @@ abstract class BaseDateTime implements IValidator
     /**
      * 検証時に許容する最小値を取得します。
      * 
-     * @return Number 検証時に許容する最小値を返します。
+     * @return Number 検証時に許容する最小値
      */
     final protected function getMinValue()
     {
@@ -76,7 +76,7 @@ abstract class BaseDateTime implements IValidator
     /**
      * 検証時に許容する最小値を設定します。
      * 
-     * @param Number $value	検証時に許容する最小値
+     * @param Number $value 検証時に許容する最小値
      */
     final protected function setMinValue($value)
     {
@@ -86,7 +86,7 @@ abstract class BaseDateTime implements IValidator
     /**
      * 検証時に許容する最大値を取得します。
      * 
-     * @return Number 検証時に許容する最大値を返します。
+     * @return Number 検証時に許容する最大値
      */
     final protected function getMaxValue()
     {
@@ -96,7 +96,7 @@ abstract class BaseDateTime implements IValidator
     /**
      * 検証時に許容する最大値を設定します。
      * 
-     * @param Number $value	検証時に許容する最大値
+     * @param Number $value 検証時に許容する最大値
      */
     final protected function setMaxValue($value)
     {
@@ -106,11 +106,11 @@ abstract class BaseDateTime implements IValidator
     /**
      * 指定した変数のエラーチェックを行います。
      * 
-     * @param mixed $value		エラーチェック対象となる変数
-     * @param Options $options	エラーチェックに利用するオプションの設定
+     * @param mixed $value     エラーチェック対象となる変数
+     * @param Options $options エラーチェックに利用するオプションの設定
      * 
      * @return Boolean|Array 入力値が無効(null、空配列、長さ0の文字列)の場合に、nullable オプションが
-     * 有効の時は false を、それ以外の時はエラー理由を返します。
+     * 有効の時は false。それ以外の時はエラー理由。
      */
     private function checkError($value, Options $options)
     {
@@ -130,10 +130,9 @@ abstract class BaseDateTime implements IValidator
     /**
      * 日時、時刻または日付が、無効なフォーマットであるかどうかを判定します。
      * 
-     * @param String $value	検査対象になる日時、時刻、日付
+     * @param String $value 検査対象になる日時、時刻、日付
      * 
-     * @return ValidationErrorType 無効なフォーマットであればそのエラー理由を、
-     * それ以外であれば null を返します。
+     * @return ValidationError 無効なフォーマットであればそのエラー理由。それ以外であれば null。
      */
     private function checkInvalidFormat($value)
     {
@@ -147,11 +146,11 @@ abstract class BaseDateTime implements IValidator
     /**
      * 日時、時刻または日付が、最小値または最大値を超えているかどうかを判定します。
      * 
-     * @param String $value		検査対象になる日時、時刻、日付
-     * @param Options $options	検証時に利用するオプションの設定
+     * @param String $value    検査対象になる日時、時刻、日付
+     * @param Options $options 検証時に利用するオプションの設定
      * 
-     * @return Array(ValidationError) 最小値および最大値を超えている場合はそのエラー理由含んだ配列を、
-     * それ以外であれば空配列を返します。
+     * @return Array(ValidationError) 最小値および最大値を超えている場合はそのエラー理由含んだ配列。
+     * それ以外であれば空配列。
      */
     private function checkOverLimitValues($value, Options $options)
     {
@@ -170,10 +169,10 @@ abstract class BaseDateTime implements IValidator
     /**
      * 許容最小値または許容最大値を取得します。
      * 
-     * @param String $method_name	境界値を取得するメソッドの名前
-     * @param Options $options		検証時に利用するオプションの設定
+     * @param String $method_name 境界値を取得するメソッドの名前
+     * @param Options $options    検証時に利用するオプションの設定
      * 
-     * @return Number 許容最小値または許容最大値を返します。
+     * @return Number 許容最小値または許容最大値
      */
     private function getLimitValue($method_name, Options $options)
     {
@@ -184,10 +183,9 @@ abstract class BaseDateTime implements IValidator
     /**
      * 日時表記の文字列を数値に変換したものを取得します。
      * 
-     * @param String $datetime	数値に変換する日時表記の文字列
+     * @param String $datetime 数値に変換する日時表記の文字列
      * 
-     * @return String|null 入力値が適切な値の場合は日時表記の文字列を数値に変換したものを、
-     * 不正な場合は null を返します。
+     * @return String|null 入力値が適切な値の場合は日時表記の文字列から変換した数値。不正な場合は null。
      */
     private function getDateTimeNumber($datetime)
     {
@@ -211,9 +209,9 @@ abstract class BaseDateTime implements IValidator
     /**
      * 整形した日時の配列を取得します。
      * 
-     * @param Array $list	整形対象となる日時情報を格納した配列
+     * @param Array $list 整形対象となる日時情報を格納した配列
      * 
-     * @return Array 整形した日時の配列を返します。
+     * @return Array 整形した日時の配列
      */
     private function getFormattedList(array $list)
     {

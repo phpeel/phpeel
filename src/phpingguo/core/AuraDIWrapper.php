@@ -55,9 +55,9 @@ final class AuraDIWrapper
     // private class methods
     // ---------------------------------------------------------------------------------------------
     /**
-     * DI コンテナのインスタンスを取得します。
+     * DIコンテナのインスタンスを取得します。
      * 
-     * @return Container DI コンテナのインスタンスを返します。
+     * @return Container DIコンテナのインスタンス
      */
     private static function getContainer()
     {
@@ -65,9 +65,9 @@ final class AuraDIWrapper
     }
     
     /**
-     * DI コンテナのインスタンスを設定します。
+     * DIコンテナのインスタンスを設定します。
      * 
-     * @param Container $container	新しく設定する DI コンテナのインスタンス
+     * @param Container $container	新しく設定するDIコンテナのインスタンス
      */
     private static function setContainer(Container $container)
     {
@@ -75,7 +75,9 @@ final class AuraDIWrapper
     }
     
     /**
-     * DI コンテナに登録するサービスのプリセットのリストを取得します。
+     * DIコンテナに登録するサービスのプリセットのリストを取得します。
+     *
+     * @return Array サービスのプリセットのリスト
      */
     private static function getPresetServices()
     {
@@ -83,14 +85,13 @@ final class AuraDIWrapper
     }
     
     /**
-     * DI コンテナのインスタンスを初期化します。
+     * DIコンテナのインスタンスを初期化します。
      * 
-     * @param Container $container [初期値=null] サービスを登録する DI コンテナのインスタンス
-     * @param Boolean $is_reset [初期値=false]   DI コンテナのインスタンスを再生成するかどうか
+     * @param Container $container [初期値=null] サービスを登録するDIコンテナのインスタンス
      * 
-     * @return Container 初期化した DI コンテナのインスタンスを返します。
+     * @return Container 初期化した DI コンテナのインスタンス
      */
-    private static function initContainer($container = null, $is_reset = false)
+    private static function initContainer($container = null)
     {
         empty($container) && $container = new Container(new Forge(new DiConfig()));
         
@@ -98,12 +99,12 @@ final class AuraDIWrapper
     }
     
     /**
-     * DI コンテナにサービスを登録します。
+     * DIコンテナにサービスを登録します。
      * 
-     * @param Container $container                 サービスを登録する DI コンテナのインスタンス
+     * @param Container $container                 サービスを登録するDIコンテナのインスタンス
      * @param Array $service_list [初期値=array()] 登録するサービスのリスト
      * 
-     * @return Container サービス登録後の状態の DI コンテナのインスタンスを返します。
+     * @return Container サービス登録後の状態のDIコンテナのインスタンス
      */
     private static function registryServices(Container $container, array $service_list)
     {

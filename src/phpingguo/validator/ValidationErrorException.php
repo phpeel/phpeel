@@ -20,7 +20,7 @@ final class ValidationErrorException extends \RuntimeException
     /**
      * ValidationErrorException クラスの新しいインスタンスを初期化します。
      * 
-     * @param Array $error_types [初期値=array()]	バリデーションのエラーの配列
+     * @param Array $error_types [初期値=array()] バリデーションのエラーの配列
      */
     public function __construct(array $error_lists = [])
     {
@@ -35,7 +35,7 @@ final class ValidationErrorException extends \RuntimeException
     /**
      * 発生したバリデーションエラー情報を保持する配列を取得します。
      * 
-     * @return Array 発生したバリデーションエラー情報を保持する配列を返します。
+     * @return Array 発生したバリデーションエラー情報を保持する配列
      */
     public function getErrorLists()
     {

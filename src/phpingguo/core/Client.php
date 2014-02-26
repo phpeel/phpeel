@@ -1,7 +1,6 @@
 <?php
 namespace Phpingguo\System\Core;
 
-use Phpingguo\System\Core\Config;
 use Phpingguo\System\Enums\HttpMethod;
 use Phpingguo\System\Exts\Lib\Common\Arrays;
 use Phpingguo\System\Exts\Lib\Common\String as CString;
@@ -27,7 +26,7 @@ final class Client
     /**
      * クライアント情報をキャプチャーします。
      * 
-     * @return Boolean クライアント情報をキャプチャできた場合は true を、それ以外の場合は false を返します。
+     * @return Boolean クライアント情報をキャプチャできた場合は true。それ以外の場合は false。
      */
     public static function capture()
     {
@@ -42,7 +41,7 @@ final class Client
      * 
      * @param HttpMethod|String $method クライアントがリクエストした HTTP メソッド
      * 
-     * @return Array クライアントがリクエストした HTTP メソッドに合致するパラメータ配列を返します。
+     * @return Array クライアントがリクエストした HTTP メソッドに合致するパラメータ配列
      */
     public static function getParameters($method)
     {
@@ -58,7 +57,7 @@ final class Client
     /**
      * クライアントに関するスーパーグローバル変数のコピーを初期化します。
      * 
-     * @return Boolean コピーできた場合は true を、それ以外の場合は false を返します。
+     * @return Boolean コピーできた場合は true。それ以外の場合は false。
      */
     private static function initValues()
     {
@@ -84,7 +83,7 @@ final class Client
      * 
      * @param String $method_value クライアントがリクエストした HTTP メソッドの名前
      * 
-     * @return REQUEST のパラメータ配列を使用する場合は true を、それ以外の場合は false を返します。
+     * @return Boolean REQUEST のパラメータ配列を使用する場合は true。それ以外の場合は false。
      */
     private static function isRequestVariable($method_value)
     {
@@ -95,7 +94,7 @@ final class Client
     /**
      * REQUEST のパラメータ配列を取得します。
      * 
-     * @return Array REQUEST のパラメータ配列を返します。
+     * @return Array REQUEST のパラメータ配列
      */
     private static function getRequestParams()
     {
@@ -107,7 +106,7 @@ final class Client
      * 
      * @param String $method_value クライアントがリクエストした HTTP メソッドの名前
      * 
-     * @return Array GET または POST のパラメータ配列を返します。
+     * @return Array GET または POST のパラメータ配列
      */
     private static function getGetPostParams($method_value)
     {
