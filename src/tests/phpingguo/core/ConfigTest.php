@@ -1,7 +1,9 @@
 <?php
+namespace Phpingguo\Tests\Phpingguo\Core;
+
 use Phpingguo\System\Core\Config;
 
-class ConfigTest extends PHPUnit_Framework_TestCase
+class ConfigTest extends \PHPUnit_Framework_TestCase
 {
     public function provider()
     {

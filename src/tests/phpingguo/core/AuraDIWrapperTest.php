@@ -1,8 +1,10 @@
 <?php
+namespace Phpingguo\Tests\Phpingguo\Core;
+
 use Phpingguo\System\Core\AuraDIWrapper;
 use Phpingguo\System\Enums\Variable;
 
-class AuraDIWrapperTest extends PHPUnit_Framework_TestCase
+class AuraDIWrapperTest extends \PHPUnit_Framework_TestCase
 {
     public function providerGetClass()
     {

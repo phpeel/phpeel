@@ -1,4 +1,6 @@
 <?php
+namespace Phpingguo\Tests\Phpingguo\Request;
+
 use Phpingguo\System\Core\Client;
 use Phpingguo\System\Core\Config;
 use Phpingguo\System\Core\Server;
@@ -8,7 +10,7 @@ use Phpingguo\System\Enums\Variable;
 use Phpingguo\System\Request\Request;
 use Phpingguo\System\Validator\Options;
 
-class RequestTest extends PHPUnit_Framework_TestCase
+class RequestTest extends \PHPUnit_Framework_TestCase
 {
     public function testInitOptions()
     {
@@ -148,12 +150,9 @@ class RequestTest extends PHPUnit_Framework_TestCase
         
         $result	= $instance->validate($type, $name, $init($options));
         
-        if (is_array($expected))
-        {
+        if (is_array($expected)) {
             $this->assertInternalType('array', $result);
-        }
-        else
-        {
+        } else {
             $this->assertSame($expected, $result);
         }
     }
@@ -186,8 +185,7 @@ class RequestTest extends PHPUnit_Framework_TestCase
         
         $instance	= Request::getInstance(true);
         
-        for ($i = 2, $length = count($validates); $i < $length; $i += 3)
-        {
+        for ($i = 2, $length = count($validates); $i < $length; $i += 3) {
             $validates[$i] = $init($validates[$i]);
         }
         

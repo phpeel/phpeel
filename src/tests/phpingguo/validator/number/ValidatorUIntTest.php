@@ -1,8 +1,10 @@
 <?php
+namespace Phpingguo\Tests\Phpingguo\Validator\Number;
+
 use Phpingguo\System\Validator\Number\UnsignedInt;
 use Phpingguo\System\Validator\Options;
 
-class ValidatorUIntTest extends PHPUnit_Framework_TestCase
+class ValidatorUIntTest extends \PHPUnit_Framework_TestCase
 {
     public function testInitOptions()
     {

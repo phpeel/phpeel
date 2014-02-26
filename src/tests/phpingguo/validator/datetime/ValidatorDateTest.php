@@ -1,8 +1,10 @@
 <?php
+namespace Phpingguo\Tests\Phpingguo\Validator\DateTime;
+
 use Phpingguo\System\Validator\DateTime\Date;
 use Phpingguo\System\Validator\Options;
 
-class ValidatorDateTest extends PHPUnit_Framework_TestCase
+class ValidatorDateTest extends \PHPUnit_Framework_TestCase
 {
     public function testInitOptions()
     {
