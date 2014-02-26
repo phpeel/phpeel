@@ -18,7 +18,7 @@ final class Charset extends Enum
     const UTF8     = 'UTF-8';
     
     /** 文字コードが「Shift_JIS」であることを示す */
-    const SJI      = 'Shift_JIS';
+    const SJIS     = 'Shift_JIS';
     
     /** 文字コードが Windows の「Shift_JIS」であることを示す */
     const SJIS_WIN = 'SJIS-win';
