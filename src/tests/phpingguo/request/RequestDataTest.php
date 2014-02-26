@@ -1,8 +1,10 @@
 <?php
+namespace Phpingguo\Tests\Phpingguo\Request;
+
 use Phpingguo\System\Enums\HttpMethod;
 use Phpingguo\System\Request\RequestData;
 
-class RequestDataTest extends PHPUnit_Framework_TestCase
+class RequestDataTest extends \PHPUnit_Framework_TestCase
 {
     public function providerGetProperties()
     {
@@ -29,10 +31,8 @@ class RequestDataTest extends PHPUnit_Framework_TestCase
         $this->assertSame($scene ?: 'index', $instance->getSceneName());
         $this->assertSame($params, $instance->getParameters());
         
-        if (count($params) > 0)
-        {
-            foreach ($params as $key => $value)
-            {
+        if (count($params) > 0) {
+            foreach ($params as $key => $value) {
                 $this->assertSame($value, $instance->getParameter($key));
             }
         }
@@ -45,7 +45,7 @@ class RequestDataTest extends PHPUnit_Framework_TestCase
             [ null, '安部 菜々', 'InvalidArgumentException' ],
             [ '', '前川 みく', 'InvalidArgumentException' ],
             [ [], '佐久間 まゆ', 'InvalidArgumentException' ],
-            [ function () {}, '島村 卯月', 'InvalidArgumentException' ]
+            [ new \stdClass(), '島村 卯月', 'InvalidArgumentException' ]
         ];
     }
     

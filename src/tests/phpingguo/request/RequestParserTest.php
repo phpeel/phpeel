@@ -1,11 +1,13 @@
 <?php
+namespace Phpingguo\Tests\Phpingguo\Request;
+
 use Phpingguo\System\Core\Client;
 use Phpingguo\System\Core\Config;
 use Phpingguo\System\Core\Server;
 use Phpingguo\System\Enums\HttpMethod;
 use Phpingguo\System\Request\RequestParser;
 
-class RequestParserTest extends PHPUnit_Framework_TestCase
+class RequestParserTest extends \PHPUnit_Framework_TestCase
 {
     public function providerParseRequest()
     {

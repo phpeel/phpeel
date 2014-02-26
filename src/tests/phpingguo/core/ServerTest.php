@@ -1,7 +1,9 @@
 <?php
+namespace Phpingguo\Tests\Phpingguo\Core;
+
 use Phpingguo\System\Core\Server;
 
-class ServerTest extends PHPUnit_Framework_TestCase
+class ServerTest extends \PHPUnit_Framework_TestCase
 {
     public function provider()
     {

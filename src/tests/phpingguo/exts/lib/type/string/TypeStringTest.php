@@ -1,7 +1,9 @@
 <?php
-use Phpingguo\System\Exts\Lib\Type\String\Text;
+namespace Phpingguo\Tests\Phpingguo\Exts\Lib\Type\String;
 
-class TypeTextTest extends PHPUnit_Framework_TestCase
+use Phpingguo\System\Exts\Lib\Type\String\String;
+
+class TypeStringTest extends \PHPUnit_Framework_TestCase
 {
     public function provider()
     {
@@ -25,10 +27,10 @@ class TypeTextTest extends PHPUnit_Framework_TestCase
             [ -0.9, false, false, null, 'InvalidArgumentException' ],
             [ -1.0, false, false, null, 'InvalidArgumentException' ],
             [ -1.1, false, false, null, 'InvalidArgumentException' ],
-            [ '1', true, true, null, null ],
-            [ '100', true, true, null, null ],
-            [ '-1', true, true, null, null ],
-            [ '-100', true, true, null, null ],
+            [ '1', false, false, null, 'InvalidArgumentException' ],
+            [ '100', false, false, null, 'InvalidArgumentException' ],
+            [ '-1', false, false, null, 'InvalidArgumentException' ],
+            [ '-100', false, false, null, 'InvalidArgumentException' ],
             [ 'a', true, true, null, null ],
             [ 'Z', true, true, null, null ],
             [ 'ABC', true, true, null, null ],
@@ -41,8 +43,8 @@ class TypeTextTest extends PHPUnit_Framework_TestCase
             [ '%bd%ef%ca%fd%20%c3%d2%b3%a8%ce%a4', true, true, null, 'InvalidArgumentException' ],
             [ 0, false, false, null, 'InvalidArgumentException' ],
             [ 0.0, false, false, null, 'InvalidArgumentException' ],
-            [ '0', true, true, null, null ],
-            [ '0.0', true, true, null, null ],
+            [ '0', false, false, null, 'InvalidArgumentException' ],
+            [ '0.0', false, false, null, 'InvalidArgumentException' ],
             [ null, false, false, null, 'InvalidArgumentException' ],
             [ '', true, false, null, null ],
             [ false, false, false, null, 'InvalidArgumentException' ],
@@ -57,15 +59,15 @@ class TypeTextTest extends PHPUnit_Framework_TestCase
     {
         isset($exception) && $this->setExpectedException($exception);
         
-        $this->assertSame($result, (new Text())->isValue($value));
-        $this->assertSame($result, Text::getInstance()->isValue($value));
-        $this->assertSame($strict_result, (new Text())->isValid($value));
-        $this->assertSame($strict_result, Text::getInstance()->isValid($value));
-        $this->assertSame($expected ?: (is_array($value) ? '' : (new Text())->getValue($value)), (new Text())->getValue($value));
+        $this->assertSame($result, (new String())->isValue($value));
+        $this->assertSame($result, String::getInstance()->isValue($value));
+        $this->assertSame($strict_result, (new String())->isValid($value));
+        $this->assertSame($strict_result, String::getInstance()->isValid($value));
+        $this->assertSame($expected ?: (is_array($value) ? '' : (new String())->getValue($value)), (new String())->getValue($value));
     }
     
     public function testDefaultValue()
     {
-        $this->assertSame('', (new Text())->getDefaultValue());
+        $this->assertSame('', (new String())->getDefaultValue());
     }
 }

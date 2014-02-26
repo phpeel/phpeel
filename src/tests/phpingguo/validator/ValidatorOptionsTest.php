@@ -1,7 +1,9 @@
 <?php
+namespace Phpingguo\Tests\Phpingguo\Validator;
+
 use Phpingguo\System\Validator\Options;
 
-class ValidatorOptionsTest extends PHPUnit_Framework_TestCase
+class ValidatorOptionsTest extends \PHPUnit_Framework_TestCase
 {
     public function testInitOptions()
     {
