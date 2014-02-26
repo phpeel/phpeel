@@ -52,7 +52,7 @@ final class Request
     /**
      * クライアントが要求した情報を取得します。
      * 
-     * @return RequestData クライアントが要求した情報を返します。
+     * @return RequestData クライアントが要求した情報
      */
     public function getRequestData()
     {
@@ -62,7 +62,7 @@ final class Request
     /**
      * クライアントが要求したAPIのバージョン番号を取得します。
      * 
-     * @return UnsignedFloat クライアントが要求したAPIのバージョン番号を返します。
+     * @return \Phpingguo\System\Exts\Lib\Type\Int\UnsignedFloat APIのバージョン番号
      */
     public function getApiVersion()
     {
@@ -72,7 +72,7 @@ final class Request
     /**
      * クライアントが要求したモジュールの名前を取得します。
      * 
-     * @return String クライアントが要求したモジュールの名前を返します。
+     * @return String クライアントが要求したモジュールの名前
      */
     public function getModuleName()
     {
@@ -82,7 +82,7 @@ final class Request
     /**
      * クライアントが要求したシーンの名前を取得します。
      * 
-     * @return String クライアントが要求したシーンの名前を返します。
+     * @return String クライアントが要求したシーンの名前
      */
     public function getSceneName()
     {
@@ -92,7 +92,7 @@ final class Request
     /**
      * クライアントが要求したシーンに渡すパラメータの一覧を取得します。
      * 
-     * @return Array クライアントが要求したシーンに渡すパラメータの一覧を返します。
+     * @return Array クライアントが要求したシーンに渡すパラメータの一覧
      */
     public function getParameters()
     {
@@ -102,7 +102,7 @@ final class Request
     /**
      * クライアントが要求したシーンに渡すパラメータ一覧を新しく設定します。
      * 
-     * @param Array $params	シーンに渡す新しいパラメータの一覧
+     * @param Array $params シーンに渡す新しいパラメータの一覧
      */
     public function setParameters(array $params)
     {
@@ -112,9 +112,9 @@ final class Request
     /**
      * シーンへ渡すパラメータ一覧に指定した名前のパラメータが存在するかどうかを調べます。
      * 
-     * @param String $name	パラメータ一覧に存在するかどうかを調べるパラメータの名前
-     * 
-     * @return Boolean パラメータ一覧に存在する場合は true を、それ以外の場合は false を返します。
+     * @param String $name パラメータ一覧に存在するかどうかを調べるパラメータの名前
+     *
+     * @return Boolean パラメータ一覧に存在する場合は true。それ以外の場合は false。
      */
     public function isExistParam($name)
     {
@@ -124,13 +124,13 @@ final class Request
     /**
      * シーンへ渡すパラメータ一覧から指定した名前の値を取得します。
      * 
-     * @param Variable|String $type	値を取得するパラメータの型のインスタンスまたは名前
-     * @param String $name			値を取得するパラメータの名前
+     * @param \Phpingguo\System\Enums\Variable|String $type 値を取得するパラメータの型のインスタンスまたは名前
+     * @param String $name                                  値を取得するパラメータの名前
      * 
-     * @throws \LogicException	バリデーションを通過していないパラメータを取得しようとした場合
+     * @throws \LogicException バリデーションを通過していないパラメータを取得しようとした場合
      * （※"sys.security.validation_forced"が有効の時のみ）
      * 
-     * @return mixed シーンへ渡すパラメータ一覧から指定した名前の値を返します。
+     * @return mixed シーンへ渡すパラメータ一覧から指定した名前の値
      */
     public function getParameter($type, $name)
     {
@@ -146,9 +146,9 @@ final class Request
     /**
      * シーンへ渡すパラメータに指定した名前の値を設定します。
      * 
-     * @param Variable|String $type	値を設定するパラメータの型のインスタンスまたは名前
-     * @param String $name			値を設定するパラメータの名前
-     * @param mixed $value			パラメータに新しく設定する値
+     * @param \Phpingguo\System\Enums\Variable|String $type パラメータの型のインスタンスまたは名前
+     * @param String $name                                  パラメータの名前
+     * @param mixed $value                                  パラメータに新しく設定する値
      */
     public function setParameter($type, $name, $value)
     {
@@ -158,14 +158,13 @@ final class Request
     /**
      * シーンへ渡すパラメータの値を検証します。
      * 
-     * @param Validator|String $type	実行する検証の種類
-     * @param String $name				検証の対象となるパラメータの名前
-     * @param Options $options			検証時に利用されるオプション設定
+     * @param \Phpingguo\System\Enums\Validator|String $type 実行する検証の種類
+     * @param String $name                                   検証の対象となるパラメータの名前
+     * @param Options $options                               検証時に利用されるオプション設定
      * 
      * @throws \RuntimeException	存在しないパラメータを検証しようとした場合
      * 
-     * @return Boolean|Array 検証に成功した時は true を、失敗した時はその理由を含む配列を、
-     * それ以外の場合は false を返します。
+     * @return Boolean|Array 検証成功時は true。失敗時はその理由を含む配列。それ以外の場合は false。
      */
     public function validate($type, $name, Options $options)
     {
@@ -185,15 +184,15 @@ final class Request
     /**
      * シーンへ渡すパラメータの値を一括で複数検証します。
      * 
-     * @param Validator|String $type	検証の種類
-     * @param String $name				検証の対象となるパラメータの名前
-     * @param Options $options			検証時に利用されるオプション設定
+     * @param \Phpingguo\System\Enums\Validator|String $type 検証の種類
+     * @param String $name                                   検証の対象となるパラメータの名前
+     * @param Options $options                               検証時に利用されるオプション設定
      * 
-     * @throws \InvalidArgumentException	メソッドに渡した引数の内容が正しくない場合
-     * 
-     * @return Boolean|Array 検証した全てのパラメータの値が正しいものであれば true を、
-     * エラー情報がある場合はその配列を、エラー情報が無く nullable 許可時に検証した値のうち
-     * 少なくとも一つが null 該当文字である場合は false を返します。
+     * @throws \InvalidArgumentException メソッドに渡した引数の内容が正しくない場合
+     *
+     * @return Boolean|Array 検証した全てのパラメータの値が正しいものであれば true。
+     * エラーがあった場合はその配列。エラーが無く nullable 許可時に検証した値のうち
+     * 少なくとも一つが null 該当文字である場合は false。
      */
     public function multipleValidate()
     {
@@ -225,7 +224,7 @@ final class Request
     /**
      * クライアントが要求したリクエスト情報を設定します。
      * 
-     * @param RequestData $data	クライアントが要求したリクエスト情報
+     * @param RequestData $data クライアントが要求したリクエスト情報
      */
     private function setRequestData(RequestData $data)
     {
@@ -235,10 +234,10 @@ final class Request
     /**
      * パラメータの適正な値を生成します。
      * 
-     * @param Variable|String $type	適正値を生成するパラメータの型のインスタンスまたは名前
-     * @param mixed $value			適正値を生成するパラメータの名前
+     * @param \Phpingguo\System\Enums\Variable|String $type パラメータの型のインスタンスまたは名前
+     * @param mixed $value                                  適正値を生成するパラメータの名前
      * 
-     * @return mixed パラメータの適正な値を返します。
+     * @return mixed 生成したパラメータの適正値
      */
     private function createParamValue($type, $value)
     {
@@ -254,13 +253,12 @@ final class Request
     /**
      * パラメータの値検証を実行します。
      * 
-     * @param IValidator $obj_validator	検証を実行するクラスのインスタンス
-     * @param String $param_name		検証対象のパラメータの名前
-     * @param String $param_value		検証対象のパラメータの値
-     * @param Options $options			検証実行オプションを保持するインスタンス
+     * @param IValidator $obj_validator 検証を実行するクラスのインスタンス
+     * @param String $param_name        検証対象のパラメータの名前
+     * @param String $param_value       検証対象のパラメータの値
+     * @param Options $options          検証実行オプションを保持するインスタンス
      * 
-     * @return Boolean|Array 検証に成功した時は true を、失敗した時はその理由を含む配列を、
-     * それ以外の場合は false を返します。
+     * @return Boolean|Array 検証成功時は true。失敗時はその理由を含む配列。それ以外の場合は false。
      */
     private function execValidation(IValidator $obj_validator, $param_name, $param_value, Options $options)
     {
@@ -280,13 +278,12 @@ final class Request
     /**
      * 配列を値として持つパラメータの検証を行います。
      * 
-     * @param IValidator $obj_validator	検証を実行するクラスのインスタンス
-     * @param String $name				検証対象のパラメータの名前
-     * @param Array $param_value		検証対象のパラメータの値
-     * @param Options $options			検証実行オプションを保持するインスタンス
+     * @param IValidator $obj_validator 検証を実行するクラスのインスタンス
+     * @param String $name              検証対象のパラメータの名前
+     * @param Array $param_value        検証対象のパラメータの値
+     * @param Options $options          検証実行オプションを保持するインスタンス
      * 
-     * @return Boolean|Array 検証に成功した時は true を、失敗した時はその理由を含む配列を、
-     * それ以外の場合は false を返します。
+     * @return Boolean|Array 検証成功時は true。失敗時はその理由を含む配列。それ以外の場合は false。
      */
     private function doArrayValidate(IValidator $obj_validator, $name, array $param_value, Options $options)
     {

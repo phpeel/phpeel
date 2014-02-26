@@ -23,7 +23,7 @@ abstract class Enum
      * @final [オーバーライド禁止]
      * @param mixed $value	このインスタンスの元のクラスに定義されている定数のうちどれかの値
      * 
-     * @throws InvalidArgumentException	クラスに定義されていない値を指定した場合
+     * @throws \InvalidArgumentException クラスに定義されていない値を指定した場合
      */
     final public function __construct($value)
     {
@@ -44,10 +44,10 @@ abstract class Enum
      * 指定した値を持つこのクラスのオブジェクトのインスタンスを取得します。
      * 
      * @final [オーバーライド禁止]
-     * @param String $value	取得する要素の値を示す名前
-     * @param Array $args	取得する要素の値を示す名前のメソッドに渡す引数配列（未使用）
+     * @param String $value 取得する要素の値を示す名前
+     * @param Array $args   取得する要素の値を示す名前のメソッドに渡す引数配列（未使用）
      * 
-     * @return Enum 指定した値を持つこのクラスのオブジェクトのインスタンスを返します。
+     * @return Enum 指定した値を持つこのクラスのオブジェクトのインスタンス
      */
     final public static function __callStatic($value, $args)
     {
@@ -61,11 +61,11 @@ abstract class Enum
      * 条件付きで Enum クラスの新しいインスタンスを初期化します。
      * 
      * @final [オーバーライド禁止]
-     * @param String $value							取得する要素の値を示す定数名
-     * @param String $default_value [初期値=null]	引数 $conditions の条件を満たさない場合に使用される定数名
-     * @param callable $conditions [初期値=null]	条件を示すコールバックメソッド
+     * @param String $value                       取得する要素の値を示す定数名
+     * @param String $default_value [初期値=null] 引数 $conditions の条件を満たさない場合に使用される定数名
+     * @param callable $conditions [初期値=null]  条件を示すコールバックメソッド
      * 
-     * @return Enum 指定した値を持つこのクラスのオブジェクトのインスタンスを返します。
+     * @return Enum 指定した値を持つこのクラスのオブジェクトのインスタンス
      */
     final public static function init($value, $default_value = null, callable $conditions = null)
     {
@@ -85,7 +85,7 @@ abstract class Enum
      * 要素の値を取得します。
      * 
      * @final [オーバーライド禁止]
-     * @return mixed このインスタンスが保持する要素の値を返します。
+     * @return mixed このインスタンスが保持する要素の値
      */
     final public function getValue()
     {
@@ -96,7 +96,7 @@ abstract class Enum
      * インスタンスが文字列として扱われた際に文字列を取得します。
      * 
      * @final [オーバーライド禁止]
-     * @return String このインスタンスが保持する要素の値を文字列で返します。
+     * @return String このインスタンスが保持する要素の値の文字列
      */
     final public function __toString()
     {

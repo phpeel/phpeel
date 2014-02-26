@@ -26,11 +26,11 @@ final class MailAddress extends BaseString
     /**
      * RFCのメールアドレス表記に違反しているかどうかをチェックします。
      * 
-     * @param String $mail_address	違反チェックを行うメールアドレス
+     * @param String $mail_address 違反チェックを行うメールアドレス
      * 
-     * @throws RuntimeException	RFCに違反するメールアドレスの場合
-     * 
-     * @return ValidationError|null RFCに違反していなかった場合は null を、それ以外はエラー理由を返します。
+     * @throws \RuntimeException RFCに違反するメールアドレスの場合
+     *
+     * @return ValidationError|null RFCに違反していなかった場合は null。それ以外はエラー理由。
      */
     private function checkRfcMailViolation($mail_address)
     {
@@ -53,10 +53,10 @@ final class MailAddress extends BaseString
     /**
      * メールアドレスの各部分の長さがRFCに準拠しているかどうかを調べます。
      * 
-     * @param String $mail_address	長さのチェックを行うメールアドレス
-     * @param Index $at_index		ローカル部とドメイン部を区切る「@」のインデックス番号
+     * @param String $mail_address 長さのチェックを行うメールアドレス
+     * @param Integer $at_index    ローカル部とドメイン部を区切る「@」のインデックス番号
      * 
-     * @return Boolean RFCに準拠した長さである場合は true を、それ以外の場合は false を返します。
+     * @return Boolean RFCに準拠した長さである場合は true。それ以外の場合は false。
      */
     private function isValidLength($mail_address, $at_index)
     {
@@ -70,7 +70,7 @@ final class MailAddress extends BaseString
     /**
      * メールアドレスの検索パターン文字列を取得します。
      * 
-     * @return String メールアドレスの検索パターン文字列を返します。
+     * @return String メールアドレスの検索パターン文字列
      */
     private function getMatchPattern()
     {

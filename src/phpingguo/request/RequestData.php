@@ -30,12 +30,12 @@ final class RequestData
     // ---------------------------------------------------------------------------------------------
     /**
      * RequestData クラスの新しいインスタンスを初期化します。
-     * 
-     * @param HttpMethod|String $method				クライアントが要求したメソッドの名前
-     * @param String $module						要求したモジュールの名前
-     * @param UnsignedFloat $version [初期値=0.0]	要求したバージョン番号
-     * @param String $scene [初期値=null]			要求したシーンの名前
-     * @param Array $params [初期値=array()]		要求したシーンに渡すパラメータの配列
+     *
+     * @param HttpMethod|String $method            クライアントが要求したメソッドの名前
+     * @param String $module                       要求したモジュールの名前
+     * @param UnsignedFloat $version [初期値=0.0]  要求したバージョン番号
+     * @param String $scene [初期値=null]          要求したシーンの名前
+     * @param Array $params [初期値=array()]       要求したシーンに渡すパラメータの配列
      */
     public function __construct($method, $module, $version = 0.0, $scene = null, array $params = [])
     {
@@ -52,7 +52,7 @@ final class RequestData
     /**
      * 要求された HTTP メソッドを取得します。
      * 
-     * @return HttpMethod 要求された HTTP メソッドを返します。
+     * @return HttpMethod 要求された HTTP メソッド
      */
     public function getMethod()
     {
@@ -62,7 +62,7 @@ final class RequestData
     /**
      * 要求された API のバージョン番号を取得します。
      * 
-     * @return UnsignedFloat 要求された API のバージョン番号を返します。
+     * @return UnsignedFloat 要求された API のバージョン番号
      */
     public function getApiVersion()
     {
@@ -72,7 +72,7 @@ final class RequestData
     /**
      * 要求されたモジュールの名前を取得します。
      * 
-     * @return String 要求されたモジュールの名前を返します。
+     * @return String 要求されたモジュールの名前
      */
     public function getModuleName()
     {
@@ -82,7 +82,7 @@ final class RequestData
     /**
      * 要求されたシーンの名前を取得します。
      * 
-     * @return String 要求されたシーンの名前を返します。
+     * @return String 要求されたシーンの名前
      */
     public function getSceneName()
     {
@@ -92,7 +92,7 @@ final class RequestData
     /**
      * 要求されたシーンに渡すパラメータの一覧を取得します。
      * 
-     * @return Array 要求されたシーンに渡すパラメータの一覧を返します。
+     * @return Array 要求されたシーンに渡すパラメータの一覧
      */
     public function getParameters()
     {
@@ -102,7 +102,7 @@ final class RequestData
     /**
      * 要求されたシーンに渡すパラメータの一覧を設定します。
      * 
-     * @param Array $params	要求されたシーンに渡す新しいパラメータの一覧
+     * @param Array $params 要求されたシーンに渡す新しいパラメータの一覧
      */
     public function setParameters(array $params)
     {
@@ -112,11 +112,11 @@ final class RequestData
     /**
      * 指定した名前のパラメータが存在するかどうかを調べます。
      * 
-     * @param String $name	存在を調べるパラメータの名前
+     * @param String $name 存在を調べるパラメータの名前
      * 
-     * @throws InvalidArgumentException	パラメータ $name が文字列型ではなかった場合
+     * @throws \InvalidArgumentException パラメータ $name が文字列型ではなかった場合
      * 
-     * @return Boolean パラメータが存在する場合は true を、それ以外の場合は false を返します。
+     * @return Boolean パラメータが存在する場合は true。それ以外の場合は false。
      */
     public function isExistParameter($name)
     {
@@ -130,9 +130,9 @@ final class RequestData
     /**
      * 指定した名前のパラメータの値を取得します。
      * 
-     * @param String $name	値を取得するパラメータの名前
+     * @param String $name 値を取得するパラメータの名前
      * 
-     * @return mixed|null パラメータが存在する場合はその値を、それ以外の場合は null を返します。
+     * @return mixed|null パラメータが存在する場合はその値。それ以外の場合は null。
      * パラメータ $name が文字列型ではなかった場合には InvalidArgumentException の例外がスローされます。
      */
     public function getParameter($name)
@@ -143,10 +143,10 @@ final class RequestData
     /**
      * 指定した名前のパラメータの値を設定します。
      * 
-     * @param String $name	値を設定するパラメータの名前
-     * @param mixed $value	パラメータの新しい値
+     * @param String $name 値を設定するパラメータの名前
+     * @param mixed $value パラメータの新しい値
      * 
-     * @throws InvalidArgumentException	パラメータ $name が文字列（空白以外）または数値以外の値である場合
+     * @throws \InvalidArgumentException パラメータ $name が文字列（空白以外）または数値以外の値である場合
      */
     public function setParameter($name, $value)
     {
@@ -162,7 +162,7 @@ final class RequestData
     /**
      * 要求された HTTP メソッドを設定します。
      * 
-     * @param HttpMethod|String $method	要求された HTTP メソッドを示す名前
+     * @param HttpMethod|String $method 要求された HTTP メソッドを示す名前
      */
     private function setMethod($method)
     {
@@ -178,7 +178,7 @@ final class RequestData
     /**
      * 要求された API のバージョン番号を設定します。
      * 
-     * @param UnsignedFloat $version	要求された API のバージョン番号
+     * @param UnsignedFloat $version 要求された API のバージョン番号
      */
     private function setApiVersion($version)
     {
@@ -189,7 +189,7 @@ final class RequestData
     /**
      * 要求されたモジュールの名前を設定します。
      * 
-     * @param String $module	要求されたモジュールの名前
+     * @param String $module 要求されたモジュールの名前
      */
     private function setModuleName($module)
     {
@@ -200,7 +200,7 @@ final class RequestData
     /**
      * 要求されたシーンの名前を設定します。
      * 
-     * @param String $scene		要求されたシーンの名前
+     * @param String $scene 要求されたシーンの名前
      */
     private function setSceneName($scene)
     {

@@ -26,8 +26,8 @@ abstract class BaseFloat implements IScalarValue
     /**
      * BaseFloat クラスの新しいインスタンスを初期化します。
      * 
-     * @param Float|UnsignedFloat $value [初期値=null]	インスタンスが保持する浮動小数点数型の値
-     * @param Boolean $unsigned [初期値=false]			取得する値に符号なしを許すかどうか
+     * @param Float|UnsignedFloat $value [初期値=null] インスタンスが保持する浮動小数点数型の値
+     * @param Boolean $allow_unsigned [初期値=false]   取得する値に符号なしを許すかどうか
      */
     public function __construct($value = null, $allow_unsigned = false)
     {
@@ -43,7 +43,7 @@ abstract class BaseFloat implements IScalarValue
      * BaseFloat クラスのインスタンスを取得します。
      * 
      * @final [オーバーライド禁止]
-     * @return BaseFloat 生成した、または、生成済みのインスタンスを返します。
+     * @return BaseFloat 生成した、または、生成済みのインスタンス
      */
     final public static function getInstance()
     {
@@ -100,9 +100,9 @@ abstract class BaseFloat implements IScalarValue
     /**
      * 指定した引数の値を浮動小数点数型としての値として取得します。
      * 
-     * @param mixed $base_value	浮動小数点数型の値を取得する変数
+     * @param mixed $base_value 浮動小数点数型の値を取得する変数
      * 
-     * @return Float 値を取得できる場合はその値を、そうでない場合は null を返します。
+     * @return Float 値を取得できる場合はその値。そうでない場合は null。
      */
     private function getFloatValue($base_value)
     {

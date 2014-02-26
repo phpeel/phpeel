@@ -30,7 +30,7 @@ final class Server
     // ---------------------------------------------------------------------------------------------
     // class fields
     // ---------------------------------------------------------------------------------------------
-    private static $server_vals = [];
+    private static $server_list = [];
     
     // ---------------------------------------------------------------------------------------------
     // public class methods
@@ -38,11 +38,11 @@ final class Server
     /**
      * サーバー情報をキャプチャーします。
      * 
-     * @return Boolean サーバー情報をキャプチャできた場合は true を、それ以外の場合は false を返します。
+     * @return Boolean サーバー情報をキャプチャできた場合は true。それ以外の場合は false。
      */
     public static function capture()
     {
-        $result = Arrays::copyWhen(empty($_SERVER) === false, static::$server_vals, $_SERVER);
+        $result = Arrays::copyWhen(empty($_SERVER) === false, static::$server_list, $_SERVER);
         Arrays::clear($_SERVER);
         
         return $result;
@@ -51,10 +51,10 @@ final class Server
     /**
      * サーバー情報から指定した名前に該当する値を取得します。
      * 
-     * @param String $name	取得する情報の名前
-     * @param Array $args	値が存在しなかった場合のデフォルト値
+     * @param String $name 取得する情報の名前
+     * @param Array $args  値が存在しなかった場合のデフォルト値
      * 
-     * @return String サーバー情報から指定した名前に該当する値を返します。
+     * @return String サーバー情報から指定した名前に該当する値
      */
     public static function __callStatic($name, $args)
     {
@@ -70,13 +70,13 @@ final class Server
     /**
      * サーバー情報から指定した名前に該当する値を取得します。
      * 
-     * @param String $name					取得する情報の名前
-     * @param mixed $default [初期値=null]	値が存在しなかった場合のデフォルト値
+     * @param String $name                 取得する情報の名前
+     * @param mixed $default [初期値=null] 値が存在しなかった場合のデフォルト値
      * 
-     * @return String サーバー情報から指定した名前に該当する値を返します。
+     * @return String サーバー情報から指定した名前に該当する値
      */
     public static function getValue($name, $default = null)
     {
-        return Arrays::getValue(static::$server_vals, $name, $default);
+        return Arrays::getValue(static::$server_list, $name, $default);
     }
 }

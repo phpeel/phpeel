@@ -15,7 +15,7 @@ final class Float extends BaseFloat
     /**
      * Float クラスの新しいインスタンスを初期化します。
      * 
-     * @param Float $value [初期値=null]	インスタンスが保持する浮動小数点数型の値
+     * @param Float $value [初期値=null] インスタンスが保持する浮動小数点数型の値
      */
     public function __construct($value = null)
     {

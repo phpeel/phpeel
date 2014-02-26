@@ -15,7 +15,7 @@ final class Integer extends BaseInteger
     /**
      * Integer クラスの新しいインスタンスを初期化します。
      * 
-     * @param Integer $value [初期値=null]	インスタンスが保持する整数型の値
+     * @param Integer $value [初期値=null] インスタンスが保持する整数型の値
      */
     public function __construct($value = null)
     {

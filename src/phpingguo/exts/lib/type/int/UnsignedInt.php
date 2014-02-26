@@ -15,7 +15,7 @@ final class UnsignedInt extends BaseInteger
     /**
      * UnsignedInt クラスの新しいインスタンスを初期化します。
      * 
-     * @param UnsignedInt $value [初期値=null]	インスタンスが保持する符号なし整数型の値
+     * @param UnsignedInt $value [初期値=null] インスタンスが保持する符号なし整数型の値
      */
     public function __construct($value = null)
     {

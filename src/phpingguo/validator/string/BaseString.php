@@ -54,9 +54,9 @@ abstract class BaseString implements IValidator
      * 入力文字列の長さを取得します。
      * 
      * @final [オーバーライド禁止]
-     * @param String $value	長さを取得する対象となる文字列
+     * @param String $value 長さを取得する対象となる文字列
      * 
-     * @return Integer 文字列の長さを返します。
+     * @return Integer 文字列の長さ
      */
     final protected function getLength($value)
     {
@@ -67,9 +67,9 @@ abstract class BaseString implements IValidator
      * 入力文字列の幅を取得します。
      * 
      * @final [オーバーライド禁止]
-     * @param String $value	幅を取得する対象となる文字列
+     * @param String $value 幅を取得する対象となる文字列
      * 
-     * @return Integer 文字列の幅を返します。
+     * @return Integer 文字列の幅
      */
     final protected function getWidth($value)
     {
@@ -80,10 +80,10 @@ abstract class BaseString implements IValidator
      * 入力文字列の、幅判定オプション設定時は幅を、それ以外の時は長さを取得します。
      * 
      * @final [オーバーライド禁止]
-     * @param String $value		幅を取得する対象となる文字列
-     * @param Options $options	サイズ判定に利用するオプションの設定
+     * @param String $value    幅を取得する対象となる文字列
+     * @param Options $options サイズ判定に利用するオプションの設定
      * 
-     * @return Integer 幅判定オプション設定時は幅を、それ以外の時は長さを返します。
+     * @return Integer 幅判定オプション設定時は幅。それ以外の時は長さ。
      */
     final protected function getSize($value, Options $options)
     {
@@ -94,7 +94,7 @@ abstract class BaseString implements IValidator
      * 入力文字列に純粋な数値を許容するかどうかを取得します。
      * 
      * @final [オーバーライド禁止]
-     * @return Boolean 数値を許容する場合は true を、それ以外の場合は false を返します。
+     * @return Boolean 数値を許容する場合は true。それ以外の場合は false。
      */
     final protected function getAllowNumeric()
     {
@@ -105,7 +105,7 @@ abstract class BaseString implements IValidator
      * 入力文字列に純粋な数値を許容するかどうかを設定します。
      * 
      * @final [オーバーライド禁止]
-     * @param Boolean $enable	純粋な数値を許容するかどうか
+     * @param Boolean $enable 純粋な数値を許容するかどうか
      */
     final protected function setAllowNumeric($enable)
     {
@@ -115,11 +115,11 @@ abstract class BaseString implements IValidator
     /**
      * 指定した変数のエラーチェックを行います。
      * 
-     * @param mixed $value		エラーチェック対象となる変数
-     * @param Options $options	エラーチェックに利用するオプションの設定
+     * @param mixed $value     エラーチェック対象となる変数
+     * @param Options $options エラーチェックに利用するオプションの設定
      * 
      * @return Boolean|Array 入力値が無効(null、空配列、長さ0の文字列)の場合に、nullable オプションが
-     * 有効の時は false を、それ以外の時はエラー理由を返します。
+     * 有効の時は false。それ以外の時はエラー理由。
      */
     private function checkError($value, Options $options)
     {
@@ -141,10 +141,10 @@ abstract class BaseString implements IValidator
     /**
      * 文字列が無効なフォーマットであるかどうかを判定します。
      * 
-     * @param String $value		判定対象となる文字列
-     * @param Options $options	検証時に利用するオプションの設定
+     * @param String $value    判定対象となる文字列
+     * @param Options $options 検証時に利用するオプションの設定
      * 
-     * @return ValidationError 無効なフォーマットであればその理由を、それ以外であれば null を返します。
+     * @return ValidationError 無効なフォーマットであればその理由。それ以外であれば null。
      */
     protected function checkInvalidFormat($value, Options $options)
     {
@@ -162,11 +162,11 @@ abstract class BaseString implements IValidator
     /**
      * 文字列の長さまたは幅が最小値または最大値を超えているかどうかを判定します。
      * 
-     * @param String $value		検査対象になる文字列
-     * @param Options $options	検証時に利用するオプションの設定
+     * @param String $value    検査対象になる文字列
+     * @param Options $options 検証時に利用するオプションの設定
      * 
-     * @return Array(ValidationError) 最小値または最大値を超えている場合はその理由含んだ配列を、
-     * それ以外であれば空配列を返します。
+     * @return Array(ValidationError) 最小値または最大値を超えている場合はその理由含んだ配列。
+     * それ以外であれば空配列。
      */
     private function checkOverLimitValues($value, Options $options)
     {
@@ -185,11 +185,11 @@ abstract class BaseString implements IValidator
     /**
      * 許容最小値または許容最大値を取得します。
      * 
-     * @param String $method_name			境界値を取得するメソッドの名前
-     * @param Options $options				検証時に利用するオプションの設定
-     * @param Integer $default [初期値=0]	オプション設定の値がない場合の初期値
+     * @param String $method_name         境界値を取得するメソッドの名前
+     * @param Options $options            検証時に利用するオプションの設定
+     * @param Integer $default [初期値=0] オプション設定の値がない場合の初期値
      * 
-     * @return Integer 許容最小値または許容最大値を返します。
+     * @return Integer 許容最小値または許容最大値
      */
     private function getLimitValue($method_name, Options $options, $default = 0)
     {
@@ -199,10 +199,10 @@ abstract class BaseString implements IValidator
     /**
      * 文字列にNGワードの単語が含まれているかどうかを判定します。
      * 
-     * @param String $value		検査対象になる文字列
-     * @param Options $options	検証時に利用するオプションの設定
+     * @param String $value    検査対象になる文字列
+     * @param Options $options 検証時に利用するオプションの設定
      * 
-     * @return ValidationError NGワードがあった場合はその理由を、それ以外であれば null を返します。
+     * @return ValidationError NGワードがあった場合はその理由。それ以外であれば null。
      */
     private function checkNgWordExist($value, Options $options)
     {
