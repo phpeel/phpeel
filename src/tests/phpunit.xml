@@ -8,7 +8,7 @@
     <testsuites>
         <testsuite name="PHPUnit">
             <!-- テストケースディレクトリ -->
-            <directory>aigis</directory>
+            <directory>phpingguo</directory>
         </testsuite>
     </testsuites>
 

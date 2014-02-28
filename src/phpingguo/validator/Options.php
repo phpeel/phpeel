@@ -1,7 +1,7 @@
 <?php
 namespace Phpingguo\System\Validator;
 
-use Phpingguo\System\Core\AuraDIWrapper;
+use Phpingguo\System\Exts\Lib\DIWrapper\AuraDIWrapper;
 
 /**
  * 検証に使用するオプション設定を保持するクラスです。

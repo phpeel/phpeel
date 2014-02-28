@@ -1,10 +1,10 @@
 <?php
 namespace Phpingguo\System\Request;
 
-use Phpingguo\System\Core\AuraDIWrapper;
 use Phpingguo\System\Core\Config;
 use Phpingguo\System\Enums\EnumFullName;
 use Phpingguo\System\Exts\Lib\Common\Arrays;
+use Phpingguo\System\Exts\Lib\DIWrapper\AuraDIWrapper;
 use Phpingguo\System\Exts\Lib\EnumClassGenerator as EnumClassGen;
 use Phpingguo\System\Exts\Lib\Type\Generics\GenericList;
 use Phpingguo\System\Validator\IValidator;
@@ -62,7 +62,7 @@ final class Request
     /**
      * クライアントが要求したAPIのバージョン番号を取得します。
      * 
-     * @return \Phpingguo\System\Exts\Lib\Type\Int\UnsignedFloat APIのバージョン番号
+     * @return \Phpingguo\System\Exts\Lib\Type\Float\UnsignedFloat APIのバージョン番号
      */
     public function getApiVersion()
     {

@@ -1,5 +1,5 @@
 <?php
-namespace Phpingguo\System\Core;
+namespace Phpingguo\System\Exts\Lib\DIWrapper;
 
 use Aura\Di\Config as DiConfig;
 use Aura\Di\Container;
@@ -18,18 +18,7 @@ final class AuraDIWrapper
     // private class methods
     // ---------------------------------------------------------------------------------------------
     private static $aura_di     = null;
-    private static $preset_list = [
-        'Phpingguo\System\Request\Request',
-        'Phpingguo\System\Request\RequestParser',
-        Variable::INTEGER, Variable::UNSIGNED_INT,
-        Variable::FLOAT, Variable::UNSIGNED_FLOAT,
-        Variable::STRING, Variable::TEXT,
-        'Phpingguo\System\Validator\Options',
-        'Phpingguo\System\Filter\Pre\FilterHost',
-        'Phpingguo\System\Filter\Post\FilterHost',
-        'Phpingguo\System\Filter\Input\FilterHost',
-        'Phpingguo\System\Filter\Output\FilterHost',
-    ];
+    private static $preset_list = [];
     
     // ---------------------------------------------------------------------------------------------
     // public class methods
@@ -41,6 +30,8 @@ final class AuraDIWrapper
      */
     public static function init()
     {
+        static::setPresetServices(DIPresetServices::get());
+        
         static::setContainer(
             static::registryServices(
                 static::initContainer(static::$aura_di),
@@ -82,6 +73,13 @@ final class AuraDIWrapper
     private static function getPresetServices()
     {
         return static::$preset_list;
+    }
+    
+    private static function setPresetServices(array $services)
+    {
+        if (empty(static::$preset_list)) {
+            static::$preset_list = $services;
+        }
     }
     
     /**
