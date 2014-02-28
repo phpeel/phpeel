@@ -62,7 +62,7 @@ final class Request
     /**
      * クライアントが要求したAPIのバージョン番号を取得します。
      * 
-     * @return \Phpingguo\System\Exts\Lib\Type\Int\UnsignedFloat APIのバージョン番号
+     * @return \Phpingguo\System\Exts\Lib\Type\Float\UnsignedFloat APIのバージョン番号
      */
     public function getApiVersion()
     {

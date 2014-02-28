@@ -6,7 +6,6 @@ use Phpingguo\System\Core\Client;
 use Phpingguo\System\Core\Config;
 use Phpingguo\System\Core\Server;
 use Phpingguo\System\Exts\Lib\Common\Arrays;
-use Phpingguo\System\Exts\Lib\Common\String as CString;
 
 /**
  * クライアントが要求した情報を解析するクラスです。
@@ -123,7 +122,7 @@ final class RequestParser
      */
     private function getApiVersion(array $path_info_list)
     {
-        list($result, $separator, $matches) = $this->searchNumberSeparator($path_info_list[0]);
+        list(, $separator, $matches) = $this->searchNumberSeparator($path_info_list[0]);
         
         if (empty($matches[1])) {
             return null;

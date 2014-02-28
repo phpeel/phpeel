@@ -12,8 +12,8 @@ final class EnumClassGenerator
     /**
      * 列挙型クラスの値からクラスを取得し、それらの情報を返します。
      * 
-     * @param String|Enum $enum_name 列挙型の名前
-     * @param String $value          列挙型の値
+     * @param String|\Phpingguo\System\Exts\Lib\Type\Enum $enum_name 列挙型の名前
+     * @param String $value                                          列挙型の値
      * 
      * @return Array(Enum, Object, String) 取得したクラスのインスタンスとその名前、列挙型のインスタンスの配列
      */

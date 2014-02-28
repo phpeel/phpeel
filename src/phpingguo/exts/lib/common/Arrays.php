@@ -19,7 +19,7 @@ final class Arrays
      * 指定された変数が空要素の配列かそれ以外であるかを調べます。<br />
      * <font color="red">注意！指定した変数が配列以外の場合は false を返します。</font>
      * 
-     * @param mixed $value	空要素配列かどうか調べる変数
+     * @param mixed $value 空要素配列かどうか調べる変数
      * 
      * @return Boolean 指定された変数が空要素の配列である場合は true。それ以外の場合は false。
      */
@@ -32,7 +32,7 @@ final class Arrays
      * 指定された変数が有効な配列かどうかを調べます。<br />
      * <font color="red">注意！指定した変数が配列でも空要素の場合は false を返します。</font>
      * 
-     * @param mixed $value	有効な配列かどうか調べる変数
+     * @param mixed $value 有効な配列かどうか調べる変数
      * 
      * @return Boolean 指定された変数が配列型かつ要素数が1以上の時に true。それ以外の場合は false。
      */
@@ -44,11 +44,11 @@ final class Arrays
     /**
      * 入力配列のサイズが指定した上限値及び下限値の範囲内であるかどうかを調べます。
      * 
-     * @param Array $list							上限及び下限のチェックを行う配列
-     * @param UnsingedInt $upper_limit				許容する上限のサイズを表す値
-     * @param UnsingedInt $lower_limit [初期値=0]	許容する下限のサイズを表す値
+     * @param Array $list                         上限及び下限のチェックを行う配列
+     * @param UnsignedInt $upper_limit            許容する上限のサイズを表す値
+     * @param UnsignedInt $lower_limit [初期値=0] 許容する下限のサイズを表す値
      * 
-     * @throws InvalidArgumentException	上限値または下限値が正の整数ではなかった場合
+     * @throws \InvalidArgumentException 上限値または下限値が正の整数ではなかった場合
      * 
      * @return Boolean サイズが範囲内である場合は true。それ以外の場合は false。
      */
@@ -67,9 +67,9 @@ final class Arrays
     /**
      * 指定した値が配列に使用できるキーとして妥当かどうか（0以上の整数値、又は文字列）を調べます。
      * 
-     * @param mixed $value	キーとしての妥当性を調べる変数
+     * @param mixed $value キーとしての妥当性を調べる変数
      * 
-     * @return 指定した値がキーとして妥当である場合は true。それ以外の場合は false。
+     * @return Boolean 指定した値がキーとして妥当である場合は true。それ以外の場合は false。
      */
     public static function isValidKey($value)
     {
@@ -79,8 +79,8 @@ final class Arrays
     /**
      * 入力配列に指定したキーの要素が存在するかどうかを調べます。
      * 
-     * @param Array $list			キーの存在を調べる配列
-     * @param String|Integer $key	存在を調べるキーの名前
+     * @param Array $list         キーの存在を調べる配列
+     * @param String|Integer $key 存在を調べるキーの名前
      * 
      * @return Boolean 入力配列に指定したキーの要素が存在する場合は true。それ以外の場合は false。
      */
@@ -92,9 +92,9 @@ final class Arrays
     /**
      * 入力配列から指定したキーに該当する値を取得します。
      * 
-     * @param Array $list					値を取得する配列
-     * @param String|Integer $key			値を取得するキーの名前
-     * @param mixed $default [初期値=null]	値が取得できなかった場合に使用するデフォルト値
+     * @param Array $list                  値を取得する配列
+     * @param String|Integer $key          値を取得するキーの名前
+     * @param mixed $default [初期値=null] 値が取得できなかった場合に使用するデフォルト値
      * 
      * @return mixed 入力配列から指定したキーに該当する値
      */
@@ -106,10 +106,10 @@ final class Arrays
     /**
      * 条件を満たす場合に入力配列へ新しく項目を追加します。
      * 
-     * @param Boolean $conditions				追加実行を満たすための条件
-     * @param Array $list						項目を追加する配列
-     * @param mixed $item						配列へ新しく追加する項目
-     * @param Integer|String $key [初期値=null]	配列に追加する位置を示すインデックス番号またはキー名
+     * @param Boolean $conditions               追加実行を満たすための条件
+     * @param Array $list                       項目を追加する配列
+     * @param mixed $item                       配列へ新しく追加する項目
+     * @param Integer|String $key [初期値=null] 配列に追加する位置を示すインデックス番号またはキー名
      * 
      * @return Boolean 入力配列へ新しく項目を追加できた場合は true。それ以外の場合は false。
      */
@@ -131,9 +131,9 @@ final class Arrays
     /**
      * 条件を満たす場合に入力配列から指定したキーを持つ項目を削除します。
      * 
-     * @param Boolean $conditions	削除実行を満たすための条件
-     * @param Array $list			項目を削除する配列
-     * @param Integer|String $key	配列から削除する項目を示すインデックス番号またはキー名
+     * @param Boolean $conditions 削除実行を満たすための条件
+     * @param Array $list         項目を削除する配列
+     * @param Integer|String $key 配列から削除する項目を示すインデックス番号またはキー名
      * 
      * @return boolean 入力配列から項目を削除できた場合は true。それ以外の場合は false。
      */
@@ -151,9 +151,9 @@ final class Arrays
     /**
      * 条件を満たす場合に入力配列に対して再帰的に条件に一致する項目を削除します。
      * 
-     * @param Boolean $loop_conditions		再帰削除処理実行を満たすための条件
-     * @param Callable $remove_conditions	項目削除の実行を満たすための条件
-     * @param Array $list					項目を削除する配列
+     * @param Boolean $loop_conditions    再帰削除処理実行を満たすための条件
+     * @param Callable $remove_conditions 項目削除の実行を満たすための条件
+     * @param Array $list                 項目を削除する配列
      * 
      * @return Boolean 入力配列から条件を満たす項目を一つでも削除できた場合は true。それ以外の場合は false。
      */
@@ -175,9 +175,9 @@ final class Arrays
     /**
      * 条件を満たす場合に入力配列同士のコピーを行います。
      * 
-     * @param Boolean $conditions	コピー実行を満たすための条件
-     * @param Array $to				コピー先となる配列
-     * @param Array|Callable $from	コピー元となる配列
+     * @param Boolean $conditions  コピー実行を満たすための条件
+     * @param Array $to            コピー先となる配列
+     * @param Array|Callable $from コピー元となる配列
      * 
      * @return Boolean 入力配列同士のコピーを行った場合は true。それ以外の場合は false。
      */
@@ -197,9 +197,9 @@ final class Arrays
     /**
      * 条件を満たす場合に入力配列にもう一方の入力配列を統合します。
      * 
-     * @param Boolean $conditions	統合実行を満たすための条件
-     * @param Array $target			統合先となる配列
-     * @param Array $merged			統合させる配列
+     * @param Boolean $conditions 統合実行を満たすための条件
+     * @param Array $target       統合先となる配列
+     * @param Array $merged       統合させる配列
      * 
      * @return Boolean 入力配列同士の統合を行った場合は true。それ以外の場合は false。
      */
@@ -221,9 +221,9 @@ final class Arrays
     /**
      * 入力配列の特定のキーが持つ既存の値に指定した値を統合します。
      * 
-     * @param Array $list			値を統合する配列
-     * @param Integer|String $key	値を統合するキー
-     * @param mixed $value			統合する値
+     * @param Array $list         値を統合する配列
+     * @param Integer|String $key 値を統合するキー
+     * @param mixed $value        統合する値
      */
     public static function partialMerge(array &$list, $key, $value)
     {
@@ -237,7 +237,7 @@ final class Arrays
     /**
      * 入力配列の要素を全て削除します。
      * 
-     * @param Array $list	要素を全て削除する配列
+     * @param Array $list 要素を全て削除する配列
      */
     public static function clear(array &$list)
     {
@@ -250,7 +250,7 @@ final class Arrays
     /**
      * 入力値を配列変数として解析したものを取得します。
      * 
-     * @param mixed $value	解析する変数
+     * @param mixed $value 解析する変数
      * 
      * @return Array|null 入力値が配列である場合はその配列。それ以外の場合は null。
      */
