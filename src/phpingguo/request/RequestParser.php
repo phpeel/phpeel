@@ -1,11 +1,11 @@
 <?php
 namespace Phpingguo\System\Request;
 
-use Phpingguo\System\Core\AuraDIWrapper;
 use Phpingguo\System\Core\Client;
 use Phpingguo\System\Core\Config;
 use Phpingguo\System\Core\Server;
 use Phpingguo\System\Exts\Lib\Common\Arrays;
+use Phpingguo\System\Exts\Lib\DIWrapper\AuraDIWrapper;
 
 /**
  * クライアントが要求した情報を解析するクラスです。
