@@ -2,13 +2,11 @@
 namespace Phpingguo\System\Exts\Lib\DIWrapper;
 
 use Symfony\Component\Yaml\Parser;
-use Symfony\Component\Yaml\Exception\ParseException;
 
 /**
  * DIラッパークラスが使用するプリセットサービスの一覧を管理するクラスです。
  * 
  * @final [継承禁止クラス]
- * @package Phpingguo\System\Core
  * @author hiroki sugawara
  */
 final class DIPresetServices
