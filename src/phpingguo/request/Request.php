@@ -1,12 +1,13 @@
 <?php
 namespace Phpingguo\System\Request;
 
+use Phpingguo\ApricotLib\Common\Arrays;
+use Phpingguo\ApricotLib\Enums\LibEnumName;
+use Phpingguo\ApricotLib\Type\Enum\EnumClassGenerator as EnumClassGen;
+use Phpingguo\ApricotLib\Type\Generics\GenericList;
 use Phpingguo\CitronDI\AuraDIWrapper;
 use Phpingguo\System\Core\Config;
 use Phpingguo\System\Enums\EnumFullName;
-use Phpingguo\System\Exts\Lib\Common\Arrays;
-use Phpingguo\System\Exts\Lib\EnumClassGenerator as EnumClassGen;
-use Phpingguo\System\Exts\Lib\Type\Generics\GenericList;
 use Phpingguo\System\Validator\IValidator;
 use Phpingguo\System\Validator\Options;
 use Phpingguo\System\Validator\ValidationErrorException;
@@ -62,7 +63,7 @@ final class Request
     /**
      * クライアントが要求したAPIのバージョン番号を取得します。
      * 
-     * @return \Phpingguo\System\Exts\Lib\Type\Float\UnsignedFloat APIのバージョン番号
+     * @return \Phpingguo\ApricotLib\Type\Float\UnsignedFloat APIのバージョン番号
      */
     public function getApiVersion()
     {
@@ -146,7 +147,7 @@ final class Request
     /**
      * シーンへ渡すパラメータに指定した名前の値を設定します。
      * 
-     * @param \Phpingguo\System\Enums\Variable|String $type パラメータの型のインスタンスまたは名前
+     * @param \Phpingguo\ApricotLib\Enums\Variable|String $type パラメータの型のインスタンスまたは名前
      * @param String $name                                  パラメータの名前
      * @param mixed $value                                  パラメータに新しく設定する値
      */
@@ -241,7 +242,7 @@ final class Request
      */
     private function createParamValue($type, $value)
     {
-        list($obj_type, $obj_value) = EnumClassGen::done(EnumFullName::VARIABLE, $type);
+        list($obj_type, $obj_value) = EnumClassGen::done(LibEnumName::VARIABLE, $type);
         
         if (is_array($value)) {
             return (new GenericList($obj_type, $value))->toArray();

@@ -1,7 +1,7 @@
 <?php
 namespace Phpingguo\System\Core;
 
-use Phpingguo\System\Exts\Lib\Common\Arrays;
+use Phpingguo\ApricotLib\Common\Arrays;
 
 /**
  * サーバー情報を保持するクラスです。

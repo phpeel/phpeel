@@ -1,8 +1,8 @@
 <?php
 namespace Phpingguo\System\Validator;
 
+use Phpingguo\ApricotLib\Common\Arrays;
 use Phpingguo\System\Enums\ValidationError;
-use Phpingguo\System\Exts\Lib\Common\Arrays;
 
 /**
  * 検証機能の共通処理を提供するトレイトです。
