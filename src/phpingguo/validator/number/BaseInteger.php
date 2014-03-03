@@ -1,9 +1,9 @@
 <?php
 namespace Phpingguo\System\Validator\Number;
 
+use Phpingguo\ApricotLib\Common\Arrays;
+use Phpingguo\ApricotLib\Common\String;
 use Phpingguo\System\Enums\ValidationError;
-use Phpingguo\System\Exts\Lib\Common\Arrays;
-use Phpingguo\System\Exts\Lib\Common\String;
 use Phpingguo\System\Validator\IValidator;
 use Phpingguo\System\Validator\Options;
 use Phpingguo\System\Validator\TraitCommonValidator;
@@ -76,7 +76,7 @@ abstract class BaseInteger implements IValidator
      */
     private function doExclusiveErrorCheck($value)
     {
-        $called = 'Phpingguo\\System\\Exts\\Lib\\Type\\Int\\' . String::removeNamespace(get_called_class());
+        $called = 'Phpingguo\\ApricotLib\\Type\\Int\\' . String::removeNamespace(get_called_class());
         
         if ($called::getInstance()->isValue($value) === false) {
             return ValidationError::FORMAT();

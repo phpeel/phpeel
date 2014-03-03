@@ -1,7 +1,7 @@
 <?php
 namespace Phpingguo\System\Enums;
 
-use Phpingguo\System\Exts\Lib\Type\Enum;
+use Phpingguo\ApricotLib\Type\Enum\Enum;
 
 /**
  * バリデーションのエラー理由を示します。

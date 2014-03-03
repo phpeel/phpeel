@@ -1,11 +1,11 @@
 <?php
 namespace Phpingguo\System\Request;
 
+use Phpingguo\ApricotLib\Common\Arrays;
+use Phpingguo\CitronDI\AuraDIWrapper;
 use Phpingguo\System\Core\Client;
 use Phpingguo\System\Core\Config;
 use Phpingguo\System\Core\Server;
-use Phpingguo\System\Exts\Lib\Common\Arrays;
-use Phpingguo\System\Exts\Lib\DIWrapper\AuraDIWrapper;
 
 /**
  * クライアントが要求した情報を解析するクラスです。
@@ -172,7 +172,7 @@ final class RequestParser
     /**
      * クライアントがリクエストした API のパラメータを取得します。
      * 
-     * @param \Phpingguo\System\Enums\HttpMethod|String $method クライアントがリクエストした HTTP メソッド
+     * @param HttpMethod|String $method クライアントがリクエストした HTTP メソッド
      * 
      * @return Array クライアントがリクエストした API のパラメータの一覧を返します。
      */

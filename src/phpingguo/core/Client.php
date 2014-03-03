@@ -1,9 +1,9 @@
 <?php
 namespace Phpingguo\System\Core;
 
-use Phpingguo\System\Enums\HttpMethod;
-use Phpingguo\System\Exts\Lib\Common\Arrays;
-use Phpingguo\System\Exts\Lib\Common\String as CString;
+use Phpingguo\ApricotLib\Common\Arrays;
+use Phpingguo\ApricotLib\Common\String as CString;
+use Phpingguo\ApricotLib\Enums\HttpMethod;
 
 /**
  * クライアント情報を保持するクラスです。

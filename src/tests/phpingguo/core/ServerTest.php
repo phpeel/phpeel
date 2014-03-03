@@ -24,7 +24,7 @@ class ServerTest extends \PHPUnit_Framework_TestCase
         
         foreach ($server_vals as $key => $value) {
             $this->assertSame($value, Server::getValue($key));
-            $this->assertSame($value, Server::{$call_statics[$key]}($key));
+            $this->assertSame($value, Server::$call_statics[$key]($key));
         }
     }
 }

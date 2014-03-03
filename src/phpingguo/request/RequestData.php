@@ -1,12 +1,12 @@
 <?php
 namespace Phpingguo\System\Request;
 
+use Phpingguo\ApricotLib\Enums\HttpMethod;
+use Phpingguo\ApricotLib\Common\Arrays;
+use Phpingguo\ApricotLib\Type\Float\UnsignedFloat;
+use Phpingguo\ApricotLib\Type\String\String;
+use Phpingguo\ApricotLib\Type\String\Text;
 use Phpingguo\System\Core\Config;
-use Phpingguo\System\Enums\HttpMethod;
-use Phpingguo\System\Exts\Lib\Common\Arrays;
-use Phpingguo\System\Exts\Lib\Type\Float\UnsignedFloat;
-use Phpingguo\System\Exts\Lib\Type\String\String;
-use Phpingguo\System\Exts\Lib\Type\String\Text;
 
 /**
  * クライアントからサーバーへ送信されたリクエストデータを表すクラスです。

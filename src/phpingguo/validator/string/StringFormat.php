@@ -1,8 +1,8 @@
 <?php
 namespace Phpingguo\System\Validator\String;
 
+use Phpingguo\ApricotLib\Common\String;
 use Phpingguo\System\Enums\ValidationError;
-use Phpingguo\System\Exts\Lib\Common\String;
 use Phpingguo\System\Validator\Options;
 
 /**

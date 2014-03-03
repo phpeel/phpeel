@@ -1,11 +1,11 @@
 <?php
 namespace Phpingguo\System\Validator\String;
 
-use Phpingguo\System\Enums\Charset;
+use Phpingguo\ApricotLib\Enums\Charset;
+use Phpingguo\ApricotLib\Common\Arrays;
+use Phpingguo\ApricotLib\Common\String as CString;
+use Phpingguo\ApricotLib\Type\String\Text;
 use Phpingguo\System\Enums\ValidationError;
-use Phpingguo\System\Exts\Lib\Common\Arrays;
-use Phpingguo\System\Exts\Lib\Common\String as CString;
-use Phpingguo\System\Exts\Lib\Type\String\Text;
 use Phpingguo\System\Validator\IValidator;
 use Phpingguo\System\Validator\Options;
 use Phpingguo\System\Validator\TraitCommonValidator;

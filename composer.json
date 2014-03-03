@@ -8,8 +8,8 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "aura/di": "~1.0",
-        "symfony/yaml": "2.4.*"
+        "phpingguo/apricot-lib": "dev-develop",
+        "phpingguo/citron-di": "dev-develop"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*",

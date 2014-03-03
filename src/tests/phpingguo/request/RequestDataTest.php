@@ -1,7 +1,7 @@
 <?php
 namespace Phpingguo\Tests\Phpingguo\Request;
 
-use Phpingguo\System\Enums\HttpMethod;
+use Phpingguo\ApricotLib\Enums\HttpMethod;
 use Phpingguo\System\Request\RequestData;
 
 class RequestDataTest extends \PHPUnit_Framework_TestCase
