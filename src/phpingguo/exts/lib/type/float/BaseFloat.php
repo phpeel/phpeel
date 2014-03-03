@@ -1,8 +1,8 @@
 <?php
 namespace Phpingguo\System\Exts\Lib\Type\Float;
 
+use Phpingguo\CitronDI\AuraDIWrapper;
 use Phpingguo\System\Core\Config;
-use Phpingguo\System\Exts\Lib\DIWrapper\AuraDIWrapper;
 use Phpingguo\System\Exts\Lib\Type\IScalarValue;
 use Phpingguo\System\Exts\Lib\Type\TraitScalarValue;
 use Phpingguo\System\Exts\Lib\Type\TraitSignedNumber;

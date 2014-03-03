@@ -1,10 +1,10 @@
 <?php
 namespace Phpingguo\System\Exts\Lib\Type\String;
 
+use Phpingguo\CitronDI\AuraDIWrapper;
 use Phpingguo\System\Core\Config;
 use Phpingguo\System\Enums\Charset;
 use Phpingguo\System\Exts\Lib\Common\String as CString;
-use Phpingguo\System\Exts\Lib\DIWrapper\AuraDIWrapper;
 use Phpingguo\System\Exts\Lib\Type\IExtendScalarValue;
 use Phpingguo\System\Exts\Lib\Type\TraitScalarValue;
 
