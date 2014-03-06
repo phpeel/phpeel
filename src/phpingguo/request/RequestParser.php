@@ -2,9 +2,9 @@
 namespace Phpingguo\System\Request;
 
 use Phpingguo\ApricotLib\Common\Arrays;
-use Phpingguo\CitronDI\AuraDIWrapper;
 use Phpingguo\System\Core\Client;
 use Phpingguo\System\Core\Config;
+use Phpingguo\System\Core\DIAccessor;
 use Phpingguo\System\Core\Server;
 
 /**
@@ -32,7 +32,7 @@ final class RequestParser
      */
     public static function getInstance($reanalyze = false)
     {
-        $instance = AuraDIWrapper::init()->get(__CLASS__);
+        $instance = DIAccessor::getContainer('system')->get(__CLASS__);
         
         if (empty($instance->req_data) || $reanalyze === true) {
             $instance->set($instance->getParseData());

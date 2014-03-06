@@ -5,12 +5,12 @@ use Phpingguo\ApricotLib\Common\Arrays;
 use Phpingguo\ApricotLib\Enums\LibEnumName;
 use Phpingguo\ApricotLib\Type\Enum\EnumClassGenerator as EnumClassGen;
 use Phpingguo\ApricotLib\Type\Generics\GenericList;
-use Phpingguo\CitronDI\AuraDIWrapper;
+use Phpingguo\BananaValidator\Enums\EnumFullName;
+use Phpingguo\BananaValidator\IValidator;
+use Phpingguo\BananaValidator\Options;
+use Phpingguo\BananaValidator\ValidationErrorException;
 use Phpingguo\System\Core\Config;
-use Phpingguo\System\Enums\EnumFullName;
-use Phpingguo\System\Validator\IValidator;
-use Phpingguo\System\Validator\Options;
-use Phpingguo\System\Validator\ValidationErrorException;
+use Phpingguo\System\Core\DIAccessor;
 
 /**
  * クライアントからサーバーへのリクエストしたデータを保持するクラスです。
@@ -38,7 +38,7 @@ final class Request
      */
     public static function getInstance($reanalyze = false)
     {
-        $instance = AuraDIWrapper::init()->get(__CLASS__);
+        $instance = DIAccessor::getContainer('system')->get(__CLASS__);
         
         if (empty($instance->req_data) || $reanalyze === true) {
             $instance->setRequestData(RequestParser::getInstance($reanalyze)->get());
@@ -125,8 +125,8 @@ final class Request
     /**
      * シーンへ渡すパラメータ一覧から指定した名前の値を取得します。
      * 
-     * @param \Phpingguo\System\Enums\Variable|String $type 値を取得するパラメータの型のインスタンスまたは名前
-     * @param String $name                                  値を取得するパラメータの名前
+     * @param \Phpingguo\ApricotLib\Enums\Variable|String $type 値を取得するパラメータの型のインスタンスまたは名前
+     * @param String $name                                      値を取得するパラメータの名前
      * 
      * @throws \LogicException バリデーションを通過していないパラメータを取得しようとした場合
      * （※"sys.security.validation_forced"が有効の時のみ）
@@ -159,7 +159,7 @@ final class Request
     /**
      * シーンへ渡すパラメータの値を検証します。
      * 
-     * @param \Phpingguo\System\Enums\Validator|String $type 実行する検証の種類
+     * @param \Phpingguo\BananaValidator\Enums\Validator|String $type 実行する検証の種類
      * @param String $name                                   検証の対象となるパラメータの名前
      * @param Options $options                               検証時に利用されるオプション設定
      * 
@@ -185,7 +185,7 @@ final class Request
     /**
      * シーンへ渡すパラメータの値を一括で複数検証します。
      * 
-     * @param \Phpingguo\System\Enums\Validator|String $type 検証の種類
+     * @param \Phpingguo\BananaValidator\Enums\Validator|String $type 検証の種類
      * @param String $name                                   検証の対象となるパラメータの名前
      * @param Options $options                               検証時に利用されるオプション設定
      * 
@@ -235,7 +235,7 @@ final class Request
     /**
      * パラメータの適正な値を生成します。
      * 
-     * @param \Phpingguo\System\Enums\Variable|String $type パラメータの型のインスタンスまたは名前
+     * @param \Phpingguo\ApricotLib\Enums\Variable|String $type パラメータの型のインスタンスまたは名前
      * @param mixed $value                                  適正値を生成するパラメータの名前
      * 
      * @return mixed 生成したパラメータの適正値
