@@ -1,0 +1,6 @@
+- 'Phpingguo\System\Request\Request'
+- 'Phpingguo\System\Request\RequestParser'
+- 'Phpingguo\System\Filter\Pre\FilterHost'
+- 'Phpingguo\System\Filter\Post\FilterHost'
+- 'Phpingguo\System\Filter\Input\FilterHost'
+- 'Phpingguo\System\Filter\Output\FilterHost'
