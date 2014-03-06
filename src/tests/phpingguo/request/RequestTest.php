@@ -6,19 +6,19 @@ use Phpingguo\ApricotLib\Enums\Variable;
 use Phpingguo\System\Core\Client;
 use Phpingguo\System\Core\Config;
 use Phpingguo\System\Core\Server;
-use Phpingguo\System\Enums\Validator;
+use Phpingguo\BananaValidator\Enums\Validator;
 use Phpingguo\System\Request\Request;
-use Phpingguo\System\Validator\Options;
+use Phpingguo\BananaValidator\Options;
 
 class RequestTest extends \PHPUnit_Framework_TestCase
 {
     public function testInitOptions()
     {
         return function ($option_list) {
-            $options	= Options::getInstance(true);
+            $options = Options::getInstance(true);
             
             foreach ($option_list as $method) {
-                $options	= $options->$method();
+                $options = $options->$method();
             }
             
             return $options;
@@ -37,7 +37,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testRequest($method, $path_info, $params, $expected_list)
     {
-        $_SERVER['REQUEST_METHOD']	= $method;
+        $_SERVER['REQUEST_METHOD'] = $method;
         
         isset($path_info) && $_SERVER['PATH_INFO'] = $path_info;
         count($params) > 0 && $_REQUEST = $params;
