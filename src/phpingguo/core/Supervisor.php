@@ -2,10 +2,11 @@
 namespace Phpingguo\System\Core;
 
 use Phpingguo\ApricotLib\Common\String as CString;
+use Phpingguo\CitronDI\AuraDIWrapper;
 
 /**
  * フレームワークを統括するクラスです。
- * 
+ *
  * @final [継承禁止クラス]
  * @author hiroki sugawara
  */
@@ -15,13 +16,28 @@ final class Supervisor
     // const fields
     // ---------------------------------------------------------------------------------------------
     const PATH_CONFIG_DI = 'di_preset_services';
-    
+
     // ---------------------------------------------------------------------------------------------
     // public static methods
     // ---------------------------------------------------------------------------------------------
     /**
+     * フレームワークで使用可能なDIコンテナのインスタンスを取得します。
+     *
+     * @param String $service_group_name
+     *
+     * @return \Aura\Di\Container フレームワークで使用可能なDIコンテナのインスタンス
+     */
+    public static function getDiContainer($service_group_name)
+    {
+        return AuraDIWrapper::init(
+            $service_group_name,
+            static::getConfigPath(static::PATH_CONFIG_DI)
+        );
+    }
+
+    /**
      * プロジェクトのルートディレクトリのファイルパスを取得します。
-     * 
+     *
      * @return String プロジェクトのルートディレクトリのファイルパス
      */
     public static function getProjectPath()
@@ -31,7 +47,7 @@ final class Supervisor
 
     /**
      * フレームワークのシステムディレクトリのファイルパスを取得します。
-     * 
+     *
      * @return String フレームワークのシステムディレクトリのファイルパス
      */
     public static function getSystemPath()
@@ -41,7 +57,7 @@ final class Supervisor
 
     /**
      * アプリケーションのルートディレクトリのファイルパスを取得します。
-     * 
+     *
      * @return String アプリケーションのルートディレクトリのファイルパス
      */
     public static function getAppPath()
@@ -53,7 +69,7 @@ final class Supervisor
      * プロジェクトの設定ファイルがあるディレクトリのファイルパスを取得します。
      *
      * @param String $sub_dir_name [初期値=null] 設定ファイルがあるサブディレクトリの名前
-     * 
+     *
      * @return String プロジェクトの設定ファイルがあるディレクトリのファイルパス
      */
     public static function getConfigPath($sub_dir_name = null)
@@ -66,9 +82,9 @@ final class Supervisor
 
     /**
      * プロジェクトのキャッシュファイルがあるディレクトリのファイルパスを取得します。
-     * 
+     *
      * @param String $sub_dir_name [初期値=null] キャッシュファイルがあるサブディレクトリの名前
-     * 
+     *
      * @return String プロジェクトのキャッシュファイルがあるディレクトリのファイルパス
      */
     public static function getCachePath($sub_dir_name = null)
