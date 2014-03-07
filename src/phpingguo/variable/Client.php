@@ -4,6 +4,7 @@ namespace Phpingguo\System\Variable;
 use Phpingguo\ApricotLib\Common\Arrays;
 use Phpingguo\ApricotLib\Common\String as CString;
 use Phpingguo\ApricotLib\Enums\HttpMethod;
+use Phpingguo\System\Core\Config;
 
 /**
  * クライアント情報を保持するクラスです。
