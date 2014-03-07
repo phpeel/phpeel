@@ -1,5 +1,5 @@
 <?php
-namespace Phpingguo\System\Core;
+namespace Phpingguo\System\Variable;
 
 use Phpingguo\ApricotLib\Common\Arrays;
 

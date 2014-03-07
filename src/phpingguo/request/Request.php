@@ -10,7 +10,7 @@ use Phpingguo\BananaValidator\IValidator;
 use Phpingguo\BananaValidator\Options;
 use Phpingguo\BananaValidator\ValidationErrorException;
 use Phpingguo\System\Core\Config;
-use Phpingguo\System\Core\DIAccessor;
+use Phpingguo\System\Core\Supervisor;
 
 /**
  * クライアントからサーバーへのリクエストしたデータを保持するクラスです。
@@ -38,7 +38,7 @@ final class Request
      */
     public static function getInstance($reanalyze = false)
     {
-        $instance = DIAccessor::getContainer('system')->get(__CLASS__);
+        $instance = Supervisor::getDiContainer('system')->get(__CLASS__);
         
         if (empty($instance->req_data) || $reanalyze === true) {
             $instance->setRequestData(RequestParser::getInstance($reanalyze)->get());

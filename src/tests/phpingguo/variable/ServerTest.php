@@ -1,7 +1,7 @@
 <?php
-namespace Phpingguo\Tests\Phpingguo\Core;
+namespace Phpingguo\Tests\Phpingguo\Variable;
 
-use Phpingguo\System\Core\Server;
+use Phpingguo\System\Variable\Server;
 
 class ServerTest extends \PHPUnit_Framework_TestCase
 {
