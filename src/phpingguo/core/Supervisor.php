@@ -15,7 +15,8 @@ final class Supervisor
     // ---------------------------------------------------------------------------------------------
     // const fields
     // ---------------------------------------------------------------------------------------------
-    const PATH_CONFIG_DI = 'di_preset_services';
+    const PATH_CONFIG_DI         = 'di_preset_services';
+    const PATH_CONFIG_REGULATION = 'various_regulations';
 
     // ---------------------------------------------------------------------------------------------
     // public static methods
