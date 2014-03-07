@@ -1,0 +1,3 @@
+DoCoMo: '/^DoCoMo/'
+SoftBank: '/^(J\-PHONE|Vodafone|SoftBank|MOT\-)/'
+AU: '/^(KDDI\-|UP\.Browser)/'
