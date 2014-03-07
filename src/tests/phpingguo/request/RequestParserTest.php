@@ -2,9 +2,9 @@
 namespace Phpingguo\Tests\Phpingguo\Request;
 
 use Phpingguo\ApricotLib\Enums\HttpMethod;
-use Phpingguo\System\Core\Client;
+use Phpingguo\System\Variable\Client;
 use Phpingguo\System\Core\Config;
-use Phpingguo\System\Core\Server;
+use Phpingguo\System\Variable\Server;
 use Phpingguo\System\Request\RequestParser;
 
 class RequestParserTest extends \PHPUnit_Framework_TestCase

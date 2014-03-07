@@ -3,9 +3,9 @@ namespace Phpingguo\Tests\Phpingguo\Request;
 
 use Phpingguo\ApricotLib\Enums\HttpMethod;
 use Phpingguo\ApricotLib\Enums\Variable;
-use Phpingguo\System\Core\Client;
+use Phpingguo\System\Variable\Client;
 use Phpingguo\System\Core\Config;
-use Phpingguo\System\Core\Server;
+use Phpingguo\System\Variable\Server;
 use Phpingguo\BananaValidator\Enums\Validator;
 use Phpingguo\System\Request\Request;
 use Phpingguo\BananaValidator\Options;

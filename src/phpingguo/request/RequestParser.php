@@ -2,10 +2,10 @@
 namespace Phpingguo\System\Request;
 
 use Phpingguo\ApricotLib\Common\Arrays;
-use Phpingguo\System\Core\Client;
 use Phpingguo\System\Core\Config;
 use Phpingguo\System\Core\DIAccessor;
-use Phpingguo\System\Core\Server;
+use Phpingguo\System\Variable\Client;
+use Phpingguo\System\Variable\Server;
 
 /**
  * クライアントが要求した情報を解析するクラスです。

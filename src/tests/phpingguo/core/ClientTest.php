@@ -2,7 +2,7 @@
 namespace Phpingguo\Tests\Phpingguo\Core;
 
 use Phpingguo\ApricotLib\Enums\HttpMethod;
-use Phpingguo\System\Core\Client;
+use Phpingguo\System\Variable\Client;
 use Phpingguo\System\Core\Config;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
