@@ -83,6 +83,24 @@ final class Device
         
         return $client_type;
     }
+
+    /**
+     * クライアントのデバイスのバージョンを取得します。
+     * 
+     * @return String|Boolean|null 取得成功時はバージョンに関する文字列。
+     * バージョンに関する情報を発見できなかった時は false。それ以外の時は null。
+     */
+    public static function getClientVersion()
+    {
+        $user_agent  = Server::getValue(Server::HTTP_USER_AGENT, '');
+        $ver_pattern = Arrays::getValue(static::getAllowUserAgents('Version'), static::getClientType(), null);
+        
+        if (is_null($ver_pattern) || preg_match($ver_pattern, $user_agent, $matches) !== 1) {
+            return null;
+        }
+        
+        return Arrays::getValue($matches, 3, false);
+    }
     
     // ---------------------------------------------------------------------------------------------
     // private class methods
