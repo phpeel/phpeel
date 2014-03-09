@@ -85,6 +85,16 @@ final class Device
     }
 
     /**
+     * クライアントのデバイスのカテゴリを取得します。
+     * 
+     * @return String デバイスが属するカテゴリの名前。カテゴリ名が未定義の場合は Undefined の文字列。
+     */
+    public static function getClientCategory()
+    {
+        return Arrays::getValue(static::getAllowUserAgents('Category'), static::getClientType(), 'Undefined');
+    }
+
+    /**
      * クライアントのデバイスのバージョンを取得します。
      * 
      * @return String|Boolean|null 取得成功時はバージョンに関する文字列。
