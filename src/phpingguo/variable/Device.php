@@ -4,7 +4,6 @@ namespace Phpingguo\System\Variable;
 use Phpingguo\ApricotLib\Common\Arrays;
 use Phpingguo\ApricotLib\Common\General;
 use Phpingguo\System\Core\Supervisor;
-use Symfony\Component\Yaml\Parser;
 
 /**
  * クライアントのデバイス情報を管理するクラスです。
@@ -31,19 +30,29 @@ final class Device
      */
     public static function getClientIp($ignore_proxy = true)
     {
-        // proxy server の ip address を取り出す（配列の上にある変数名ほど優先順位高）
-        $proxy_client_ip = Arrays::getValue(array_values(array_filter([
-            Server::getValue('HTTP_CLIENT_IP', false),
-            Server::getValue('HTTP_X_FORWARDED_FOR', false),
-            Server::getValue('HTTP_CLIENTADDRESS', false),
-            Server::getValue('HTTP_X_REAL_IP', false),
-            Server::getValue('HTTP_X_REAL_FORWARDED_FOR', false)
-        ])), 0, false);
+        // 書式が正しい proxy server の ip address を取り出す（配列の上にある変数名ほど優先順位高）
+        $proxy_client_ip = filter_var(
+            Arrays::getValue(
+                Arrays::filter(
+                    [
+                        Server::getValue('HTTP_CLIENT_IP', false),
+                        Server::getValue('HTTP_X_FORWARDED_FOR', false),
+                        Server::getValue('HTTP_CLIENTADDRESS', false),
+                        Server::getValue('HTTP_X_REAL_IP', false),
+                        Server::getValue('HTTP_X_REAL_FORWARDED_FOR', false)
+                    ],
+                    null,
+                    true
+                ),
+                0,
+                false
+            ),
+            FILTER_VALIDATE_IP,
+            FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6
+        );
         
         // デフォルトでは、proxy server の ip address は使えないようにしている
-        if ($ignore_proxy === false &&
-            filter_var($proxy_client_ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6) !== false
-        ) {
+        if ($ignore_proxy === false && $proxy_client_ip !== false) {
             return $proxy_client_ip;
         }
         
@@ -59,7 +68,7 @@ final class Device
     {
         $client_type = 'Other';
         $user_agent  = Server::getValue(Server::HTTP_USER_AGENT, '');
-        $ua_patterns = static::getAllowUserAgents();
+        $ua_patterns = static::getAllowUserAgents('Type');
         
         Arrays::eachWalk(
             $ua_patterns,
@@ -74,22 +83,52 @@ final class Device
         
         return $client_type;
     }
+
+    /**
+     * クライアントのデバイスのカテゴリを取得します。
+     * 
+     * @return String デバイスが属するカテゴリの名前。カテゴリ名が未定義の場合は Undefined の文字列。
+     */
+    public static function getClientCategory()
+    {
+        return Arrays::getValue(static::getAllowUserAgents('Category'), static::getClientType(), 'Undefined');
+    }
+
+    /**
+     * クライアントのデバイスのバージョンを取得します。
+     * 
+     * @return String|Boolean|null 取得成功時はバージョンに関する文字列。
+     * バージョンに関する情報を発見できなかった時は false。それ以外の時は null。
+     */
+    public static function getClientVersion()
+    {
+        $user_agent  = Server::getValue(Server::HTTP_USER_AGENT, '');
+        $ver_pattern = Arrays::getValue(static::getAllowUserAgents('Version'), static::getClientType(), null);
+        
+        if (is_null($ver_pattern) || preg_match($ver_pattern, $user_agent, $matches) !== 1) {
+            return null;
+        }
+        
+        return Arrays::getValue($matches, 3, false);
+    }
     
     // ---------------------------------------------------------------------------------------------
     // private class methods
     // ---------------------------------------------------------------------------------------------
     /**
-     * アプリケーションで許可するユーザーエージェントの一覧を取得します。
+     * 指定したカテゴリに該当する許可済みのユーザーエージェントの一覧を取得します。
      * 
-     * @return Array アプリケーションで許可されているユーザーエージェントの一覧
+     * @param String $category [初期値='Type'] 取得するリスト内容のカテゴリ名
+     * 
+     * @return Array 指定したカテゴリが存在する場合は該当する一覧の配列。それ以外は空配列。
      */
-    private static function getAllowUserAgents()
+    private static function getAllowUserAgents($category)
     {
         if (empty(static::$allow_user_agents) === true) {
             static::$allow_user_agents = static::loadAllowUserAgents();
         }
         
-        return static::$allow_user_agents;
+        return Arrays::getValue(static::$allow_user_agents, $category, []);
     }
 
     /**

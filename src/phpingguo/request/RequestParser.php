@@ -185,10 +185,10 @@ final class RequestParser
         // 配列型パラメータは全て削除する
         Arrays::removeEach(
             Config::get('sys.security.remove_req_array_params', true),
+            $request_params,
             function ($value) {
                 return is_array($value);
-            },
-            $request_params
+            }
         );
         
         return $request_params;
