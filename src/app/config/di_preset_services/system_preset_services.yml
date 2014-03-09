@@ -1,3 +1,4 @@
+- 'Phpingguo\System\Variable\Session'
 - 'Phpingguo\System\Request\Request'
 - 'Phpingguo\System\Request\RequestParser'
 - 'Phpingguo\System\Filter\Pre\FilterHost'
