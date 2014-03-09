@@ -1,3 +1,15 @@
+Category:
+  DoCoMo: FeaturePhone
+  SoftBank: FeaturePhone
+  AU: FeaturePhone
+  iPhone: SmartPhone
+  iPad: SmartPhone
+  Android: SmartPhone
+  WindowsPhone: SmartPhone
+  BlackBerry: SmartPhone
+  MozillaFirefox: OtherDevice
+  GoogleChrome: OtherDevice
+  Safari: OtherDevice
 Type:
   DoCoMo: '/^DoCoMo/'
   SoftBank: '/^(J\-PHONE|Vodafone|SoftBank|MOT\-)/'
