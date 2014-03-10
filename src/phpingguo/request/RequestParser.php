@@ -32,6 +32,7 @@ final class RequestParser
      */
     public static function getInstance($reanalyze = false)
     {
+        /** @var RequestParser $instance */
         $instance = Supervisor::getDiContainer('system')->get(__CLASS__);
         
         if (empty($instance->req_data) || $reanalyze === true) {
@@ -172,7 +173,7 @@ final class RequestParser
     /**
      * クライアントがリクエストした API のパラメータを取得します。
      * 
-     * @param HttpMethod|String $method クライアントがリクエストした HTTP メソッド
+     * @param \Phpingguo\ApricotLib\Enums\HttpMethod|String $method クライアントがリクエストした HTTP メソッド
      * 
      * @return Array クライアントがリクエストした API のパラメータの一覧を返します。
      */

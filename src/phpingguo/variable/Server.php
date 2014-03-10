@@ -58,6 +58,7 @@ final class Server
      */
     public static function __callStatic($name, $args)
     {
+        /** @var Server $class */
         $class = get_called_class();
         
         if (false === ($const = (new \ReflectionClass($class))->getConstant($name))) {
