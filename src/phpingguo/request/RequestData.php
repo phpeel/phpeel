@@ -31,11 +31,11 @@ final class RequestData
     /**
      * RequestData クラスの新しいインスタンスを初期化します。
      *
-     * @param HttpMethod|String $method            クライアントが要求したメソッドの名前
-     * @param String $module                       要求したモジュールの名前
-     * @param UnsignedFloat $version [初期値=0.0]  要求したバージョン番号
-     * @param String $scene [初期値=null]          要求したシーンの名前
-     * @param Array $params [初期値=array()]       要求したシーンに渡すパラメータの配列
+     * @param HttpMethod|String $method                 クライアントが要求したメソッドの名前
+     * @param String $module                            要求したモジュールの名前
+     * @param Float|UnsignedFloat $version [初期値=0.0] 要求したバージョン番号
+     * @param String $scene [初期値=null]               要求したシーンの名前
+     * @param Array $params [初期値=array()]            要求したシーンに渡すパラメータの配列
      */
     public function __construct($method, $module, $version = 0.0, $scene = null, array $params = [])
     {

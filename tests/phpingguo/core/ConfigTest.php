@@ -1,5 +1,5 @@
 <?php
-namespace Phpingguo\Tests\Phpingguo\Core;
+namespace Phpingguo\System\Tests\Core;
 
 use Phpingguo\System\Core\Config;
 

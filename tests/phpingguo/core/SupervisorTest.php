@@ -1,5 +1,5 @@
 <?php
-namespace Phpingguo\Tests\Phpingguo\Core;
+namespace Phpingguo\System\Tests\Core;
 
 use Phpingguo\System\Core\Supervisor;
 
@@ -7,9 +7,10 @@ class SupervisorTest extends \PHPUnit_Framework_TestCase
 {
     public function test()
     {
-        $project_path = realpath(
+        $root_path    = realpath(
             __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..'
         );
+        $project_path = $root_path . DIRECTORY_SEPARATOR . 'src';
         $app_path     = $project_path . DIRECTORY_SEPARATOR . 'app';
         
         $this->assertSame($project_path, Supervisor::getProjectPath());

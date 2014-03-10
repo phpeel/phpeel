@@ -32,12 +32,13 @@ final class Request
     /**
      * Request クラスのインスタンスを取得します。
      * 
-     * @param Boolean $reanalyze [初期値=false]	リクエストデータの再解析を行うかどうか
+     * @param Boolean $reanalyze [初期値=false] リクエストデータの再解析を行うかどうか
      * 
-     * @return Request 初回呼び出し時は新しいインスタンスを、それ以降の時は生成済みのインスタンスを返します。
+     * @return Request 初回呼び出し時は新しいインスタンス。それ以降の時は生成済みのインスタンス。
      */
     public static function getInstance($reanalyze = false)
     {
+        /** @var Request $instance */
         $instance = Supervisor::getDiContainer('system')->get(__CLASS__);
         
         if (empty($instance->req_data) || $reanalyze === true) {
@@ -148,8 +149,8 @@ final class Request
      * シーンへ渡すパラメータに指定した名前の値を設定します。
      * 
      * @param \Phpingguo\ApricotLib\Enums\Variable|String $type パラメータの型のインスタンスまたは名前
-     * @param String $name                                  パラメータの名前
-     * @param mixed $value                                  パラメータに新しく設定する値
+     * @param String $name                                      パラメータの名前
+     * @param mixed $value                                      パラメータに新しく設定する値
      */
     public function setParameter($type, $name, $value)
     {
@@ -160,10 +161,10 @@ final class Request
      * シーンへ渡すパラメータの値を検証します。
      * 
      * @param \Phpingguo\BananaValidator\Enums\Validator|String $type 実行する検証の種類
-     * @param String $name                                   検証の対象となるパラメータの名前
-     * @param Options $options                               検証時に利用されるオプション設定
+     * @param String $name                                            検証の対象となるパラメータの名前
+     * @param Options $options                                        検証時に利用されるオプション設定
      * 
-     * @throws \RuntimeException	存在しないパラメータを検証しようとした場合
+     * @throws \RuntimeException 存在しないパラメータを検証しようとした場合
      * 
      * @return Boolean|Array 検証成功時は true。失敗時はその理由を含む配列。それ以外の場合は false。
      */
@@ -177,17 +178,21 @@ final class Request
             throw new \RuntimeException('A parameter that attempting to validate is not exist.');
         }
         
-        $exec_method = is_array($param_value) ? 'doArrayValidate' : 'execValidation';
-        
-        return $this->$exec_method($obj_validator, $name, $param_value, $options);
+        return call_user_func(
+            [ $this, is_array($param_value) ? 'doArrayValidate' : 'execValidation' ],
+            $obj_validator,
+            $name,
+            $param_value,
+            $options
+        );
     }
     
     /**
      * シーンへ渡すパラメータの値を一括で複数検証します。
      * 
      * @param \Phpingguo\BananaValidator\Enums\Validator|String $type 検証の種類
-     * @param String $name                                   検証の対象となるパラメータの名前
-     * @param Options $options                               検証時に利用されるオプション設定
+     * @param String $name                                            検証の対象となるパラメータの名前
+     * @param Options $options                                        検証時に利用されるオプション設定
      * 
      * @throws \InvalidArgumentException メソッドに渡した引数の内容が正しくない場合
      *
@@ -236,12 +241,13 @@ final class Request
      * パラメータの適正な値を生成します。
      * 
      * @param \Phpingguo\ApricotLib\Enums\Variable|String $type パラメータの型のインスタンスまたは名前
-     * @param mixed $value                                  適正値を生成するパラメータの名前
+     * @param mixed $value                                      適正値を生成するパラメータの名前
      * 
      * @return mixed 生成したパラメータの適正値
      */
     private function createParamValue($type, $value)
     {
+        /** @var \Phpingguo\ApricotLib\Type\Enum\Enum $obj_value */
         list($obj_type, $obj_value) = EnumClassGen::done(LibEnumName::VARIABLE, $type);
         
         if (is_array($value)) {
@@ -263,8 +269,6 @@ final class Request
      */
     private function execValidation(IValidator $obj_validator, $param_name, $param_value, Options $options)
     {
-        $result = false;
-        
         try {
             if (true === ($result = $obj_validator->validate($param_value, $options))) {
                 Arrays::addWhen(in_array($param_name, $this->validated) === false, $this->validated, $param_name);
