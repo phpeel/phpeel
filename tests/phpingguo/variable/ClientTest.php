@@ -1,5 +1,5 @@
 <?php
-namespace Phpingguo\Tests\Variable;
+namespace Phpingguo\System\Tests\Variable;
 
 use Phpingguo\ApricotLib\Enums\HttpMethod;
 use Phpingguo\System\Variable\Client;
