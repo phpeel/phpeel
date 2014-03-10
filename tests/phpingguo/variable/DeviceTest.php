@@ -1,5 +1,5 @@
 <?php
-namespace Phpingguo\Tests\Phpingguo\Variable;
+namespace Phpingguo\Tests\Variable;
 
 use Phpingguo\System\Variable\Device;
 use Phpingguo\System\Variable\Server;
