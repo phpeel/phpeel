@@ -21,7 +21,7 @@
         "psr-4": {
             "Phpingguo\\System\\": "src/phpingguo/",
             "Phpingguo\\App\\": "src/app/",
-            "Phpingguo\\Tests\\": "src/tests/"
+            "Phpingguo\\Tests\\": "tests/phpingguo/"
         }
     }
 }
