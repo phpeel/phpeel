@@ -21,7 +21,7 @@ class RequestDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetProperties($method, $module, $version, $scene, $params)
     {
-        $instance	= new RequestData($method, $module, $version, $scene, $params);
+        $instance = new RequestData($method, $module, $version, $scene, $params);
         
         $this->assertInstanceOf('Phpingguo\System\Request\RequestData', $instance);
         
@@ -56,7 +56,7 @@ class RequestDataTest extends \PHPUnit_Framework_TestCase
     {
         isset($exception) && $this->setExpectedException($exception);
         
-        $instance	= new RequestData(HttpMethod::GET, 'top', null, 'index', []);
+        $instance = new RequestData(HttpMethod::GET, 'top', null, 'index', []);
         $instance->setParameter($key, $value);
     }
     
@@ -83,7 +83,7 @@ class RequestDataTest extends \PHPUnit_Framework_TestCase
     {
         isset($exception) && $this->setExpectedException($exception);
         
-        $instance	= new RequestData(HttpMethod::GET, 'top', null, 'index', $set_params);
+        $instance = new RequestData(HttpMethod::GET, 'top', null, 'index', $set_params);
         $this->assertEquals($value, $instance->isExistParameter($name));
     }
 }

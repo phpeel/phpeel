@@ -39,9 +39,9 @@ class RequestParserTest extends \PHPUnit_Framework_TestCase
     {
         global $__CONFIG;
         
-        $__CONFIG	= [];
+        $__CONFIG = [];
         
-        $_SERVER['REQUEST_METHOD']	= $method;
+        $_SERVER['REQUEST_METHOD'] = $method;
         
         isset($path_info) && $_SERVER['PATH_INFO'] = $path_info;
         isset($exception) && $this->setExpectedException($exception);
@@ -52,7 +52,7 @@ class RequestParserTest extends \PHPUnit_Framework_TestCase
         Server::capture();
         Client::capture();
         
-        $result	= RequestParser::getInstance(true)->get();
+        $result = RequestParser::getInstance(true)->get();
         
         $this->assertInstanceOf('Phpingguo\System\Request\RequestData', $result);
         count($params) > 0 && $this->assertArrayNotHasKey('idols', $result->getParameters());

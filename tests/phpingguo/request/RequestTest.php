@@ -45,7 +45,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         Server::capture();
         Client::capture();
         
-        $instance	= Request::getInstance(true);
+        $instance = Request::getInstance(true);
         
         $this->assertInstanceOf('Phpingguo\System\Request\RequestData', $instance->getRequestData());
         $this->assertSame($expected_list[0], $instance->getRequestData()->getMethod()->getValue());
@@ -72,16 +72,16 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     {
         global $__CONFIG;
         
-        $__CONFIG	= [];
-        $_SERVER['REQUEST_METHOD']	= HttpMethod::GET;
-        $_SERVER['PATH_INFO']		= '/top/index';
+        $__CONFIG = [];
+        $_SERVER['REQUEST_METHOD'] = HttpMethod::GET;
+        $_SERVER['PATH_INFO']  = '/top/index';
         
         isset($exception) && $this->setExpectedException($exception);
         
         Server::capture();
         Client::capture();
         
-        $instance	= Request::getInstance(true);
+        $instance = Request::getInstance(true);
         $instance->setParameter($type, $key, $value);
         
         isset($exception) || $this->assertTrue($instance->validate($v_type, $key, $init($options)));
@@ -103,15 +103,15 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     {
         global $__CONFIG;
         
-        $__CONFIG	= [];
-        $_SERVER['REQUEST_METHOD']	= HttpMethod::GET;
-        $_SERVER['PATH_INFO']		= '/top/index';
+        $__CONFIG = [];
+        $_SERVER['REQUEST_METHOD'] = HttpMethod::GET;
+        $_SERVER['PATH_INFO']  = '/top/index';
         
         Config::set('sys.security.validation_forced', false);
         Server::capture();
         Client::capture();
         
-        $instance	= Request::getInstance(true);
+        $instance = Request::getInstance(true);
         $instance->setParameters($params);
         
         $this->assertSame($params, $instance->getParameters());
@@ -137,18 +137,18 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidate($p_type, $type, $name, $value, $options, $expected, $exception, $init)
     {
-        $_SERVER['REQUEST_METHOD']	= HttpMethod::GET;
-        $_SERVER['PATH_INFO']		= '/top/index';
+        $_SERVER['REQUEST_METHOD'] = HttpMethod::GET;
+        $_SERVER['PATH_INFO']  = '/top/index';
         
         Server::capture();
         Client::capture();
         
         isset($exception) && $this->setExpectedException($exception);
         
-        $instance	= Request::getInstance(true);
+        $instance = Request::getInstance(true);
         isset($value) && $instance->setParameter($p_type, $name, $value);
         
-        $result	= $instance->validate($type, $name, $init($options));
+        $result = $instance->validate($type, $name, $init($options));
         
         if (is_array($expected)) {
             $this->assertInternalType('array', $result);
@@ -175,15 +175,15 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testMultiValidate($validates, $params, $exception, $init)
     {
-        $_SERVER['REQUEST_METHOD']	= HttpMethod::GET;
-        $_SERVER['PATH_INFO']		= '/top/index';
+        $_SERVER['REQUEST_METHOD'] = HttpMethod::GET;
+        $_SERVER['PATH_INFO']  = '/top/index';
         
         Server::capture();
         Client::capture();
         
         isset($exception) && $this->setExpectedException($exception);
         
-        $instance	= Request::getInstance(true);
+        $instance = Request::getInstance(true);
         
         for ($i = 2, $length = count($validates); $i < $length; $i += 3) {
             $validates[$i] = $init($validates[$i]);

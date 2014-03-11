@@ -87,7 +87,7 @@ abstract class BaseFilterHost
     /**
      * フィルタオブジェクトのリストを設定します。
      * 
-     * @param Array $filters      新しく設定するフィルタオブジェクトのリスト
+     * @param Array $filter       新しく設定するフィルタオブジェクトのリスト
      * @param String $method_name 実行するメソッドまたは関数の名前
      */
     private function setFilters(array $filter, $method_name)
@@ -105,7 +105,7 @@ abstract class BaseFilterHost
      * フィルタオブジェクトの処理を適用します。
      * 
      * @param String $filter_name         フィルタオブジェクトのクラス名
-     * @param String $namespace	          フィルタホストクラスがある名前空間の名称
+     * @param String $namespace           フィルタホストクラスがある名前空間の名称
      * @param Object $param [初期値=null] フィルターオブジェクトへ渡すパラメータデータ
      * 
      * @throws \BadMethodCallException 不正なフィルタオブジェクトが登録されていた場合

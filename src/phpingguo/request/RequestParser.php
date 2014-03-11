@@ -77,7 +77,7 @@ final class RequestParser
      */
     private function getParseData()
     {
-        $path_info_list = array_values(array_filter(explode('/', Server::PATH_INFO('')), 'strlen'));
+        $path_info_list = Arrays::filter(explode('/', Server::PATH_INFO('')), 'strlen', true);
         
         if (Arrays::checkSize($path_info_list, 3, 0) === false) {
             throw new \RuntimeException('Client has sent an invalid request information.');
