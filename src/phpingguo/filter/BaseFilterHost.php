@@ -105,7 +105,7 @@ abstract class BaseFilterHost
      * フィルタオブジェクトの処理を適用します。
      * 
      * @param String $filter_name         フィルタオブジェクトのクラス名
-     * @param String $namespace	          フィルタホストクラスがある名前空間の名称
+     * @param String $namespace           フィルタホストクラスがある名前空間の名称
      * @param Object $param [初期値=null] フィルターオブジェクトへ渡すパラメータデータ
      * 
      * @throws \BadMethodCallException 不正なフィルタオブジェクトが登録されていた場合
