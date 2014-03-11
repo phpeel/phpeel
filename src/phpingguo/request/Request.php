@@ -3,9 +3,13 @@ namespace Phpingguo\System\Request;
 
 use Phpingguo\ApricotLib\Common\Arrays;
 use Phpingguo\ApricotLib\Enums\LibEnumName;
+use Phpingguo\ApricotLib\Enums\Variable;
+use Phpingguo\ApricotLib\Type\Enum\Enum;
 use Phpingguo\ApricotLib\Type\Enum\EnumClassGenerator as EnumClassGen;
+use Phpingguo\ApricotLib\Type\Float\UnsignedFloat;
 use Phpingguo\ApricotLib\Type\Generics\GenericList;
 use Phpingguo\BananaValidator\Enums\EnumFullName;
+use Phpingguo\BananaValidator\Enums\Validator;
 use Phpingguo\BananaValidator\IValidator;
 use Phpingguo\BananaValidator\Options;
 use Phpingguo\BananaValidator\ValidationErrorException;
@@ -64,7 +68,7 @@ final class Request
     /**
      * クライアントが要求したAPIのバージョン番号を取得します。
      * 
-     * @return \Phpingguo\ApricotLib\Type\Float\UnsignedFloat APIのバージョン番号
+     * @return UnsignedFloat APIのバージョン番号
      */
     public function getApiVersion()
     {
@@ -126,8 +130,8 @@ final class Request
     /**
      * シーンへ渡すパラメータ一覧から指定した名前の値を取得します。
      * 
-     * @param \Phpingguo\ApricotLib\Enums\Variable|String $type 値を取得するパラメータの型のインスタンスまたは名前
-     * @param String $name                                      値を取得するパラメータの名前
+     * @param Variable|String $type 値を取得するパラメータの型のインスタンスまたは名前
+     * @param String $name          値を取得するパラメータの名前
      * 
      * @throws \LogicException バリデーションを通過していないパラメータを取得しようとした場合
      * （※"sys.security.validation_forced"が有効の時のみ）
@@ -148,9 +152,9 @@ final class Request
     /**
      * シーンへ渡すパラメータに指定した名前の値を設定します。
      * 
-     * @param \Phpingguo\ApricotLib\Enums\Variable|String $type パラメータの型のインスタンスまたは名前
-     * @param String $name                                      パラメータの名前
-     * @param mixed $value                                      パラメータに新しく設定する値
+     * @param Variable|String $type パラメータの型のインスタンスまたは名前
+     * @param String $name          パラメータの名前
+     * @param mixed $value          パラメータに新しく設定する値
      */
     public function setParameter($type, $name, $value)
     {
@@ -160,9 +164,9 @@ final class Request
     /**
      * シーンへ渡すパラメータの値を検証します。
      * 
-     * @param \Phpingguo\BananaValidator\Enums\Validator|String $type 実行する検証の種類
-     * @param String $name                                            検証の対象となるパラメータの名前
-     * @param Options $options                                        検証時に利用されるオプション設定
+     * @param Validator|String $type 実行する検証の種類
+     * @param String $name           検証の対象となるパラメータの名前
+     * @param Options $options       検証時に利用されるオプション設定
      * 
      * @throws \RuntimeException 存在しないパラメータを検証しようとした場合
      * 
@@ -190,9 +194,9 @@ final class Request
     /**
      * シーンへ渡すパラメータの値を一括で複数検証します。
      * 
-     * @param \Phpingguo\BananaValidator\Enums\Validator|String $type 検証の種類
-     * @param String $name                                            検証の対象となるパラメータの名前
-     * @param Options $options                                        検証時に利用されるオプション設定
+     * @param Validator|String $type 検証の種類
+     * @param String $name           検証の対象となるパラメータの名前
+     * @param Options $options       検証時に利用されるオプション設定
      * 
      * @throws \InvalidArgumentException メソッドに渡した引数の内容が正しくない場合
      *
@@ -240,14 +244,14 @@ final class Request
     /**
      * パラメータの適正な値を生成します。
      * 
-     * @param \Phpingguo\ApricotLib\Enums\Variable|String $type パラメータの型のインスタンスまたは名前
-     * @param mixed $value                                      適正値を生成するパラメータの名前
+     * @param Variable|String $type パラメータの型のインスタンスまたは名前
+     * @param mixed $value          適正値を生成するパラメータの名前
      * 
      * @return mixed 生成したパラメータの適正値
      */
     private function createParamValue($type, $value)
     {
-        /** @var \Phpingguo\ApricotLib\Type\Enum\Enum $obj_value */
+        /** @var Enum $obj_value */
         list($obj_type, $obj_value) = EnumClassGen::done(LibEnumName::VARIABLE, $type);
         
         if (is_array($value)) {

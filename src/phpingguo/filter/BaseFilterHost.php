@@ -87,7 +87,7 @@ abstract class BaseFilterHost
     /**
      * フィルタオブジェクトのリストを設定します。
      * 
-     * @param Array $filters      新しく設定するフィルタオブジェクトのリスト
+     * @param Array $filter       新しく設定するフィルタオブジェクトのリスト
      * @param String $method_name 実行するメソッドまたは関数の名前
      */
     private function setFilters(array $filter, $method_name)
