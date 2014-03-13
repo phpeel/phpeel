@@ -76,7 +76,7 @@ final class Supervisor
     public static function getConfigPath($sub_dir_name = null)
     {
         return CString::unionDirectoryPath(
-            CString::unionDirectoryPath(static::getAppPath(), 'config'),
+            CString::unionDirectoryPath(static::getProjectPath(), 'config'),
             $sub_dir_name
         );
     }
