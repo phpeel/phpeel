@@ -117,7 +117,8 @@ final class Session
      */
     public function set($key, $value)
     {
-        return Arrays::addWhen($this->getSessionData() && Arrays::isValidKey($key), $_SESSION, $value, $key);
+        return is_array($this->getSessionData()) &&
+            Arrays::addWhen(Arrays::isValidKey($key), $_SESSION, $value, $key);
     }
 
     /**
@@ -129,7 +130,7 @@ final class Session
      */
     public function remove($key)
     {
-        return Arrays::removeWhen($this->getSessionData() != false, $_SESSION, $key);
+        return Arrays::removeWhen(is_array($this->getSessionData()), $_SESSION, $key);
     }
 
     // ---------------------------------------------------------------------------------------------
