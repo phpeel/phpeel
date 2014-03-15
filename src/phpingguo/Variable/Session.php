@@ -150,7 +150,7 @@ final class Session
         $this->destroy();
         
         // 退避したセッションデータを使って新しいセッションデータを生成する
-        Arrays::copyWhen(true, $_SESSION, $this->getNewSessionData($old_session));
+        $this->generateSessionData($old_session);
     }
 
     /**
@@ -160,7 +160,7 @@ final class Session
      *
      * @return Array 生成した新しいセッションデータ
      */
-    private function getNewSessionData(array $old_session)
+    private function generateSessionData(array $old_session)
     {
         $new_session = [];
         $unique_id   = $this->generateUniqueId();
@@ -168,15 +168,14 @@ final class Session
         if ($this->compareUniqueId($old_session, $_COOKIE)) {
             $this->setId($unique_id);
             $this->start();
-            Arrays::copyWhen(true, $new_session, $old_session);
+            Arrays::copyWhen(true, $_SESSION, $old_session);
         } else {
             $this->start();
             $this->regenerateId();
             Arrays::addWhen(true, $new_session, [ 'ValidateUniqId' => $unique_id ], '_SESSION_VALIDATION');
             $this->setCookie('ValidateUniqId', $unique_id);
+            Arrays::copyWhen(true, $_SESSION, $new_session);
         }
-        
-        return $new_session;
     }
 
     /**
