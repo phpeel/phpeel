@@ -2,6 +2,7 @@
 namespace Phpingguo\System\Variable;
 
 use Phpingguo\ApricotLib\Common\Arrays;
+use Phpingguo\ApricotLib\Common\String;
 use Phpingguo\System\Core\Supervisor;
 
 /**
@@ -47,12 +48,18 @@ final class Session
     /**
      * セッションを開始します。
      * 
+     * @param String|\SessionHandlerInterface $save_handler [初期値=null] セッションハンドラ
+     * @param String|Array $save_path [初期値=null]                       セッションの保存先パス
+     * 
      * @throws \RuntimeException セッションが既に開始されていた場合
+     * @throws \LogicException セッションの保存ハンドラあるいは保存パスの初期化に失敗した場合
      */
-    public function open()
+    public function open($save_handler = null, $save_path = null)
     {
         if ($this->isSessionStatus(PHP_SESSION_ACTIVE)) {
             throw new \RuntimeException('The session has been already begun.');
+        } elseif ($this->initSaveHandler($save_handler, $save_path) === false) {
+            throw new \LogicException('Session handler failed initialization.');
         }
         
         $this->init();
@@ -117,7 +124,8 @@ final class Session
      */
     public function set($key, $value)
     {
-        return Arrays::addWhen($this->getSessionData() && Arrays::isValidKey($key), $_SESSION, $value, $key);
+        return is_array($this->getSessionData()) &&
+            Arrays::addWhen(Arrays::isValidKey($key), $_SESSION, $value, $key);
     }
 
     /**
@@ -129,12 +137,65 @@ final class Session
      */
     public function remove($key)
     {
-        return Arrays::removeWhen($this->getSessionData() != false, $_SESSION, $key);
+        return Arrays::removeWhen(is_array($this->getSessionData()), $_SESSION, $key);
     }
 
     // ---------------------------------------------------------------------------------------------
     // private member methods
     // ---------------------------------------------------------------------------------------------
+    /**
+     * セッションデータの保存ハンドラと保存パスを初期化します。
+     *
+     * @param String|\SessionHandlerInterface $save_handler セッション保存ハンドラ
+     * @param String|Array $save_path                       セッション保存先パス、またはその配列
+     *
+     * @return Boolean 初期化処理が成功またはスキップの場合は true。それ以外の場合は false。
+     */
+    private function initSaveHandler($save_handler, $save_path)
+    {
+        $path_result    = is_null($save_path) ? null : $this->setSavePath($save_path);
+        $handler_result = is_null($save_handler) ? null : $this->setSaveHandler($save_handler);
+        
+        return ($path_result !== false && $handler_result !== false);
+    }
+
+    /**
+     * セッションデータの保存ハンドラを設定します。
+     * 
+     * @param String|\SessionHandlerInterface $save_handler セッションの保存で使用するハンドラ
+     * 
+     * @return Boolean|null 設定成功時は true。失敗時は false。未設定時は null。
+     */
+    private function setSaveHandler($save_handler)
+    {
+        if ($save_handler instanceof \SessionHandlerInterface) {
+            /** @noinspection PhpParamsInspection */
+            return session_set_save_handler($save_handler, false);
+        } elseif (String::isValid($save_handler)) {
+            return (ini_set('session.save_handler', $save_handler) !== false);
+        }
+        
+        return false;
+    }
+
+    /**
+     * セッションデータの保存先パスを設定します。
+     * 
+     * @param String|Array $save_path セッションの保存先のパス、またはそれらからなる配列
+     *
+     * @return Boolean|null 設定成功時は true。失敗時は false。未設定時は null。
+     */
+    private function setSavePath($save_path)
+    {
+        $set_save_path = Arrays::isValid($save_path) ? implode(',', $save_path) : $save_path;
+        
+        if (String::isValid($set_save_path)) {
+            return (ini_set('session.save_path', $set_save_path) !== false);
+        }
+        
+        return false;
+    }
+
     /**
      * セッションデータを初期化します。
      */
@@ -149,7 +210,7 @@ final class Session
         $this->destroy();
         
         // 退避したセッションデータを使って新しいセッションデータを生成する
-        Arrays::copyWhen(true, $_SESSION, $this->getNewSessionData($old_session));
+        $this->generateSessionData($old_session);
     }
 
     /**
@@ -159,7 +220,7 @@ final class Session
      *
      * @return Array 生成した新しいセッションデータ
      */
-    private function getNewSessionData(array $old_session)
+    private function generateSessionData(array $old_session)
     {
         $new_session = [];
         $unique_id   = $this->generateUniqueId();
@@ -167,15 +228,14 @@ final class Session
         if ($this->compareUniqueId($old_session, $_COOKIE)) {
             $this->setId($unique_id);
             $this->start();
-            Arrays::copyWhen(true, $new_session, $old_session);
+            Arrays::copyWhen(true, $_SESSION, $old_session);
         } else {
             $this->start();
             $this->regenerateId();
             Arrays::addWhen(true, $new_session, [ 'ValidateUniqId' => $unique_id ], '_SESSION_VALIDATION');
             $this->setCookie('ValidateUniqId', $unique_id);
+            Arrays::copyWhen(true, $_SESSION, $new_session);
         }
-        
-        return $new_session;
     }
 
     /**
@@ -259,6 +319,11 @@ final class Session
      */
     private function destroy()
     {
+        // [Tips] "Session object destruction failed" の警告エラーが発生する時の対処法
+        // ・外部ハンドラを使用中の場合
+        //   利用する外部サーバーが正常稼働しているかどうかを確認すること
+        // ・標準ハンドラを使用中の場合
+        //   セッションファイル生成先ディレクトリが書き込み可能なパーミッションかどうかを確認すること
         ($this->isCliExecuted() === false) && session_destroy();
     }
 

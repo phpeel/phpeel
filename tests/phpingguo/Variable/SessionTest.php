@@ -21,9 +21,11 @@ class SessionTest extends \PHPUnit_Framework_TestCase
         
         $this->assertNull(Session::getInstance()->get($key));
         $this->assertTrue(Session::getInstance()->set($key, $value));
+        $this->assertTrue(Session::getInstance()->isExist($key));
         $this->assertSame($expected, Session::getInstance()->get($key, $value));
         $this->assertArrayHasKey($key, Session::getInstance()->getAll());
         $this->assertTrue(Session::getInstance()->remove($key));
+        $this->assertFalse(Session::getInstance()->isExist($key));
         
         Session::getInstance()->close();
     }
