@@ -319,6 +319,11 @@ final class Session
      */
     private function destroy()
     {
+        // [Tips] "Session object destruction failed" の警告エラーが発生する時の対処法
+        // ・外部ハンドラを使用中の場合
+        //   利用する外部サーバーが正常稼働しているかどうかを確認すること
+        // ・標準ハンドラを使用中の場合
+        //   セッションファイル生成先ディレクトリが書き込み可能なパーミッションかどうかを確認すること
         ($this->isCliExecuted() === false) && session_destroy();
     }
 
