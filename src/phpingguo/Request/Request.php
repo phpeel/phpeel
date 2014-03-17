@@ -8,11 +8,11 @@ use Phpingguo\ApricotLib\Type\Enum\Enum;
 use Phpingguo\ApricotLib\Type\Enum\EnumClassGenerator as EnumClassGen;
 use Phpingguo\ApricotLib\Type\Float\UnsignedFloat;
 use Phpingguo\ApricotLib\Type\Generics\GenericList;
-use Phpingguo\BananaValidator\Enums\EnumFullName;
 use Phpingguo\BananaValidator\Enums\Validator;
 use Phpingguo\BananaValidator\IValidator;
 use Phpingguo\BananaValidator\Options;
 use Phpingguo\BananaValidator\ValidationErrorException;
+use Phpingguo\BananaValidator\ValidatorSupervisor;
 use Phpingguo\System\Core\Config;
 use Phpingguo\System\Core\Supervisor;
 
@@ -174,7 +174,10 @@ final class Request
      */
     public function validate($type, $name, Options $options)
     {
-        list(, $obj_validator) = EnumClassGen::done(EnumFullName::VALIDATOR, $type);
+        list(, $obj_validator) = EnumClassGen::done(
+            ValidatorSupervisor::getEnumFullName(ValidatorSupervisor::ENUM_VALIDATOR),
+            $type
+        );
         
         $param_value = $this->getRequestData()->getParameter($name);
         
