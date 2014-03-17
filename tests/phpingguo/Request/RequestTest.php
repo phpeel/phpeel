@@ -1,11 +1,11 @@
 <?php
 namespace Phpingguo\System\Tests\Request;
 
-use Phpingguo\ApricotLib\Enums\HttpMethod;
 use Phpingguo\ApricotLib\Enums\Variable;
 use Phpingguo\BananaValidator\Enums\Validator;
 use Phpingguo\BananaValidator\Options;
 use Phpingguo\System\Core\Config;
+use Phpingguo\System\Enums\HttpMethod;
 use Phpingguo\System\Request\Request;
 use Phpingguo\System\Variable\Client;
 use Phpingguo\System\Variable\Server;

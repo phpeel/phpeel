@@ -1,8 +1,8 @@
 <?php
 namespace Phpingguo\System\Tests\Request;
 
-use Phpingguo\ApricotLib\Enums\HttpMethod;
 use Phpingguo\System\Core\Config;
+use Phpingguo\System\Enums\HttpMethod;
 use Phpingguo\System\Request\RequestParser;
 use Phpingguo\System\Variable\Client;
 use Phpingguo\System\Variable\Server;
