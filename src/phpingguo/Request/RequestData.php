@@ -1,12 +1,11 @@
 <?php
 namespace Phpingguo\System\Request;
 
-use Phpingguo\ApricotLib\Enums\HttpMethod;
 use Phpingguo\ApricotLib\Common\Arrays;
+use Phpingguo\ApricotLib\Common\String;
 use Phpingguo\ApricotLib\Type\Float\UnsignedFloat;
-use Phpingguo\ApricotLib\Type\String\String;
-use Phpingguo\ApricotLib\Type\String\Text;
 use Phpingguo\System\Core\Config;
+use Phpingguo\System\Enums\HttpMethod;
 
 /**
  * クライアントからサーバーへ送信されたリクエストデータを表すクラスです。
@@ -120,7 +119,7 @@ final class RequestData
      */
     public function isExistParameter($name)
     {
-        if (Text::getInstance()->isValid($name) === false) {
+        if (String::isValid($name) === false) {
             throw new \InvalidArgumentException('$name parameter only accepts string.');
         }
         
@@ -151,7 +150,7 @@ final class RequestData
     public function setParameter($name, $value)
     {
         // 文字列以外はパラメータ配列のキーの値として受け付けない
-        if (Arrays::addWhen(Text::getInstance()->isValid($name), $this->params, $value, $name) === false) {
+        if (Arrays::addWhen(String::isValid($name), $this->params, $value, $name) === false) {
             throw new \InvalidArgumentException('$name parameter only accepts scalar.');
         }
     }
@@ -170,7 +169,7 @@ final class RequestData
             $method,
             HttpMethod::GET,
             function () use ($method) {
-                return String::getInstance()->isValid($method);
+                return String::isValid($method, true);
             }
         );
     }
@@ -193,7 +192,7 @@ final class RequestData
      */
     private function setModuleName($module)
     {
-        $this->module = String::getInstance()->isValid($module) ? $module :
+        $this->module = String::isValid($module, true) ? $module :
             Config::get('sys.default_module_name', 'top');
     }
     
@@ -204,7 +203,7 @@ final class RequestData
      */
     private function setSceneName($scene)
     {
-        $this->scene = String::getInstance()->isValid($scene) ? $scene :
+        $this->scene = String::isValid($scene, true) ? $scene :
             Config::get('sys.default_scene_name', 'index');
     }
 }

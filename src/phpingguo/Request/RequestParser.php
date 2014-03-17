@@ -173,7 +173,7 @@ final class RequestParser
     /**
      * クライアントがリクエストした API のパラメータを取得します。
      * 
-     * @param \Phpingguo\ApricotLib\Enums\HttpMethod|String $method クライアントがリクエストした HTTP メソッド
+     * @param \Phpingguo\System\Enums\HttpMethod|String $method クライアントがリクエストした HTTP メソッド
      * 
      * @return Array クライアントがリクエストした API のパラメータの一覧を返します。
      */
