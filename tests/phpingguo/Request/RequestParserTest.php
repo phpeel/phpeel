@@ -2,10 +2,10 @@
 namespace Phpingguo\System\Tests\Request;
 
 use Phpingguo\ApricotLib\Enums\HttpMethod;
-use Phpingguo\System\Variable\Client;
 use Phpingguo\System\Core\Config;
-use Phpingguo\System\Variable\Server;
 use Phpingguo\System\Request\RequestParser;
+use Phpingguo\System\Variable\Client;
+use Phpingguo\System\Variable\Server;
 
 class RequestParserTest extends \PHPUnit_Framework_TestCase
 {
@@ -16,8 +16,24 @@ class RequestParserTest extends \PHPUnit_Framework_TestCase
             [ HttpMethod::GET, '/top/index', [], [ 1.0, 'top', 'index' ], false, false, null ],
             [ HttpMethod::HEAD, '/top/index', [], [ 1.0, 'top', 'index' ], false, false, null ],
             [ HttpMethod::HEAD, '/top/index', [], [ 1.0, 'top', 'index' ], false, true, null ],
-            [ HttpMethod::GET, '/top/index', [ 'idols' => [ '前川 みく', '安部 菜々', '緒方 智絵里' ] ], [ 1.0, 'top', 'index' ], false, true, null ],
-            [ HttpMethod::HEAD, '/top/index', [ 'idols' => [ '前川 みく', '安部 菜々', '緒方 智絵里' ] ], [ 1.0, 'top', 'index' ], false, false, null ],
+            [
+                HttpMethod::GET,
+                '/top/index',
+                [ 'idols' => [ '前川 みく', '安部 菜々', '緒方 智絵里' ] ],
+                [ 1.0, 'top', 'index' ],
+                false,
+                true,
+                null
+            ],
+            [
+                HttpMethod::HEAD,
+                '/top/index',
+                [ 'idols' => [ '前川 みく', '安部 菜々', '緒方 智絵里' ] ],
+                [ 1.0, 'top', 'index' ],
+                false,
+                false,
+                null
+            ],
             [ HttpMethod::GET, '/TOP/INDEX', [], [ 1.0, 'top', 'index' ], false, true, null ],
             [ HttpMethod::GET, '/top', [], [ 1.0, 'top', 'index' ], false, true, null ],
             [ HttpMethod::GET, '/top/', [], [ 1.0, 'top', 'index' ], false, true, null ],
@@ -35,12 +51,8 @@ class RequestParserTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerParseRequest
      */
-    public function testParseRequest($method, $path_info, $params, $expected_list, $versioning, $use_requests, $exception)
+    public function testParseRequest($method, $path_info, $params, $expects, $versioning, $use_request, $exception)
     {
-        global $__CONFIG;
-        
-        $__CONFIG = [];
-        
         $_SERVER['REQUEST_METHOD'] = $method;
         
         isset($path_info) && $_SERVER['PATH_INFO'] = $path_info;
@@ -48,7 +60,7 @@ class RequestParserTest extends \PHPUnit_Framework_TestCase
         count($params) > 0 && $_REQUEST = $params;
         
         Config::set('sys.versioning.allowed', $versioning);
-        Config::set('sys.security.use_requests', $use_requests);
+        Config::set('sys.security.use_requests', $use_request);
         Server::capture();
         Client::capture();
         
@@ -56,8 +68,8 @@ class RequestParserTest extends \PHPUnit_Framework_TestCase
         
         $this->assertInstanceOf('Phpingguo\System\Request\RequestData', $result);
         count($params) > 0 && $this->assertArrayNotHasKey('idols', $result->getParameters());
-        $this->assertSame($expected_list[0], $result->getApiVersion());
-        $this->assertSame($expected_list[1], $result->getModuleName());
-        $this->assertSame($expected_list[2], $result->getSceneName());
+        $this->assertSame($expects[0], $result->getApiVersion());
+        $this->assertSame($expects[1], $result->getModuleName());
+        $this->assertSame($expects[2], $result->getSceneName());
     }
 }

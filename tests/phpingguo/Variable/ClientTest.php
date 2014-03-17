@@ -24,9 +24,6 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function test($method, $request, $get, $post, $expected, $use_request)
     {
-        global $__CONFIG;
-        $__CONFIG = [];
-        
         $_REQUEST = $request;
         $_GET     = $get;
         $_POST    = $post;

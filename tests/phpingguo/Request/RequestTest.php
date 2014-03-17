@@ -3,12 +3,12 @@ namespace Phpingguo\System\Tests\Request;
 
 use Phpingguo\ApricotLib\Enums\HttpMethod;
 use Phpingguo\ApricotLib\Enums\Variable;
-use Phpingguo\System\Variable\Client;
-use Phpingguo\System\Core\Config;
-use Phpingguo\System\Variable\Server;
 use Phpingguo\BananaValidator\Enums\Validator;
-use Phpingguo\System\Request\Request;
 use Phpingguo\BananaValidator\Options;
+use Phpingguo\System\Core\Config;
+use Phpingguo\System\Request\Request;
+use Phpingguo\System\Variable\Client;
+use Phpingguo\System\Variable\Server;
 
 class RequestTest extends \PHPUnit_Framework_TestCase
 {
@@ -59,7 +59,15 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [ Variable::STRING, Validator::TEXT, [ 'whitespace' ], 'name', '緒方 智絵里', null, null ],
-            [ Variable::STRING, Validator::TEXT, [ 'whitespace' ], '397cherry', [ '前川 みく', '安部 菜々', '緒方 智絵里' ], null, null ],
+            [
+                Variable::STRING,
+                Validator::TEXT,
+                [ 'whitespace' ],
+                '397cherry',
+                [ '前川 みく', '安部 菜々', '緒方 智絵里' ],
+                null,
+                null
+            ],
             [ Variable::STRING, Validator::TEXT, [ 'whitespace' ], 'name2', '緒方 智絵里', null, 'LogicException' ],
         ];
     }
@@ -125,8 +133,24 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             [ Variable::TEXT, Validator::TEXT, 'v_name2', '緒方 智絵里', [ 'whitespace' ], true, null ],
             [ Variable::TEXT, Validator::TEXT, 'v_name3', null, [], [], 'RuntimeException' ],
             [ Variable::TEXT, Validator::TEXT, 'v_name4', [ '前川 みく', '安部 菜々', '緒方 智絵里' ], [], [], null ],
-            [ Variable::TEXT, Validator::TEXT, 'v_name5', [ '前川 みく', '安部 菜々', '緒方 智絵里' ], [ 'whitespace' ], true, null ],
-            [ Variable::TEXT, Validator::TEXT, 'v_name6', [ '前川 みく', '', '緒方 智絵里' ], [ 'whitespace', 'nullable' ], false, null ],
+            [
+                Variable::TEXT,
+                Validator::TEXT,
+                'v_name5',
+                [ '前川 みく', '安部 菜々', '緒方 智絵里' ],
+                [ 'whitespace' ],
+                true,
+                null
+            ],
+            [
+                Variable::TEXT,
+                Validator::TEXT,
+                'v_name6',
+                [ '前川 みく', '', '緒方 智絵里' ],
+                [ 'whitespace', 'nullable' ],
+                false,
+                null
+            ],
             [ Variable::TEXT, Validator::TEXT, 'v_name7', [ '' ], [ 'nullable' ], false, null ],
         ];
     }
@@ -165,7 +189,11 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             [ [ Validator::TEXT, 'mv_name3', [ 'nullable' ] ], [ 'mv_name3' => '' ], null ],
             [ [], [], 'InvalidArgumentException'],
             [ [ Validator::TEXT, 'mv_name4', [], Validator::TEXT ], [], 'InvalidArgumentException'],
-            [ [ Validator::TEXT, 'mv_name5_1', [  ], Validator::TEXT, 'mv_name5_2', [  ] ], [ 'mv_name5_1' => '安部 菜々', 'mv_name5_2' => '緒方 智絵里' ], null ],
+            [
+                [ Validator::TEXT, 'mv_name5_1', [  ], Validator::TEXT, 'mv_name5_2', [  ] ],
+                [ 'mv_name5_1' => '安部 菜々', 'mv_name5_2' => '緒方 智絵里' ],
+                null
+            ],
         ];
     }
     
