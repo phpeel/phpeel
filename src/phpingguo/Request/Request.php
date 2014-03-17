@@ -2,8 +2,8 @@
 namespace Phpingguo\System\Request;
 
 use Phpingguo\ApricotLib\Common\Arrays;
-use Phpingguo\ApricotLib\Enums\LibEnumName;
 use Phpingguo\ApricotLib\Enums\Variable;
+use Phpingguo\ApricotLib\LibSupervisor;
 use Phpingguo\ApricotLib\Type\Enum\Enum;
 use Phpingguo\ApricotLib\Type\Enum\EnumClassGenerator as EnumClassGen;
 use Phpingguo\ApricotLib\Type\Float\UnsignedFloat;
@@ -252,7 +252,10 @@ final class Request
     private function createParamValue($type, $value)
     {
         /** @var Enum $obj_value */
-        list($obj_type, $obj_value) = EnumClassGen::done(LibEnumName::VARIABLE, $type);
+        list($obj_type, $obj_value) = EnumClassGen::done(
+            LibSupervisor::getEnumFullName(LibSupervisor::ENUM_VARIABLE),
+            $type
+        );
         
         if (is_array($value)) {
             return (new GenericList($obj_type, $value))->toArray();
