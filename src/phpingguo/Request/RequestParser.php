@@ -127,7 +127,7 @@ final class RequestParser
         
         if (empty($matches[1])) {
             return null;
-        } elseif (Config::get('sys.versioning.allowed', false) === false) {
+        } elseif (Config::get('sys.versioning.enabled', false) === false) {
             // バージョニングURLを許容していないにも関わらず使用した場合
             throw new \LogicException('"Versioning url address" function is invalid.');
         } elseif (strpos($matches[1], $separator) === false) {
@@ -147,7 +147,7 @@ final class RequestParser
      */
     private function searchNumberSeparator($target)
     {
-        $separator = Config::get('sys.versioning.num_separator', '.');
+        $separator = Config::get('sys.versioning.separator', '.');
         $pattern   = '/^v([0-9]+(' . preg_quote($separator) . '|[^0-9]*)[0-9]+)$/i';
         $matches   = [];
         
