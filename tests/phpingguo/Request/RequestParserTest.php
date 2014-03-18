@@ -59,7 +59,7 @@ class RequestParserTest extends \PHPUnit_Framework_TestCase
         isset($exception) && $this->setExpectedException($exception);
         count($params) > 0 && $_REQUEST = $params;
         
-        Config::set('sys.versioning.allowed', $versioning);
+        Config::set('sys.versioning.enabled', $versioning);
         Config::set('sys.security.use_requests', $use_request);
         Server::capture();
         Client::capture();
