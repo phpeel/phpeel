@@ -22,6 +22,7 @@ final class Supervisor
     const ENUM_RESPONSE_CODE     = 'ResponseCode';
     const ENUM_X_FRAME_OPTIONS   = 'XFrameOptions';
     const ENUM_TEMPLATE_ENGINE   = 'TemplateEngine';
+    const ENUM_MODULE_FILTER     = 'ModuleFilter';
 
     // ---------------------------------------------------------------------------------------------
     // public static methods
