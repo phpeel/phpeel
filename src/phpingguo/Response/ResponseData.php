@@ -327,7 +327,11 @@ final class ResponseData
         
         $is_string    = String::isValid($url_pattern);
         $is_ctrl_chr  = (preg_match('/(%0D|%0A)+/', urlencode($url)) === 1);
-        $is_not_match = String::isNotRegexMatched($url, '/^https?\:\/\/(' . $url_pattern .')/i', 1);
+        $is_not_match = String::isNotRegexMatched(
+            $url,
+            '/^https?\:\/\/(' . $url_pattern .')[-_.!~*\'();\/?:@&=+$,%#a-z0-9]*$/i',
+            1
+        );
         
         return ($is_string === false || $is_ctrl_chr === true || $is_not_match === true);
     }
