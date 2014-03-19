@@ -3,6 +3,7 @@ namespace Phpingguo\System\Filter\Output;
 
 use Phpingguo\System\Core\Supervisor;
 use Phpingguo\System\Filter\BaseFilterHost;
+use Phpingguo\System\Response\Response;
 
 /**
  * 出力型フィルタを管理するクラスです。
