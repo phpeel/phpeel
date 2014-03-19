@@ -21,6 +21,7 @@ final class Supervisor
     const ENUM_HTTP_METHOD       = 'HttpMethod';
     const ENUM_RESPONSE_CODE     = 'ResponseCode';
     const ENUM_X_FRAME_OPTIONS   = 'XFrameOptions';
+    const ENUM_TEMPLATE_ENGINE   = 'TemplateEngine';
 
     // ---------------------------------------------------------------------------------------------
     // public static methods
