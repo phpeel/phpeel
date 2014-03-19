@@ -74,7 +74,7 @@ final class Session
             Arrays::clear($_SESSION);
             $this->destroy();
             
-            if (Arrays::isExistKey($_COOKIE, 'ValidateUniqId')) {
+            if (Arrays::isContain($_COOKIE, 'ValidateUniqId')) {
                 $this->setCookie('ValidateUniqId', '', time() - 42000);
             }
         }
@@ -89,7 +89,7 @@ final class Session
      */
     public function isExist($key)
     {
-        return Arrays::isExistKey($this->getSessionData(), $key);
+        return Arrays::isExist($this->getSessionData(), $key);
     }
 
     /**

@@ -2,8 +2,8 @@
 namespace Phpingguo\System\Request;
 
 use Phpingguo\ApricotLib\Common\Arrays;
+use Phpingguo\ApricotLib\Common\Number;
 use Phpingguo\ApricotLib\Common\String;
-use Phpingguo\ApricotLib\Type\Float\UnsignedFloat;
 use Phpingguo\System\Core\Config;
 use Phpingguo\System\Enums\HttpMethod;
 
@@ -30,11 +30,11 @@ final class RequestData
     /**
      * RequestData クラスの新しいインスタンスを初期化します。
      *
-     * @param HttpMethod|String $method                 クライアントが要求したメソッドの名前
-     * @param String $module                            要求したモジュールの名前
-     * @param Float|UnsignedFloat $version [初期値=0.0] 要求したバージョン番号
-     * @param String $scene [初期値=null]               要求したシーンの名前
-     * @param Array $params [初期値=array()]            要求したシーンに渡すパラメータの配列
+     * @param HttpMethod|String $method      クライアントが要求したメソッドの名前
+     * @param String $module                 要求したモジュールの名前
+     * @param Float $version [初期値=0.0]    要求したバージョン番号
+     * @param String $scene [初期値=null]    要求したシーンの名前
+     * @param Array $params [初期値=array()] 要求したシーンに渡すパラメータの配列
      */
     public function __construct($method, $module, $version = 0.0, $scene = null, array $params = [])
     {
@@ -61,7 +61,7 @@ final class RequestData
     /**
      * 要求された API のバージョン番号を取得します。
      * 
-     * @return UnsignedFloat 要求された API のバージョン番号
+     * @return Float 要求された API のバージョン番号
      */
     public function getApiVersion()
     {
@@ -177,12 +177,12 @@ final class RequestData
     /**
      * 要求された API のバージョン番号を設定します。
      * 
-     * @param UnsignedFloat $version 要求された API のバージョン番号
+     * @param Float $version 要求された API のバージョン番号
      */
     private function setApiVersion($version)
     {
-        $this->version = (empty($version) === false && UnsignedFloat::getInstance()->isValue($version)) ?
-            $version : floatval(Config::get('sys.versioning.default_num', 1.0));
+        $this->version = (empty($version) === false && Number::isValidUFloat($version)) ? $version :
+            floatval(Config::get('sys.versioning.default_num', 1.0));
     }
     
     /**
@@ -192,8 +192,7 @@ final class RequestData
      */
     private function setModuleName($module)
     {
-        $this->module = String::isValid($module, true) ? $module :
-            Config::get('sys.default_module_name', 'top');
+        $this->module = String::isValid($module, true) ? $module : Config::get('sys.default_module_name', 'top');
     }
     
     /**
@@ -203,7 +202,6 @@ final class RequestData
      */
     private function setSceneName($scene)
     {
-        $this->scene = String::isValid($scene, true) ? $scene :
-            Config::get('sys.default_scene_name', 'index');
+        $this->scene = String::isValid($scene, true) ? $scene : Config::get('sys.default_scene_name', 'index');
     }
 }
