@@ -3,6 +3,7 @@ namespace Phpingguo\System\Response;
 
 use Phpingguo\ApricotLib\Common\String;
 use Phpingguo\ApricotLib\Enums\Charset;
+use Phpingguo\System\Core\Supervisor;
 use Phpingguo\System\Enums\ContentType;
 use Phpingguo\System\Enums\ResponseCode;
 use Phpingguo\System\Enums\XFrameOptions;
@@ -32,7 +33,10 @@ final class Response
      */
     public function __construct($code = null, $type = null, $charset = null)
     {
-        $this->setResponseData(new ResponseData($code, $type, $charset));
+        $instance = Supervisor::getDiContainer(null)
+            ->newInstance('Phpingguo\\System\\Response\\ResponseData', [ $code, $type, $charset ]);
+        
+        $this->setResponseData($instance);
     }
 
     // ---------------------------------------------------------------------------------------------

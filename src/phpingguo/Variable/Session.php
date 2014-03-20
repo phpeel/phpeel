@@ -39,7 +39,7 @@ final class Session
      */
     public static function getInstance()
     {
-        return Supervisor::getDiContainer('system')->get(get_called_class());
+        return Supervisor::getDiContainer(Supervisor::DIS_SYSTEM)->get(get_called_class());
     }
 
     // ---------------------------------------------------------------------------------------------

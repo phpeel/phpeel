@@ -5,3 +5,4 @@
 - 'Phpingguo\System\Filter\Post\FilterHost'
 - 'Phpingguo\System\Filter\Input\FilterHost'
 - 'Phpingguo\System\Filter\Output\FilterHost'
+- 'Phpingguo\System\Generator\GeneratorProxy'
