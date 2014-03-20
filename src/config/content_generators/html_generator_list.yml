@@ -1,0 +1,2 @@
+TWIG: 'Phpingguo\System\Generator\Html\Engine\TwigProxy'
+SMARTY: 'Phpingguo\System\Generator\Html\Engine\SmartyProxy'
