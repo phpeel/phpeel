@@ -1,2 +1,3 @@
 HTML: 'Phpingguo\System\Generator\Html\ContentGenerator'
+XML: 'Phpingguo\System\Generator\Xml\ContentGenerator'
 JSON: 'Phpingguo\System\Generator\Json\ContentGenerator'
