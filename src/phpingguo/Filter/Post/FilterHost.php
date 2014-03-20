@@ -22,7 +22,7 @@ final class FilterHost extends BaseFilterHost
      */
     public static function getInstance()
     {
-        return Supervisor::getDiContainer(Supervisor::DIS_SYS_SGLT)->get(__CLASS__);
+        return Supervisor::getDiContainer(Supervisor::DIS_SYSTEM)->get(__CLASS__);
     }
     
     // ---------------------------------------------------------------------------------------------

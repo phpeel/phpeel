@@ -33,7 +33,7 @@ final class RequestParser
     public static function getInstance($reanalyze = false)
     {
         /** @var RequestParser $instance */
-        $instance = Supervisor::getDiContainer(Supervisor::DIS_SYS_SGLT)->get(__CLASS__);
+        $instance = Supervisor::getDiContainer(Supervisor::DIS_SYSTEM)->get(__CLASS__);
         
         if (empty($instance->req_data) || $reanalyze === true) {
             $instance->set($instance->getParseData());

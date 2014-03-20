@@ -43,7 +43,7 @@ final class Request
     public static function getInstance($reanalyze = false)
     {
         /** @var Request $instance */
-        $instance = Supervisor::getDiContainer(Supervisor::DIS_SYS_SGLT)->get(__CLASS__);
+        $instance = Supervisor::getDiContainer(Supervisor::DIS_SYSTEM)->get(__CLASS__);
         
         if (empty($instance->req_data) || $reanalyze === true) {
             $instance->setRequestData(RequestParser::getInstance($reanalyze)->get());
