@@ -17,8 +17,7 @@ final class Supervisor
     // ---------------------------------------------------------------------------------------------
     const PATH_CONFIG_DI         = 'di_preset_services';
     const PATH_CONFIG_REGULATION = 'various_regulations';
-    const DIS_SYS_SGLT           = 'system';
-    const DIS_SYS_REGEN          = 'sys_regen';
+    const DIS_SYSTEM             = 'system';
     const ENUM_CONTENT_TYPE      = 'ContentType';
     const ENUM_HTTP_METHOD       = 'HttpMethod';
     const ENUM_RESPONSE_CODE     = 'ResponseCode';
