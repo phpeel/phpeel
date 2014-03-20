@@ -7,7 +7,7 @@ use Phpingguo\System\Generator\TGeneratorList;
 use Phpingguo\System\Module\BaseModule;
 
 /**
- * HTML/XMLのコンテンツデータを生成するクラスです。
+ * HTMLのコンテンツデータを生成するクラスです。
  * 
  * @final [継承禁止クラス]
  * @author hiroki sugawara

@@ -4,7 +4,7 @@ namespace Phpingguo\System\Generator\Html;
 use Phpingguo\System\Module\BaseModule;
 
 /**
- * HTML/XMLのコンテンツデータを生成するクラスの共通処理を定義するインターフェイスです。
+ * HTMLのコンテンツデータを生成するクラスの共通処理を定義するインターフェイスです。
  * 
  * @author hiroki sugawara
  */
