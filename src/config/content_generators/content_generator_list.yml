@@ -1,0 +1,2 @@
+HTML: 'Phpingguo\System\Generator\Html\ContentGenerator'
+JSON: 'Phpingguo\System\Generator\Json\ContentGenerator'
