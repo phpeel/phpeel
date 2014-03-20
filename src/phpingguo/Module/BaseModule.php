@@ -3,6 +3,7 @@ namespace Phpingguo\System\Module;
 
 use Phpingguo\ApricotLib\Common\Arrays;
 use Phpingguo\ApricotLib\Common\String;
+use Phpingguo\System\Core\Supervisor;
 use Phpingguo\System\Enums\ModuleFilter;
 use Phpingguo\System\Request\Request;
 use Phpingguo\System\Response\Response;
@@ -37,7 +38,10 @@ abstract class BaseModule
      */
     public function __construct(Request $request = null)
     {
-        $this->setModuleData(new ModuleData($request));
+        $instance = Supervisor::getDiContainer(null)
+            ->newInstance('Phpingguo\\System\\Module\\ModuleData', [ $request ]);
+        
+        $this->setModuleData($instance);
         $this->getModuleData()->setModuleName($request ? $request->getModuleName() : null);
         $this->getModuleData()->setSceneName($request ? $request->getSceneName() : null);
     }

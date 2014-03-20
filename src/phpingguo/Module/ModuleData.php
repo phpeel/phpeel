@@ -38,9 +38,11 @@ final class ModuleData
      */
     public function __construct(Request $request = null, $engine = null)
     {
+        $response = Supervisor::getDiContainer(null)->newInstance('Phpingguo\\System\\Response\\Response');
+        
         $this->setRequest($request);
-        $this->setResponse(new Response());
-        $this->setVariable('response', $this->getResponse());
+        $this->setResponse($response);
+        $this->setVariable('response', $response);
         $this->setEngine($engine);
     }
 
