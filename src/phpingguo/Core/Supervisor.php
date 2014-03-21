@@ -113,6 +113,6 @@ final class Supervisor
      */
     public static function getEnumFullName($enum_name)
     {
-        return CString::getEnumFullName("Phpingguo\\System\\Enums\\", $enum_name);
+        return CString::concat("Phpingguo\\System\\Enums\\", $enum_name);
     }
 }
