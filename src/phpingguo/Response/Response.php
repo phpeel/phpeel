@@ -262,7 +262,7 @@ final class Response
         $this->setHeader('Cache-Control: no-cache');
         $this->setHeader('Expires: ' . date('r'));
         $this->setHeader("Content-Type: {$this->getContentType()}; charset={$this->getCharset()}");
-        $this->setHeader('X-Frame-Options: deny');
+        $this->setHeader("X-Frame-Options: {$this->getFrameOption()}");
         
         $this->setHeaderRegisterCallback();
         

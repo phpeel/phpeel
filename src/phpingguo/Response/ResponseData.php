@@ -46,7 +46,7 @@ final class ResponseData
         $this->setResponseCode($code);
         $this->setContentType($type);
         $this->setCharset($charset);
-        $this->setFrameOption(XFrameOptions::DENY);
+        $this->setFrameOption(Config::get('sys.security.default_x_frame_options'));
     }
 
      // ---------------------------------------------------------------------------------------------
