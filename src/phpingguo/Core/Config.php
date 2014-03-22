@@ -1,6 +1,8 @@
 <?php
 namespace Phpingguo\System\Core;
 
+use Phpingguo\ApricotLib\Common\Arrays;
+
 /**
  * アプリケーションの設定を保持するクラスです。
  * 
@@ -37,23 +39,7 @@ final class Config
      */
     public static function get($key, $default_value = null)
     {
-        $config = static::$configs;
-        $result = $default_value;
-        $keys   = explode('.', $key);
-        
-        foreach ($keys as $key_value) {
-            if (isset($config[$key_value]) === false) {
-                $result = $default_value;
-                
-                break;
-            }
-            
-            $temp   = $config[$key_value];
-            $result = $temp;
-            $config = $temp;
-        }
-        
-        return $result;
+        return Arrays::findValue(static::$configs, $key, $default_value, '.');
     }
     
     /**
@@ -74,15 +60,6 @@ final class Config
      */
     public static function set($key, $value)
     {
-        $keys = array_reverse(explode('.', $key));
-        $list = null;
-        
-        foreach ($keys as $list_key) {
-            $list = is_null($list) ? [ $list_key => $value ] : [ $list_key => $list ];
-        }
-        
-        if (empty($list) === false) {
-            static::$configs = array_replace_recursive(static::$configs, $list);
-        }
+        Arrays::putValue(static::$configs, $key, $value, '.');
     }
 }
