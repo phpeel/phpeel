@@ -29,10 +29,7 @@ trait TGeneratorList
      */
     final protected function initGeneratorList($yaml_filename)
     {
-        $parsed_data = General::getParsedYamlFile(
-            Supervisor::getConfigPath('content_generators'),
-            $yaml_filename
-        );
+        $parsed_data = General::getParsedYamlFile(Supervisor::getServerEnvPath(), $yaml_filename);
         
         Arrays::isValid($parsed_data) && $this->generator_list = $parsed_data;
     }
