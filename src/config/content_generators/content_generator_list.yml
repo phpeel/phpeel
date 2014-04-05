@@ -1,3 +1,14 @@
-HTML: 'Phpingguo\System\Generator\Html\ContentGenerator'
-XML: 'Phpingguo\System\Generator\Xml\ContentGenerator'
-JSON: 'Phpingguo\System\Generator\Json\ContentGenerator'
+HTML:
+  class: 'Phpingguo\System\Generator\Html\ContentGenerator'
+  wrapper:
+    TWIG:
+      class: 'Phpingguo\System\Generator\Html\Engine\TwigProxy'
+    SMARTY:
+      class: 'Phpingguo\System\Generator\Html\Engine\SmartyProxy'
+XML:
+  class: 'Phpingguo\System\Generator\Xml\ContentGenerator'
+JSON:
+  class: 'Phpingguo\System\Generator\Json\ContentGenerator'
+  options:
+    - JSON_PRETTY_PRINT
+    - JSON_UNESCAPED_SLASHES
