@@ -3,8 +3,14 @@ HTML:
   wrapper:
     TWIG:
       class: 'Phpingguo\System\Generator\Html\Engine\TwigProxy'
+      options:
+        DebugMode: true
     SMARTY:
       class: 'Phpingguo\System\Generator\Html\Engine\SmartyProxy'
+      options:
+        DebugMode: true
+        LeftDelimiter: '{{'
+        RightDelimiter: '}}'
 XML:
   class: 'Phpingguo\System\Generator\Xml\ContentGenerator'
 JSON:
