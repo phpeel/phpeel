@@ -14,8 +14,9 @@ interface IHtmlGenerator
      * 出力するコンテンツデータを取得します。
      *
      * @param BaseModule $module 出力に使用する情報を保持するモジュールのインスタンス
+     * @param Array $options     インスタンスで使用するオプションデータを保持する配列
      * 
      * @return String コンテンツデータ
      */
-    public function render(BaseModule $module);
+    public function render(BaseModule $module, array $options);
 }
