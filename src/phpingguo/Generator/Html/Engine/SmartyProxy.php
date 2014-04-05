@@ -15,7 +15,7 @@ final class SmartyProxy implements IHtmlGenerator
     /**
      * @see IHtmlGenerator::render
      */
-    public function render(BaseModule $module)
+    public function render(BaseModule $module, array $options)
     {
         return __CLASS__;
     }

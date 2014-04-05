@@ -15,8 +15,8 @@ final class TwigProxy implements IHtmlGenerator
     /**
      * @see IHtmlGenerator::render
      */
-    public function render(BaseModule $module)
+    public function render(BaseModule $module, array $options)
     {
-        return __CLASS__;
+        return  __CLASS__;
     }
 }
