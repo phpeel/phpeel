@@ -3,6 +3,7 @@ namespace Phpingguo\System\Core;
 
 use Phpingguo\ApricotLib\Common\String as CString;
 use Phpingguo\CitronDI\AuraDIWrapper;
+use Phpingguo\System\Variable\Server;
 
 /**
  * フレームワークを統括するクラスです。
@@ -85,6 +86,19 @@ final class Supervisor
         return CString::unionDirectoryPath(
             CString::unionDirectoryPath(static::getProjectPath(), 'config'),
             $sub_dir_name
+        );
+    }
+
+    /**
+     * 実行するサーバーごとの設定ファイルがあるディレクトリのファイルパスを取得します。
+     * 
+     * @return String 実行するサーバーごとの設定ファイルがあるディレクトリのファイルパス
+     */
+    public static function getServerEnvPath()
+    {
+        return CString::unionDirectoryPath(
+            static::getConfigPath('server_environments'),
+            Server::getValue(Server::SRV_ENV_NAME, 'local')
         );
     }
 

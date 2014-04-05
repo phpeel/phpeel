@@ -52,12 +52,13 @@ final class GeneratorProxy
      */
     public function buildContent(BaseModule $module)
     {
-        /** @var IGenerator $generator */
-        $generator = $this->getGeneratorInstance(
-            $module->getResponse()->getContentType(),
-            new ContentType(ContentType::HTML)
-        );
+        $enum    = $module->getResponse()->getContentType();
+        $default = new ContentType(ContentType::HTML);
         
-        return $generator->build($module);
+        /** @var IGenerator $generator */
+        $generator = $this->getGeneratorInstance($enum, $default);
+        $options   = $this->getGeneratorOptions($enum, $default);
+        
+        return $generator->build($module, $options);
     }
 }

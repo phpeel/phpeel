@@ -24,10 +24,12 @@ final class ContentGenerator implements IGenerator
     // ---------------------------------------------------------------------------------------------
     /**
      * ContentGenerator クラスの新しいインスタンスを初期化します。
+     * 
+     * @param Array $generator_list コンテンツデータを生成するクラスのインスタンス
      */
-    public function __construct()
+    public function __construct(array $generator_list)
     {
-        $this->initGeneratorList('html_generator_list');
+        $this->setGeneratorList($generator_list);
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -36,14 +38,15 @@ final class ContentGenerator implements IGenerator
     /**
      * @see IGenerator::build
      */
-    public function build(BaseModule $module)
+    public function build(BaseModule $module, array $options)
     {
-        /** @var IHtmlGenerator $builder */
-        $builder = $this->getGeneratorInstance(
-            $module->getModuleData()->getEngine(),
-            new TemplateEngine(TemplateEngine::TWIG)
-        );
+        $enum    = $module->getModuleData()->getEngine();
+        $default = new TemplateEngine(TemplateEngine::TWIG);
         
-        return $builder->render($module);
+        /** @var IHtmlGenerator $builder */
+        $builder       = $this->getGeneratorInstance($enum, $default);
+        $build_options = $this->getGeneratorOptions($enum, $default);
+        
+        return $builder->render($module, $build_options);
     }
 }
