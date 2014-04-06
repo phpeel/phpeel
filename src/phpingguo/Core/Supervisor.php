@@ -92,13 +92,15 @@ final class Supervisor
     /**
      * 実行するサーバーごとの設定ファイルがあるディレクトリのファイルパスを取得します。
      * 
+     * @param String $default [初期値='local'] サーバー環境名が取得できなかった場合に使用する値
+     * 
      * @return String 実行するサーバーごとの設定ファイルがあるディレクトリのファイルパス
      */
-    public static function getServerEnvPath()
+    public static function getServerEnvPath($default = 'local')
     {
         return CString::unionDirectoryPath(
             static::getConfigPath('server_environments'),
-            Server::getValue(Server::SRV_ENV_NAME, 'local')
+            Server::getValue(Server::SRV_ENV_NAME, $default)
         );
     }
 
