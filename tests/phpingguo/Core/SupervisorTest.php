@@ -21,6 +21,6 @@ class SupervisorTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($srv_env_path . DIRECTORY_SEPARATOR . 'local', Supervisor::getServerEnvPath());
         $this->assertSame($app_path, Supervisor::getAppPath());
         $this->assertSame($app_path . DIRECTORY_SEPARATOR . 'View', Supervisor::getViewPath());
-        $this->assertSame($app_path . DIRECTORY_SEPARATOR . 'cache', Supervisor::getCachePath());
+        $this->assertSame($app_path . DIRECTORY_SEPARATOR . 'Cache', Supervisor::getCachePath());
     }
 }
