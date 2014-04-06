@@ -156,7 +156,7 @@ final class Supervisor
     public static function getCachePath($sub_dir_name = null)
     {
         if (empty(static::$cache_path)) {
-            static::$cache_path = CString::unionDirectoryPath(static::getAppPath(), 'cache');
+            static::$cache_path = CString::unionDirectoryPath(static::getAppPath(), 'Cache');
         }
         
         return CString::unionDirectoryPath(static::$cache_path, $sub_dir_name);
