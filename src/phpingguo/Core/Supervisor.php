@@ -27,6 +27,17 @@ final class Supervisor
     const ENUM_MODULE_FILTER     = 'ModuleFilter';
 
     // ---------------------------------------------------------------------------------------------
+    // private fields
+    // ---------------------------------------------------------------------------------------------
+    private static $project_path = null;
+    private static $system_path  = null;
+    private static $config_path  = null;
+    private static $srv_env_path = null;
+    private static $cache_path   = null;
+    private static $apps_path    = null;
+    private static $view_path    = null;
+
+    // ---------------------------------------------------------------------------------------------
     // public static methods
     // ---------------------------------------------------------------------------------------------
     /**
@@ -51,7 +62,11 @@ final class Supervisor
      */
     public static function getProjectPath()
     {
-        return CString::unionDirectoryPath(CString::unionDirectoryPath(__DIR__, '..'), '..');
+        if (empty(static::$project_path)) {
+            static::$project_path = CString::unionDirectoryPath(CString::unionDirectoryPath(__DIR__, '..'), '..');
+        }
+        
+        return static::$project_path;
     }
 
     /**
@@ -61,7 +76,11 @@ final class Supervisor
      */
     public static function getSystemPath()
     {
-        return CString::unionDirectoryPath(static::getProjectPath(), 'phpingguo');
+        if (empty(static::$system_path)) {
+            static::$system_path = CString::unionDirectoryPath(static::getProjectPath(), 'phpingguo');
+        }
+        
+        return static::$system_path;
     }
 
     /**
@@ -71,7 +90,11 @@ final class Supervisor
      */
     public static function getAppPath()
     {
-        return CString::unionDirectoryPath(static::getProjectPath(), 'app');
+        if (empty(static::$apps_path)) {
+            static::$apps_path = CString::unionDirectoryPath(static::getProjectPath(), 'app');
+        }
+        
+        return static::$apps_path;
     }
 
     /**
@@ -83,10 +106,11 @@ final class Supervisor
      */
     public static function getConfigPath($sub_dir_name = null)
     {
-        return CString::unionDirectoryPath(
-            CString::unionDirectoryPath(static::getProjectPath(), 'config'),
-            $sub_dir_name
-        );
+        if (empty(static::$config_path)) {
+            static::$config_path = CString::unionDirectoryPath(static::getProjectPath(), 'config');
+        }
+        
+        return CString::unionDirectoryPath(static::$config_path, $sub_dir_name);
     }
 
     /**
@@ -98,25 +122,44 @@ final class Supervisor
      */
     public static function getServerEnvPath($default = 'local')
     {
+        if (empty(static::$srv_env_path)) {
+            static::$srv_env_path = static::getConfigPath('server_environments');
+        }
+        
         return CString::unionDirectoryPath(
-            static::getConfigPath('server_environments'),
+            static::$srv_env_path,
             Server::getValue(Server::SRV_ENV_NAME, $default)
         );
+    }
+
+    /**
+     * アプリケーションのViewに該当するファイルがあるディレクトリのファイルパスを取得します。
+     * 
+     * @return String アプリケーションのViewに該当するファイルがあるディレクトリのファイルパス
+     */
+    public static function getViewPath()
+    {
+        if (empty(static::$view_path)) {
+            static::$view_path = CString::unionDirectoryPath(static::getAppPath(), 'View');
+        }
+        
+        return static::$view_path;
     }
 
     /**
      * プロジェクトのキャッシュファイルがあるディレクトリのファイルパスを取得します。
      *
      * @param String $sub_dir_name [初期値=null] キャッシュファイルがあるサブディレクトリの名前
-     *
+     * 
      * @return String プロジェクトのキャッシュファイルがあるディレクトリのファイルパス
      */
     public static function getCachePath($sub_dir_name = null)
     {
-        return CString::unionDirectoryPath(
-            CString::unionDirectoryPath(static::getAppPath(), 'cache'),
-            $sub_dir_name
-        );
+        if (empty(static::$cache_path)) {
+            static::$cache_path = CString::unionDirectoryPath(static::getAppPath(), 'cache');
+        }
+        
+        return CString::unionDirectoryPath(static::$cache_path, $sub_dir_name);
     }
 
     /**
