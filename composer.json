@@ -7,7 +7,8 @@
         "php": ">=5.4.0",
         "phpingguo/apricot-lib": "dev-develop",
         "phpingguo/citron-di": "dev-develop",
-        "phpingguo/banana-validator": "dev-develop"
+        "phpingguo/banana-validator": "dev-develop",
+        "twig/twig": "~1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*",
