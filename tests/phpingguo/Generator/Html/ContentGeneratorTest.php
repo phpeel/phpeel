@@ -44,7 +44,8 @@ class ContentGeneratorTest extends \PHPUnit_Framework_TestCase
     public function testBuildProvider()
     {
         return [
-            [ TemplateEngine::TWIG ]
+            [ TemplateEngine::TWIG ],
+            [ TemplateEngine::SMARTY ],
         ];
     }
     
