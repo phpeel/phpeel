@@ -5,6 +5,8 @@ HTML:
       class: 'Phpingguo\System\Generator\Html\Engine\TwigProxy'
       options:
         DebugMode: true
+        Recompile: true
+        AutoEscape: true
     SMARTY:
       class: 'Phpingguo\System\Generator\Html\Engine\SmartyProxy'
       options:
