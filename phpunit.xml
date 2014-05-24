@@ -22,6 +22,8 @@
         <!-- コードカバレッジ測定対象から除外 -->
         <blacklist>
             <directory suffix=".php">vendor</directory>
+            <directory suffix=".php">src/app/Cache</directory>
+            <directory suffix=".php">src/phpingguo/Enums</directory>
         </blacklist>
     </filter>
 </phpunit>
