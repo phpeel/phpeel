@@ -5,7 +5,6 @@ use Phpingguo\ApricotLib\Common\Arrays;
 use Phpingguo\ApricotLib\Enums\Charset;
 use Phpingguo\System\Core\Supervisor;
 use Phpingguo\System\Generator\Html\BaseEngineProxy;
-use Phpingguo\System\Module\BaseModule;
 
 /**
  * Twig のテンプレートエンジンを仲介するクラスです。
@@ -16,19 +15,6 @@ use Phpingguo\System\Module\BaseModule;
 final class TwigProxy extends BaseEngineProxy
 {
     // ---------------------------------------------------------------------------------------------
-    // public member methods
-    // ---------------------------------------------------------------------------------------------
-    /**
-     * @see IHtmlGenerator::render
-     */
-    public function render(BaseModule $module, array $options)
-    {
-        $this->isInitialized() || $this->initEngineInstance($options);
-        
-        return $this->getEngineInstance()->rendering($module);
-    }
-
-    // ---------------------------------------------------------------------------------------------
     // private member methods
     // ---------------------------------------------------------------------------------------------
     /**
@@ -36,7 +22,7 @@ final class TwigProxy extends BaseEngineProxy
      * 
      * @param Array $options 初期化オプション
      */
-    private function initEngineInstance(array $options)
+    protected function initEngineInstance(array $options)
     {
         $twig_loader  = new \Twig_Loader_Filesystem([ Supervisor::getViewPath() ]);
         $twig_options = [
