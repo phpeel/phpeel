@@ -26,6 +26,8 @@ class GeneratorProxyTest extends \PHPUnit_Framework_TestCase
             [ ContentType::HTML, true, [] ],
             [ ContentType::JSON, false, [] ],
             [ ContentType::JSON, true, [] ],
+            [ ContentType::XML, false, [] ],
+            [ ContentType::XML, true, [] ],
         ];
     }
     
