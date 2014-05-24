@@ -190,7 +190,8 @@ final class Supervisor
     public static function getApiPath($api_ver, $module_name, $scene_name)
     {
         return CString::concat(
-            $api_ver ? CString::concat("{$api_ver}\\", $module_name) : $module_name, "\\{$scene_name}"
+            $api_ver ? CString::concat("{$api_ver}\\", $module_name) : $module_name,
+            "\\{$scene_name}"
         );
     }
 
