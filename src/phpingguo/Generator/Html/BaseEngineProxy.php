@@ -3,6 +3,7 @@ namespace Phpingguo\System\Generator\Html;
 
 use Phpingguo\ApricotLib\Common\String;
 use Phpingguo\System\Core\Supervisor;
+use Phpingguo\System\Module\BaseModule;
 
 /**
  * テンプレートエンジンを仲介するクラスの共通機能を実装する抽象クラスです。
@@ -18,8 +19,29 @@ abstract class BaseEngineProxy implements IHtmlGenerator
     private $engine = null;
 
     // ---------------------------------------------------------------------------------------------
+    // public member methods
+    // ---------------------------------------------------------------------------------------------
+    /**
+     * @see IHtmlGenerator::render
+     */
+    public function render(BaseModule $module, array $options)
+    {
+        $this->isInitialized() || $this->initEngineInstance($options);
+        
+        return $this->getEngineInstance()->rendering($module);
+    }
+
+    // ---------------------------------------------------------------------------------------------
     // private member methods
     // ---------------------------------------------------------------------------------------------
+    /**
+     * テンプレートエンジンを操作するクラスのインスタンスを初期化します。
+     * 
+     * @codeCoverageIgnore
+     * @param Array $options 初期化オプション
+     */
+    abstract protected function initEngineInstance(array $options);
+
     /**
      * 指定した名前のテンプレートエンジンアダプターに属するクラスのインスタンスを生成します。
      * 
