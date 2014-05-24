@@ -15,6 +15,9 @@ HTML:
         RightDelimiter: '}}'
 XML:
   class: 'Phpingguo\System\Generator\Xml\ContentGenerator'
+  options:
+    SuperParentName: 'xml_body'
+    DefaultListItemName: 'list_item'
 JSON:
   class: 'Phpingguo\System\Generator\Json\ContentGenerator'
   options:
