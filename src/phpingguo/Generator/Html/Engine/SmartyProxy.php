@@ -1,8 +1,10 @@
 <?php
 namespace Phpingguo\System\Generator\Html\Engine;
 
-use Phpingguo\System\Generator\Html\IHtmlGenerator;
-use Phpingguo\System\Module\BaseModule;
+use Phpingguo\ApricotLib\Common\Arrays;
+use Phpingguo\System\Core\Supervisor;
+use Phpingguo\System\Generator\Html\Adapter\SmartyAdapter;
+use Phpingguo\System\Generator\Html\BaseEngineProxy;
 
 /**
  * Smarty のテンプレートエンジンを仲介するクラスです。
@@ -10,13 +12,33 @@ use Phpingguo\System\Module\BaseModule;
  * @final [継承禁止クラス]
  * @author hiroki sugawara
  */
-final class SmartyProxy implements IHtmlGenerator
+final class SmartyProxy extends BaseEngineProxy
 {
+    // ---------------------------------------------------------------------------------------------
+    // private member methods
+    // ---------------------------------------------------------------------------------------------
     /**
-     * @see IHtmlGenerator::render
+     * Twigのテンプレートエンジンを操作するクラスのインスタンスを初期化します。
+     * 
+     * @param Array $options 初期化オプション
      */
-    public function render(BaseModule $module, array $options)
+    protected function initEngineInstance(array $options)
     {
-        return __CLASS__;
+        /** @var SmartyAdapter $smarty_loader */
+        $smarty_loader = $this->createInstance('SmartyAdapter', []);
+        
+        $smarty_loader->setTemplateDir(Supervisor::getViewPath());
+        $smarty_loader->setCacheDir(Supervisor::getCachePath(Supervisor::PATH_CACHE_SMARTY));
+        $smarty_loader->setCompileDir(Supervisor::getCachePath(Supervisor::PATH_CACHE_SMARTY));
+        
+        $smarty_loader->caching         = true;
+        $smarty_loader->cache_lifetime  = -1;
+        $smarty_loader->force_cache     = Arrays::getValue($options, 'DebugMode', true);
+        $smarty_loader->force_compile   = Arrays::getValue($options, 'DebugMode', true);
+        $smarty_loader->left_delimiter  = Arrays::getValue($options, 'LeftDelimiter', '{{');
+        $smarty_loader->right_delimiter = Arrays::getValue($options, 'RightDelimiter', '}}');
+        $smarty_loader->escape_html     = true;
+        
+        $this->setEngineInstance($smarty_loader);
     }
 }
