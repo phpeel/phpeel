@@ -1,25 +1,20 @@
 HTML:
-  class: 'Phpingguo\System\Generator\Html\ContentGenerator'
   wrapper:
     TWIG:
-      class: 'Phpingguo\System\Generator\Html\Engine\TwigProxy'
       options:
         DebugMode: true
         Recompile: true
         AutoEscape: true
     SMARTY:
-      class: 'Phpingguo\System\Generator\Html\Engine\SmartyProxy'
       options:
         DebugMode: true
         LeftDelimiter: '{{'
         RightDelimiter: '}}'
 XML:
-  class: 'Phpingguo\System\Generator\Xml\ContentGenerator'
   options:
     SuperParentName: 'xml_body'
     DefaultListItemName: 'list_item'
 JSON:
-  class: 'Phpingguo\System\Generator\Json\ContentGenerator'
   options:
     - JSON_PRETTY_PRINT
     - JSON_UNESCAPED_SLASHES
