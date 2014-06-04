@@ -8,6 +8,7 @@
         "phpingguo/apricot-lib": "dev-develop",
         "phpingguo/citron-di": "dev-develop",
         "phpingguo/banana-validator": "dev-develop",
+        "phpingguo/uzuki-xml": "dev-develop",
         "twig/twig": "~1.0",
         "smarty/smarty": "~3.0"
     },
