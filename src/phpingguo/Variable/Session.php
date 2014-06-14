@@ -46,23 +46,35 @@ final class Session
     // public member methods
     // ---------------------------------------------------------------------------------------------
     /**
-     * セッションを開始します。
-     * 
+     * セッション設定の初期化を行います。
+     *
      * @param String|\SessionHandlerInterface $save_handler [初期値=null] セッションハンドラ
      * @param String|Array $save_path [初期値=null]                       セッションの保存先パス
-     * 
+     *
      * @throws \RuntimeException セッションが既に開始されていた場合
      * @throws \LogicException セッションの保存ハンドラあるいは保存パスの初期化に失敗した場合
      */
-    public function open($save_handler = null, $save_path = null)
+    public function initialize($save_handler = null, $save_path = null)
     {
         if ($this->isSessionStatus(PHP_SESSION_ACTIVE)) {
             throw new \RuntimeException('The session has been already begun.');
         } elseif ($this->initSaveHandler($save_handler, $save_path) === false) {
             throw new \LogicException('Session handler failed initialization.');
         }
-        
-        $this->init();
+    }
+
+    /**
+     * セッションを開始します。
+     *
+     * @param Boolean $is_regenerate_id [初期値=false] セッションIDを再生成するかどうか
+     */
+    public function open($is_regenerate_id = false)
+    {
+        if ($is_regenerate_id === true) {
+            $this->regenerateId();
+        } else {
+            $this->start();
+        }
     }
 
     /**
@@ -71,12 +83,7 @@ final class Session
     public function close()
     {
         if ($this->isSessionStatus(PHP_SESSION_ACTIVE)) {
-            Arrays::clear($_SESSION);
             $this->destroy();
-            
-            if (Arrays::isContain($_COOKIE, 'ValidateUniqId')) {
-                $this->setCookie('ValidateUniqId', '', time() - 42000);
-            }
         }
     }
 
@@ -197,74 +204,6 @@ final class Session
     }
 
     /**
-     * セッションデータを初期化します。
-     */
-    private function init()
-    {
-        $old_session = [];
-        
-        // セッションデータを変数へ退避してリセットする
-        $this->start();
-        Arrays::copyWhen(true, $old_session, $_SESSION);
-        Arrays::clear($_SESSION);
-        $this->destroy();
-        
-        // 退避したセッションデータを使って新しいセッションデータを生成する
-        $this->generateSessionData($old_session);
-    }
-
-    /**
-     * 新しいセッションデータを生成します。
-     * 
-     * @param Array $old_session 古いセッションデータ
-     *
-     * @return Array 生成した新しいセッションデータ
-     */
-    private function generateSessionData(array $old_session)
-    {
-        $new_session = [];
-        $unique_id   = $this->generateUniqueId();
-        
-        if ($this->compareUniqueId($old_session, $_COOKIE)) {
-            $this->setId($unique_id);
-            $this->start();
-            Arrays::copyWhen(true, $_SESSION, $old_session);
-        } else {
-            $this->start();
-            $this->regenerateId();
-            Arrays::addWhen(true, $new_session, [ 'ValidateUniqId' => $unique_id ], '_SESSION_VALIDATION');
-            $this->setCookie('ValidateUniqId', $unique_id);
-            Arrays::copyWhen(true, $_SESSION, $new_session);
-        }
-    }
-
-    /**
-     * セッションデータの正当性評価に使用するユニークIDを生成します。
-     * 
-     * @return String 生成したユニークID
-     */
-    private function generateUniqueId()
-    {
-        return md5(uniqid(rand(), true));
-    }
-
-    /**
-     * セッションデータとクッキーデータに保存されているユニークIDの値を比較します。
-     * 
-     * @param Array $session セッションデータ
-     * @param Array $cookie  クッキーデータ
-     *
-     * @return Boolean 両方のユニークIDが同一である場合は true。それ以外の場合は false。
-     */
-    private function compareUniqueId(array $session, array $cookie)
-    {
-        $session_unique_id = Arrays::findValue($session, '_SESSION_VALIDATION=>ValidateUniqId', null);
-        $cookie_unique_id  = Arrays::getValue($cookie, 'ValidateUniqId', null);
-        
-        return (isset($session_unique_id) && $session_unique_id == $cookie_unique_id);
-    }
-
-    /**
      * セッションデータを取得します。
      * 
      * @throws \RuntimeException セッションが開始されていない場合
@@ -304,14 +243,17 @@ final class Session
 
     /**
      * セッションを開始します。
+     *
+     * @throws \RuntimeException セッションが既に開始されていた場合
      */
     private function start()
     {
-        if ($this->isCliExecuted()) {
-            $_SESSION = [];
-        } else {
-            session_start();
+        if ($this->isSessionStatus(PHP_SESSION_ACTIVE)) {
+            throw new \RuntimeException('The session has been already begun.');
         }
+
+        $_SESSION = [];
+        ($this->isCliExecuted() === false) && session_start();
     }
 
     /**
@@ -324,25 +266,18 @@ final class Session
         //   利用する外部サーバーが正常稼働しているかどうかを確認すること
         // ・標準ハンドラを使用中の場合
         //   セッションファイル生成先ディレクトリが書き込み可能なパーミッションかどうかを確認すること
+        Arrays::clear($_SESSION);
+        Arrays::isContain($_SESSION, session_name()) && $this->setCookie(session_name(), '', time() - 42000);
         ($this->isCliExecuted() === false) && session_destroy();
     }
 
     /**
-     * セッションIDを再生成します。
+     * セッションが開始していなければ開始し、セッションIDを再生成します。
      */
     private function regenerateId()
     {
+        $this->isSessionStatus(PHP_SESSION_NONE) && $this->start();
         ($this->isCliExecuted() === false) && session_regenerate_id(true);
-    }
-
-    /**
-     * セッションIDを新しく設定します。
-     * 
-     * @param String $value 新しいセッションIDの値
-     */
-    private function setId($value)
-    {
-        ($this->isCliExecuted() === false) && session_id($value);
     }
 
     /**
