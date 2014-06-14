@@ -29,9 +29,12 @@ trait TGeneratorList
      */
     final protected function initGeneratorList($yaml_filename)
     {
-        $parsed_data = General::getParsedYamlFile(Supervisor::getServerEnvPath(), $yaml_filename);
+        $origin = General::getParsedYamlFile(Supervisor::getServerEnvPath(null), $yaml_filename);
+        $parsed = General::getParsedYamlFile(Supervisor::getServerEnvPath(), $yaml_filename);
         
-        Arrays::isValid($parsed_data) && $this->generator_list = $parsed_data;
+        if (Arrays::mergeWhen(Arrays::isValid($origin) && Arrays::isValid($parsed), $origin, $parsed)) {
+            $this->generator_list = $origin;
+        }
     }
 
     /**
