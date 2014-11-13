@@ -1,8 +1,8 @@
 <?php
-namespace Phpingguo\System\Tests\Variable;
+namespace Phpeel\System\Tests\Variable;
 
-use Phpingguo\System\Variable\Device;
-use Phpingguo\System\Variable\Server;
+use Phpeel\System\Variable\Device;
+use Phpeel\System\Variable\Server;
 
 class DeviceTest extends \PHPUnit_Framework_TestCase
 {

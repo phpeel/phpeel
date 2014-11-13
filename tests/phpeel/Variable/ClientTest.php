@@ -1,9 +1,9 @@
 <?php
-namespace Phpingguo\System\Tests\Variable;
+namespace Phpeel\System\Tests\Variable;
 
-use Phpingguo\System\Core\Config;
-use Phpingguo\System\Enums\HttpMethod;
-use Phpingguo\System\Variable\Client;
+use Phpeel\System\Core\Config;
+use Phpeel\System\Enums\HttpMethod;
+use Phpeel\System\Variable\Client;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {

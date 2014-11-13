@@ -1,7 +1,7 @@
 <?php
-namespace Phpingguo\System\Tests\Variable;
+namespace Phpeel\System\Tests\Variable;
 
-use Phpingguo\System\Variable\Session;
+use Phpeel\System\Variable\Session;
 
 class SessionTest extends \PHPUnit_Framework_TestCase
 {
