@@ -1,7 +1,7 @@
 <?php
-namespace Phpingguo\System\Generator\Html;
+namespace Phpeel\System\Generator\Html;
 
-use Phpingguo\System\Module\BaseModule;
+use Phpeel\System\Module\BaseModule;
 
 /**
  * テンプレートエンジンのアダプターとなるクラスの基本機能を定義するインターフェイスです。

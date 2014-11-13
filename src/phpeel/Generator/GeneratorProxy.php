@@ -1,9 +1,9 @@
 <?php
-namespace Phpingguo\System\Generator;
+namespace Phpeel\System\Generator;
 
-use Phpingguo\System\Core\Supervisor;
-use Phpingguo\System\Enums\ContentType;
-use Phpingguo\System\Module\BaseModule;
+use Phpeel\System\Core\Supervisor;
+use Phpeel\System\Enums\ContentType;
+use Phpeel\System\Module\BaseModule;
 
 /**
  * レスポンスデータのコンテンツを生成するクラスを仲介するクラスです。

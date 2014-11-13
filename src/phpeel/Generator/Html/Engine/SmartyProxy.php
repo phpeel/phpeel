@@ -1,10 +1,10 @@
 <?php
-namespace Phpingguo\System\Generator\Html\Engine;
+namespace Phpeel\System\Generator\Html\Engine;
 
-use Phpingguo\ApricotLib\Common\Arrays;
-use Phpingguo\System\Core\Supervisor;
-use Phpingguo\System\Generator\Html\Adapter\SmartyAdapter;
-use Phpingguo\System\Generator\Html\BaseEngineProxy;
+use Phpeel\ApricotLib\Common\Arrays;
+use Phpeel\System\Core\Supervisor;
+use Phpeel\System\Generator\Html\Adapter\SmartyAdapter;
+use Phpeel\System\Generator\Html\BaseEngineProxy;
 
 /**
  * Smarty のテンプレートエンジンを仲介するクラスです。

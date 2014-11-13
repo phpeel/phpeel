@@ -1,9 +1,9 @@
 <?php
-namespace Phpingguo\System\Generator\Json;
+namespace Phpeel\System\Generator\Json;
 
-use Phpingguo\ApricotLib\Common\Arrays;
-use Phpingguo\System\Generator\IGenerator;
-use Phpingguo\System\Module\BaseModule;
+use Phpeel\ApricotLib\Common\Arrays;
+use Phpeel\System\Generator\IGenerator;
+use Phpeel\System\Module\BaseModule;
 
 /**
  * JSONのコンテンツデータを生成するクラスです。

@@ -1,10 +1,10 @@
 <?php
-namespace Phpingguo\System\Generator\Xml;
+namespace Phpeel\System\Generator\Xml;
 
-use Phpingguo\ApricotLib\Common\Arrays;
-use Phpingguo\System\Generator\IGenerator;
-use Phpingguo\System\Module\BaseModule;
-use Phpingguo\UzukiXml\UzukiXml;
+use Phpeel\ApricotLib\Common\Arrays;
+use Phpeel\System\Generator\IGenerator;
+use Phpeel\System\Module\BaseModule;
+use Phpeel\UzukiXml\UzukiXml;
 
 /**
  * XMLのコンテンツデータを生成するクラスです。

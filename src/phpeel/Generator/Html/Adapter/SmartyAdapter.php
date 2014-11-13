@@ -1,9 +1,9 @@
 <?php
-namespace Phpingguo\System\Generator\Html\Adapter;
+namespace Phpeel\System\Generator\Html\Adapter;
 
-use Phpingguo\System\Generator\Html\IEngineAdapter;
-use Phpingguo\System\Generator\Html\TRenderAdapter;
-use Phpingguo\System\Module\BaseModule;
+use Phpeel\System\Generator\Html\IEngineAdapter;
+use Phpeel\System\Generator\Html\TRenderAdapter;
+use Phpeel\System\Module\BaseModule;
 
 /**
  * Smartyのテンプレートエンジンをアプリケーションの機能として統合させるクラスです。

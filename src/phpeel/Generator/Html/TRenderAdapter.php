@@ -1,10 +1,10 @@
 <?php
-namespace Phpingguo\System\Generator\Html;
+namespace Phpeel\System\Generator\Html;
 
-use Phpingguo\ApricotLib\Common\String;
-use Phpingguo\System\Core\Config;
-use Phpingguo\System\Core\Supervisor;
-use Phpingguo\System\Module\BaseModule;
+use Phpeel\ApricotLib\Common\String;
+use Phpeel\System\Core\Config;
+use Phpeel\System\Core\Supervisor;
+use Phpeel\System\Module\BaseModule;
 
 /**
  * テンプレートエンジンのアダプタクラスの共通機能を実装するトレイトです。

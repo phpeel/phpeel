@@ -1,9 +1,9 @@
 <?php
-namespace Phpingguo\System\Generator\Html;
+namespace Phpeel\System\Generator\Html;
 
-use Phpingguo\ApricotLib\Common\String;
-use Phpingguo\System\Core\Supervisor;
-use Phpingguo\System\Module\BaseModule;
+use Phpeel\ApricotLib\Common\String;
+use Phpeel\System\Core\Supervisor;
+use Phpeel\System\Module\BaseModule;
 
 /**
  * テンプレートエンジンを仲介するクラスの共通機能を実装する抽象クラスです。
@@ -54,7 +54,7 @@ abstract class BaseEngineProxy implements IHtmlGenerator
     final protected function createInstance($class_name, array $params = [])
     {
         return Supervisor::getDiContainer(null)->newInstance(
-            String::concat('Phpingguo\\System\\Generator\\Html\\Adapter\\', $class_name),
+            String::concat('Phpeel\\System\\Generator\\Html\\Adapter\\', $class_name),
             $params
         );
     }

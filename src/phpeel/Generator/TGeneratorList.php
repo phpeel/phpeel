@@ -1,10 +1,10 @@
 <?php
-namespace Phpingguo\System\Generator;
+namespace Phpeel\System\Generator;
 
-use Phpingguo\ApricotLib\Common\Arrays;
-use Phpingguo\ApricotLib\Common\General;
-use Phpingguo\ApricotLib\Type\Enum\Enum;
-use Phpingguo\System\Core\Supervisor;
+use Phpeel\ApricotLib\Common\Arrays;
+use Phpeel\ApricotLib\Common\General;
+use Phpeel\ApricotLib\Type\Enum\Enum;
+use Phpeel\System\Core\Supervisor;
 
 /**
  * コンテンツを生成するクラスを保持するリストを管理するトレイトです。

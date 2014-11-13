@@ -1,10 +1,10 @@
 <?php
-namespace Phpingguo\System\Generator\Html\Engine;
+namespace Phpeel\System\Generator\Html\Engine;
 
-use Phpingguo\ApricotLib\Common\Arrays;
-use Phpingguo\ApricotLib\Enums\Charset;
-use Phpingguo\System\Core\Supervisor;
-use Phpingguo\System\Generator\Html\BaseEngineProxy;
+use Phpeel\ApricotLib\Common\Arrays;
+use Phpeel\ApricotLib\Enums\Charset;
+use Phpeel\System\Core\Supervisor;
+use Phpeel\System\Generator\Html\BaseEngineProxy;
 
 /**
  * Twig のテンプレートエンジンを仲介するクラスです。

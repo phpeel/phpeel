@@ -1,10 +1,10 @@
 <?php
-namespace Phpingguo\System\Generator\Html;
+namespace Phpeel\System\Generator\Html;
 
-use Phpingguo\System\Enums\TemplateEngine;
-use Phpingguo\System\Generator\IGenerator;
-use Phpingguo\System\Generator\TGeneratorList;
-use Phpingguo\System\Module\BaseModule;
+use Phpeel\System\Enums\TemplateEngine;
+use Phpeel\System\Generator\IGenerator;
+use Phpeel\System\Generator\TGeneratorList;
+use Phpeel\System\Module\BaseModule;
 
 /**
  * HTMLのコンテンツデータを生成するクラスです。
