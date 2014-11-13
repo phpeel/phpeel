@@ -1,11 +1,11 @@
 <?php
-namespace Phpingguo\System\Request;
+namespace Phpeel\System\Request;
 
-use Phpingguo\ApricotLib\Common\Arrays;
-use Phpingguo\ApricotLib\Common\Number;
-use Phpingguo\ApricotLib\Common\String;
-use Phpingguo\System\Core\Config;
-use Phpingguo\System\Enums\HttpMethod;
+use Phpeel\ApricotLib\Common\Arrays;
+use Phpeel\ApricotLib\Common\Number;
+use Phpeel\ApricotLib\Common\String;
+use Phpeel\System\Core\Config;
+use Phpeel\System\Enums\HttpMethod;
 
 /**
  * クライアントからサーバーへ送信されたリクエストデータを表すクラスです。

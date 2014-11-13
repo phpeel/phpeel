@@ -1,20 +1,20 @@
 <?php
-namespace Phpingguo\System\Request;
+namespace Phpeel\System\Request;
 
-use Phpingguo\ApricotLib\Common\Arrays;
-use Phpingguo\ApricotLib\Enums\Variable;
-use Phpingguo\ApricotLib\LibSupervisor;
-use Phpingguo\ApricotLib\Type\Enum\Enum;
-use Phpingguo\ApricotLib\Type\Enum\EnumClassGenerator as EnumClassGen;
-use Phpingguo\ApricotLib\Type\Float\UnsignedFloat;
-use Phpingguo\ApricotLib\Type\Generics\GenericList;
-use Phpingguo\BananaValidator\Enums\Validator;
-use Phpingguo\BananaValidator\IValidator;
-use Phpingguo\BananaValidator\Options;
-use Phpingguo\BananaValidator\ValidationErrorException;
-use Phpingguo\BananaValidator\ValidatorSupervisor;
-use Phpingguo\System\Core\Config;
-use Phpingguo\System\Core\Supervisor;
+use Phpeel\ApricotLib\Common\Arrays;
+use Phpeel\ApricotLib\Enums\Variable;
+use Phpeel\ApricotLib\LibSupervisor;
+use Phpeel\ApricotLib\Type\Enum\Enum;
+use Phpeel\ApricotLib\Type\Enum\EnumClassGenerator as EnumClassGen;
+use Phpeel\ApricotLib\Type\Float\UnsignedFloat;
+use Phpeel\ApricotLib\Type\Generics\GenericList;
+use Phpeel\BananaValidator\Enums\Validator;
+use Phpeel\BananaValidator\IValidator;
+use Phpeel\BananaValidator\Options;
+use Phpeel\BananaValidator\ValidationErrorException;
+use Phpeel\BananaValidator\ValidatorSupervisor;
+use Phpeel\System\Core\Config;
+use Phpeel\System\Core\Supervisor;
 
 /**
  * クライアントからサーバーへのリクエストしたデータを保持するクラスです。

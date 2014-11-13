@@ -1,11 +1,11 @@
 <?php
-namespace Phpingguo\System\Request;
+namespace Phpeel\System\Request;
 
-use Phpingguo\ApricotLib\Common\Arrays;
-use Phpingguo\System\Core\Config;
-use Phpingguo\System\Core\Supervisor;
-use Phpingguo\System\Variable\Client;
-use Phpingguo\System\Variable\Server;
+use Phpeel\ApricotLib\Common\Arrays;
+use Phpeel\System\Core\Config;
+use Phpeel\System\Core\Supervisor;
+use Phpeel\System\Variable\Client;
+use Phpeel\System\Variable\Server;
 
 /**
  * クライアントが要求した情報を解析するクラスです。
@@ -173,7 +173,7 @@ final class RequestParser
     /**
      * クライアントがリクエストした API のパラメータを取得します。
      * 
-     * @param \Phpingguo\System\Enums\HttpMethod|String $method クライアントがリクエストした HTTP メソッド
+     * @param \Phpeel\System\Enums\HttpMethod|String $method クライアントがリクエストした HTTP メソッド
      * 
      * @return Array クライアントがリクエストした API のパラメータの一覧を返します。
      */
