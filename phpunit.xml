@@ -8,7 +8,7 @@
     <testsuites>
         <testsuite name="PHPUnit">
             <!-- テストケースディレクトリ -->
-            <directory>tests/phpingguo</directory>
+            <directory>tests/phpeel</directory>
         </testsuite>
     </testsuites>
 
@@ -29,7 +29,7 @@
         <blacklist>
             <directory suffix=".php">vendor</directory>
             <directory suffix=".php">src/app/Cache</directory>
-            <directory suffix=".php">src/phpingguo/Enums</directory>
+            <directory suffix=".php">src/phpeel/Enums</directory>
         </blacklist>
     </filter>
 </phpunit>

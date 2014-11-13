@@ -1,14 +1,14 @@
 {
-    "name": "phpingguo/phpingguo",
-    "description": "The Phpingguo PHP framework.",
+    "name": "phpeel/phpeel",
+    "description": "The Phpeel PHP framework.",
     "license": "MIT",
     "keywords": [ "framework" ],
     "require": {
         "php": ">=5.4.0",
-        "phpingguo/apricot-lib": "dev-develop",
-        "phpingguo/citron-di": "dev-develop",
-        "phpingguo/banana-validator": "dev-develop",
-        "phpingguo/uzuki-xml": "dev-develop",
+        "phpeel/apricot-lib": "dev-develop",
+        "phpeel/citron-di": "dev-develop",
+        "phpeel/banana-validator": "dev-develop",
+        "phpeel/uzuki-xml": "dev-develop",
         "twig/twig": "~1.0",
         "smarty/smarty": "~3.0"
     },
@@ -18,9 +18,9 @@
     },
     "autoload": {
         "psr-4": {
-            "Phpingguo\\System\\": "src/phpingguo/",
-            "Phpingguo\\App\\": "src/app/",
-            "Phpingguo\\System\\Tests\\": "tests/phpingguo/"
+            "Phpeel\\System\\": "src/phpeel/",
+            "Phpeel\\App\\": "src/app/",
+            "Phpeel\\System\\Tests\\": "tests/phpeel/"
         }
     }
 }

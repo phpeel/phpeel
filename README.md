@@ -1,23 +1,23 @@
 Read Me
 =======
 
-What is Phpingguo?
+What is Phpeel?
 ------------------
 
-Phpingguo is a fast, multi-function, multibyte support PHP 5.4 full-stack web framework. 
+Phpeel is a fast, multi-function, multibyte support PHP 5.4 full-stack web framework. 
 Because written in mind that it can be started quickly a service that you thought, we believe it's one of the best choices in the PHP framework of the lot.
-Phpingguo can be used to develop all kind of websites, from personal blog or content management systems like WordPress to high traffic ones like Youtube or Idol Master Cinderella Girls.
+Phpeel can be used to develop all kind of websites, from personal blog or content management systems like WordPress to high traffic ones like Youtube or Idol Master Cinderella Girls.
 
-「Phpingguo」は高速で多機能なマルチバイト対応の PHP 5.4 のフルスタックウェブフレームワークです。
+「Phpeel」は高速で多機能なマルチバイト対応の PHP 5.4 のフルスタックウェブフレームワークです。
 これは、あなたの考えたサービスをすぐに実現できることを念頭に置いて書かれているため、多くのPHPフレームワークの中で最良の選択肢の一つだと、私たちは考えています。
-「Phpingguo」は、個人のブログやWordPressのようなコンテンツ管理システムから、Youtubeやアイドルマスターシンデレラガールズのような高トラフィックのものまで、全ての種類のウェブサイトの開発に使用することができます。
+「Phpeel」は、個人のブログやWordPressのようなコンテンツ管理システムから、Youtubeやアイドルマスターシンデレラガールズのような高トラフィックのものまで、全ての種類のウェブサイトの開発に使用することができます。
 
 Requirements
 ------------
 
-Phpingguo is supported on PHP 5.4.x and 5.5.x.
+Phpeel is supported on PHP 5.4.x and 5.5.x.
 
-「Phpingguo」は、PHP 5.4.x と PHP 5.5.x をサポートしています。
+「Phpeel」は、PHP 5.4.x と PHP 5.5.x をサポートしています。
 
 Optionals
 ---------
@@ -38,6 +38,6 @@ Optionals
 More information
 ----------------
 
-For more detailed information, see the [development wiki](https://github.com/phpingguo/phpingguo/wiki).
+For more detailed information, see the [development wiki](https://github.com/phpeel/phpeel/wiki).
 
 詳細については、開発wikiを見てください。
