@@ -1,13 +1,13 @@
 <?php
-namespace Phpingguo\System\Module;
+namespace Phpeel\System\Module;
 
-use Phpingguo\ApricotLib\Common\Arrays;
-use Phpingguo\ApricotLib\Common\String;
-use Phpingguo\ApricotLib\Type\Enum\Enum;
-use Phpingguo\System\Core\Supervisor;
-use Phpingguo\System\Enums\TemplateEngine;
-use Phpingguo\System\Request\Request;
-use Phpingguo\System\Response\Response;
+use Phpeel\ApricotLib\Common\Arrays;
+use Phpeel\ApricotLib\Common\String;
+use Phpeel\ApricotLib\Type\Enum\Enum;
+use Phpeel\System\Core\Supervisor;
+use Phpeel\System\Enums\TemplateEngine;
+use Phpeel\System\Request\Request;
+use Phpeel\System\Response\Response;
 
 /**
  * フレームワークが管理するモジュールのデータを表すクラスです。
@@ -38,7 +38,7 @@ final class ModuleData
      */
     public function __construct(Request $request = null, $engine = null)
     {
-        $response = Supervisor::getDiContainer(null)->newInstance('Phpingguo\\System\\Response\\Response');
+        $response = Supervisor::getDiContainer(null)->newInstance('Phpeel\\System\\Response\\Response');
         
         $this->setRequest($request);
         $this->setResponse($response);
