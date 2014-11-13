@@ -1,8 +1,8 @@
 <?php
-namespace Phpingguo\System\Tests\Request;
+namespace Phpeel\System\Tests\Request;
 
-use Phpingguo\System\Enums\HttpMethod;
-use Phpingguo\System\Request\RequestData;
+use Phpeel\System\Enums\HttpMethod;
+use Phpeel\System\Request\RequestData;
 
 class RequestDataTest extends \PHPUnit_Framework_TestCase
 {
@@ -23,7 +23,7 @@ class RequestDataTest extends \PHPUnit_Framework_TestCase
     {
         $instance = new RequestData($method, $module, $version, $scene, $params);
         
-        $this->assertInstanceOf('Phpingguo\System\Request\RequestData', $instance);
+        $this->assertInstanceOf('Phpeel\System\Request\RequestData', $instance);
         
         $this->assertSame($method ?: HttpMethod::GET, $instance->getMethod()->getValue());
         $this->assertSame($module ?: 'top', $instance->getModuleName());

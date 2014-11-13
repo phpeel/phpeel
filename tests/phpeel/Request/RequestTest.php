@@ -1,14 +1,14 @@
 <?php
-namespace Phpingguo\System\Tests\Request;
+namespace Phpeel\System\Tests\Request;
 
-use Phpingguo\ApricotLib\Enums\Variable;
-use Phpingguo\BananaValidator\Enums\Validator;
-use Phpingguo\BananaValidator\Options;
-use Phpingguo\System\Core\Config;
-use Phpingguo\System\Enums\HttpMethod;
-use Phpingguo\System\Request\Request;
-use Phpingguo\System\Variable\Client;
-use Phpingguo\System\Variable\Server;
+use Phpeel\ApricotLib\Enums\Variable;
+use Phpeel\BananaValidator\Enums\Validator;
+use Phpeel\BananaValidator\Options;
+use Phpeel\System\Core\Config;
+use Phpeel\System\Enums\HttpMethod;
+use Phpeel\System\Request\Request;
+use Phpeel\System\Variable\Client;
+use Phpeel\System\Variable\Server;
 
 class RequestTest extends \PHPUnit_Framework_TestCase
 {
@@ -47,7 +47,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         
         $instance = Request::getInstance(true);
         
-        $this->assertInstanceOf('Phpingguo\System\Request\RequestData', $instance->getRequestData());
+        $this->assertInstanceOf('Phpeel\System\Request\RequestData', $instance->getRequestData());
         $this->assertSame($expected_list[0], $instance->getRequestData()->getMethod()->getValue());
         $this->assertSame($expected_list[1], $instance->getModuleName());
         $this->assertSame($expected_list[2], $instance->getApiVersion());

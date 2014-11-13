@@ -1,11 +1,11 @@
 <?php
-namespace Phpingguo\System\Tests\Request;
+namespace Phpeel\System\Tests\Request;
 
-use Phpingguo\System\Core\Config;
-use Phpingguo\System\Enums\HttpMethod;
-use Phpingguo\System\Request\RequestParser;
-use Phpingguo\System\Variable\Client;
-use Phpingguo\System\Variable\Server;
+use Phpeel\System\Core\Config;
+use Phpeel\System\Enums\HttpMethod;
+use Phpeel\System\Request\RequestParser;
+use Phpeel\System\Variable\Client;
+use Phpeel\System\Variable\Server;
 
 class RequestParserTest extends \PHPUnit_Framework_TestCase
 {
@@ -66,7 +66,7 @@ class RequestParserTest extends \PHPUnit_Framework_TestCase
         
         $result = RequestParser::getInstance(true)->get();
         
-        $this->assertInstanceOf('Phpingguo\System\Request\RequestData', $result);
+        $this->assertInstanceOf('Phpeel\System\Request\RequestData', $result);
         count($params) > 0 && $this->assertArrayNotHasKey('idols', $result->getParameters());
         $this->assertSame($expects[0], $result->getApiVersion());
         $this->assertSame($expects[1], $result->getModuleName());
