@@ -1,10 +1,10 @@
 <?php
-namespace Phpingguo\System\Core;
+namespace Phpeel\System\Core;
 
-use Phpingguo\ApricotLib\Common\String as CString;
-use Phpingguo\CitronDI\AuraDIWrapper;
-use Phpingguo\System\Request\RequestData;
-use Phpingguo\System\Variable\Server;
+use Phpeel\ApricotLib\Common\String as CString;
+use Phpeel\CitronDI\AuraDIWrapper;
+use Phpeel\System\Request\RequestData;
+use Phpeel\System\Variable\Server;
 
 /**
  * フレームワークを統括するクラスです。
@@ -80,7 +80,7 @@ final class Supervisor
     public static function getSystemPath()
     {
         if (empty(static::$system_path)) {
-            static::$system_path = CString::unionDirectoryPath(static::getProjectPath(), 'phpingguo');
+            static::$system_path = CString::unionDirectoryPath(static::getProjectPath(), 'phpeel');
         }
         
         return static::$system_path;
@@ -175,7 +175,7 @@ final class Supervisor
      */
     public static function getEnumFullName($enum_name)
     {
-        return CString::concat("Phpingguo\\System\\Enums\\", $enum_name);
+        return CString::concat("Phpeel\\System\\Enums\\", $enum_name);
     }
 
     /**

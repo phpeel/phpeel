@@ -1,7 +1,7 @@
 <?php
-namespace Phpingguo\System\Core;
+namespace Phpeel\System\Core;
 
-use Phpingguo\ApricotLib\Common\Arrays;
+use Phpeel\ApricotLib\Common\Arrays;
 
 /**
  * アプリケーションの設定を保持するクラスです。
