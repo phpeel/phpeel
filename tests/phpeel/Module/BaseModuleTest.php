@@ -1,26 +1,26 @@
 <?php
-namespace Phpingguo\System\Tests\Module;
+namespace Phpeel\System\Tests\Module;
 
-use Phpingguo\System\Enums\ModuleFilter;
-use Phpingguo\System\Enums\ResponseCode;
-use Phpingguo\System\Request\Request;
-use Phpingguo\System\Response\Response;
-use Phpingguo\System\Variable\Client;
-use Phpingguo\System\Variable\Server;
+use Phpeel\System\Enums\ModuleFilter;
+use Phpeel\System\Enums\ResponseCode;
+use Phpeel\System\Request\Request;
+use Phpeel\System\Response\Response;
+use Phpeel\System\Variable\Client;
+use Phpeel\System\Variable\Server;
 
 class BaseModuleTest extends \PHPUnit_Framework_TestCase
 {
     public function testDefaultInitialize()
     {
-        /** @var \Phpingguo\System\Module\BaseModule $stub */
-        $stub = $this->getMockForAbstractClass('Phpingguo\System\Module\BaseModule');
+        /** @var \Phpeel\System\Module\BaseModule $stub */
+        $stub = $this->getMockForAbstractClass('Phpeel\System\Module\BaseModule');
         
-        $this->assertInstanceOf('Phpingguo\System\Module\ModuleData', $stub->getModuleData());
+        $this->assertInstanceOf('Phpeel\System\Module\ModuleData', $stub->getModuleData());
         $this->assertNull($stub->getModuleData()->getModuleName());
         $this->assertNull($stub->getModuleData()->getSceneName());
         $this->assertNull($stub->getRequest());
         $this->assertNotNull($stub->getResponse());
-        $this->assertInstanceOf('Phpingguo\System\Response\Response', $stub->getResponse());
+        $this->assertInstanceOf('Phpeel\System\Response\Response', $stub->getResponse());
         $this->assertCount(0, $stub->getFilters(ModuleFilter::INPUT_EXECUTE));
     }
     
@@ -30,46 +30,46 @@ class BaseModuleTest extends \PHPUnit_Framework_TestCase
         Server::capture();
         Client::capture();
         
-        /** @var \Phpingguo\System\Module\BaseModule $stub */
+        /** @var \Phpeel\System\Module\BaseModule $stub */
         $stub = $this->getMockForAbstractClass(
-            'Phpingguo\System\Module\BaseModule',
+            'Phpeel\System\Module\BaseModule',
             [ Request::getInstance(true) ]
         );
         
-        $this->assertInstanceOf('Phpingguo\System\Module\ModuleData', $stub->getModuleData());
+        $this->assertInstanceOf('Phpeel\System\Module\ModuleData', $stub->getModuleData());
         $this->assertSame('top', $stub->getModuleData()->getModuleName());
         $this->assertSame('index', $stub->getModuleData()->getSceneName());
         $this->assertNotNull($stub->getRequest());
-        $this->assertInstanceOf('Phpingguo\System\Request\Request', $stub->getRequest());
+        $this->assertInstanceOf('Phpeel\System\Request\Request', $stub->getRequest());
         $this->assertNotNull($stub->getResponse());
-        $this->assertInstanceOf('Phpingguo\System\Response\Response', $stub->getResponse());
+        $this->assertInstanceOf('Phpeel\System\Response\Response', $stub->getResponse());
         $this->assertCount(0, $stub->getFilters(ModuleFilter::INPUT_EXECUTE));
     }
     
     public function testSetRequestSuccess()
     {
-        /** @var \Phpingguo\System\Module\BaseModule $stub */
-        $stub = $this->getMockForAbstractClass('Phpingguo\System\Module\BaseModule');
+        /** @var \Phpeel\System\Module\BaseModule $stub */
+        $stub = $this->getMockForAbstractClass('Phpeel\System\Module\BaseModule');
         
         $this->assertNull($stub->getRequest());
         $this->assertNotNull($stub->getResponse());
-        $this->assertInstanceOf('Phpingguo\System\Response\Response', $stub->getResponse());
+        $this->assertInstanceOf('Phpeel\System\Response\Response', $stub->getResponse());
         $stub->setRequest(Request::getInstance(true));
         $this->assertNotNull($stub->getRequest());
-        $this->assertInstanceOf('Phpingguo\System\Request\Request', $stub->getRequest());
+        $this->assertInstanceOf('Phpeel\System\Request\Request', $stub->getRequest());
     }
     
     public function testSetResponseSuccess()
     {
-        /** @var \Phpingguo\System\Module\BaseModule $stub */
-        $stub = $this->getMockForAbstractClass('Phpingguo\System\Module\BaseModule');
+        /** @var \Phpeel\System\Module\BaseModule $stub */
+        $stub = $this->getMockForAbstractClass('Phpeel\System\Module\BaseModule');
         
         $this->assertNull($stub->getRequest());
         $this->assertNotNull($stub->getResponse());
-        $this->assertInstanceOf('Phpingguo\System\Response\Response', $stub->getResponse());
+        $this->assertInstanceOf('Phpeel\System\Response\Response', $stub->getResponse());
         $stub->setResponse(new Response(ResponseCode::INTERNAL_SERVER_ERROR));
         $this->assertNotNull($stub->getResponse());
-        $this->assertInstanceOf('Phpingguo\System\Response\Response', $stub->getResponse());
+        $this->assertInstanceOf('Phpeel\System\Response\Response', $stub->getResponse());
         $this->assertSame(ResponseCode::INTERNAL_SERVER_ERROR, $stub->getResponse()->getResponseCode()->getValue());
     }
     
@@ -85,11 +85,11 @@ class BaseModuleTest extends \PHPUnit_Framework_TestCase
      */
     public function testControlFilterSuccess($type, $list)
     {
-        /** @var \Phpingguo\System\Module\BaseModule $stub */
-        $stub = $this->getMockForAbstractClass('Phpingguo\System\Module\BaseModule');
+        /** @var \Phpeel\System\Module\BaseModule $stub */
+        $stub = $this->getMockForAbstractClass('Phpeel\System\Module\BaseModule');
         
         $this->assertCount(0, $stub->getFilters($type));
-        $method = (new \ReflectionClass('Phpingguo\System\Module\BaseModule'))->getMethod('setFilters');
+        $method = (new \ReflectionClass('Phpeel\System\Module\BaseModule'))->getMethod('setFilters');
         $method->setAccessible(true);
         $method->invokeArgs($stub, [ $type, $list ]);
         $this->assertCount(1, $stub->getFilters($type));
@@ -121,8 +121,8 @@ class BaseModuleTest extends \PHPUnit_Framework_TestCase
     {
         isset($exception) && $this->setExpectedException($exception);
             
-        /** @var \Phpingguo\System\Module\BaseModule $stub */
-        $stub = $this->getMockForAbstractClass('Phpingguo\System\Module\BaseModule');
+        /** @var \Phpeel\System\Module\BaseModule $stub */
+        $stub = $this->getMockForAbstractClass('Phpeel\System\Module\BaseModule');
         $stub->getFilters($type);
     }
     
@@ -154,18 +154,18 @@ class BaseModuleTest extends \PHPUnit_Framework_TestCase
      */
     public function testDestructCallback($callback)
     {
-        /** @var \Phpingguo\System\Module\BaseModule $stub */
-        $stub = $this->getMockForAbstractClass('Phpingguo\System\Module\BaseModule');
+        /** @var \Phpeel\System\Module\BaseModule $stub */
+        $stub = $this->getMockForAbstractClass('Phpeel\System\Module\BaseModule');
         
-        $method = (new \ReflectionClass('Phpingguo\System\Module\BaseModule'))->getMethod('entryDestructCallback');
+        $method = (new \ReflectionClass('Phpeel\System\Module\BaseModule'))->getMethod('entryDestructCallback');
         $method->setAccessible(true);
         $method->invokeArgs($stub, [ $callback ]);
     }
     
     public function testOverloadMethods()
     {
-        /** @var \Phpingguo\System\Module\BaseModule $stub */
-        $stub = $this->getMockForAbstractClass('Phpingguo\System\Module\BaseModule');
+        /** @var \Phpeel\System\Module\BaseModule $stub */
+        $stub = $this->getMockForAbstractClass('Phpeel\System\Module\BaseModule');
         
         $this->assertFalse(isset($stub->new_value));
         $stub->new_value = 'foo bar';

@@ -1,11 +1,11 @@
 <?php
-namespace Phpingguo\System\Tests\Module;
+namespace Phpeel\System\Tests\Module;
 
-use Phpingguo\System\Enums\TemplateEngine;
-use Phpingguo\System\Module\ModuleData;
-use Phpingguo\System\Request\Request;
-use Phpingguo\System\Variable\Client;
-use Phpingguo\System\Variable\Server;
+use Phpeel\System\Enums\TemplateEngine;
+use Phpeel\System\Module\ModuleData;
+use Phpeel\System\Request\Request;
+use Phpeel\System\Variable\Client;
+use Phpeel\System\Variable\Server;
 
 class ModuleDataTest extends \PHPUnit_Framework_TestCase
 {
@@ -14,13 +14,13 @@ class ModuleDataTest extends \PHPUnit_Framework_TestCase
         $data = new ModuleData();
         
         $this->assertNull($data->getRequest());
-        $this->assertInstanceOf('Phpingguo\System\Response\Response', $data->getResponse());
+        $this->assertInstanceOf('Phpeel\System\Response\Response', $data->getResponse());
         $this->assertNull($data->getModuleName());
         $this->assertNull($data->getSceneName());
         $this->assertSame(TemplateEngine::TWIG, $data->getEngine()->getValue());
         $this->assertCount(1, $data->getVariables());
         $this->assertArrayHasKey('response', $data->getVariables());
-        $this->assertInstanceOf('Phpingguo\System\Response\Response', $data->getVariable('response'));
+        $this->assertInstanceOf('Phpeel\System\Response\Response', $data->getVariable('response'));
     }
     
     public function testOptionalInitialize()
@@ -31,8 +31,8 @@ class ModuleDataTest extends \PHPUnit_Framework_TestCase
         
         $data = new ModuleData(Request::getInstance(true), TemplateEngine::SMARTY);
         
-        $this->assertInstanceOf('Phpingguo\System\Request\Request', $data->getRequest());
-        $this->assertInstanceOf('Phpingguo\System\Response\Response', $data->getResponse());
+        $this->assertInstanceOf('Phpeel\System\Request\Request', $data->getRequest());
+        $this->assertInstanceOf('Phpeel\System\Response\Response', $data->getResponse());
         $this->assertSame(TemplateEngine::SMARTY, $data->getEngine()->getValue());
     }
     
@@ -76,7 +76,7 @@ class ModuleDataTest extends \PHPUnit_Framework_TestCase
         array_key_exists('values', $actual) && $data->setVariables($actual['values']);
         
         $this->assertNull($data->getRequest());
-        $this->assertInstanceOf('Phpingguo\System\Response\Response', $data->getResponse());
+        $this->assertInstanceOf('Phpeel\System\Response\Response', $data->getResponse());
         $this->assertSame($expected[0], $data->getModuleName());
         $this->assertSame($expected[1], $data->getSceneName());
         $this->assertSame($expected[2], $data->getEngine()->getValue());
