@@ -1,7 +1,7 @@
 <?php
-namespace Phpingguo\System\Filter\Input;
+namespace Phpeel\System\Filter\Input;
 
-use Phpingguo\System\Request\Request;
+use Phpeel\System\Request\Request;
 
 /**
  * クライアントからの入力に適用するフィルタの共通処理を定義するインターフェイスです。

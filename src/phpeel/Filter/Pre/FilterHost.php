@@ -1,8 +1,8 @@
 <?php
-namespace Phpingguo\System\Filter\Pre;
+namespace Phpeel\System\Filter\Pre;
 
-use Phpingguo\System\Core\Supervisor;
-use Phpingguo\System\Filter\BaseFilterHost;
+use Phpeel\System\Core\Supervisor;
+use Phpeel\System\Filter\BaseFilterHost;
 
 /**
  * 事前型フィルタを管理するクラスです。

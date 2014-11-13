@@ -1,12 +1,12 @@
 <?php
-namespace Phpingguo\System\Filter\Output;
+namespace Phpeel\System\Filter\Input;
 
-use Phpingguo\System\Core\Supervisor;
-use Phpingguo\System\Filter\BaseFilterHost;
-use Phpingguo\System\Response\Response;
+use Phpeel\System\Core\Supervisor;
+use Phpeel\System\Filter\BaseFilterHost;
+use Phpeel\System\Request\Request;
 
 /**
- * 出力型フィルタを管理するクラスです。
+ * 入力型フィルタを管理するクラスです。
  * 
  * @final [継承禁止クラス]
  * @author hiroki sugawara
@@ -32,12 +32,12 @@ final class FilterHost extends BaseFilterHost
     /**
      * 登録したフィルタオブジェクトの処理を全て適用します。
      * 
-     * @param Response $response フィルタオブジェクトを適用するレスポンスデータ
+     * @param Request $request フィルタオブジェクトを適用するリクエストデータ
      * 
-     * @return Response フィルタオブジェクトを適用したレスポンスデータ
+     * @return Request フィルタを適用したリクエストデータ
      */
-    public function apply(Response $response)
+    public function apply(Request $request)
     {
-        return $this->applyFilters(__NAMESPACE__, $response);
+        return $this->applyFilters(__NAMESPACE__, $request);
     }
 }

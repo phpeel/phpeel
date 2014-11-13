@@ -1,11 +1,12 @@
 <?php
-namespace Phpingguo\System\Filter\Post;
+namespace Phpeel\System\Filter\Output;
 
-use Phpingguo\System\Core\Supervisor;
-use Phpingguo\System\Filter\BaseFilterHost;
+use Phpeel\System\Core\Supervisor;
+use Phpeel\System\Filter\BaseFilterHost;
+use Phpeel\System\Response\Response;
 
 /**
- * 事後型フィルタを管理するクラスです。
+ * 出力型フィルタを管理するクラスです。
  * 
  * @final [継承禁止クラス]
  * @author hiroki sugawara
@@ -31,12 +32,12 @@ final class FilterHost extends BaseFilterHost
     /**
      * 登録したフィルタオブジェクトの処理を全て適用します。
      * 
-     * @param AppModule $module フィルタオブジェクトを適用するモジュールクラスのインスタンス
+     * @param Response $response フィルタオブジェクトを適用するレスポンスデータ
      * 
-     * @return AppModule フィルタオブジェクトを適用したモジュールクラスのインスタンス
+     * @return Response フィルタオブジェクトを適用したレスポンスデータ
      */
-    public function apply(AppModule $module)
+    public function apply(Response $response)
     {
-        return $this->applyFilters(__NAMESPACE__, $module);
+        return $this->applyFilters(__NAMESPACE__, $response);
     }
 }

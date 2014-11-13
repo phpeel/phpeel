@@ -1,5 +1,5 @@
 <?php
-namespace Phpingguo\System\Filter\Post;
+namespace Phpeel\System\Filter\Post;
 
 /**
  * 事後に適用するフィルタの共通処理を定義するインターフェイスです。

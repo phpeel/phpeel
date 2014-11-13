@@ -1,11 +1,11 @@
 <?php
-namespace Phpingguo\System\Filter;
+namespace Phpeel\System\Filter;
 
-use Phpingguo\ApricotLib\Common\Arrays;
-use Phpingguo\System\Filter\Input\IFilter as InputIFilter;
-use Phpingguo\System\Filter\Output\IFilter as OutputIFilter;
-use Phpingguo\System\Filter\Post\IFilter as PostIFilter;
-use Phpingguo\System\Filter\Pre\IFilter as PreIFilter;
+use Phpeel\ApricotLib\Common\Arrays;
+use Phpeel\System\Filter\Input\IFilter as InputIFilter;
+use Phpeel\System\Filter\Output\IFilter as OutputIFilter;
+use Phpeel\System\Filter\Post\IFilter as PostIFilter;
+use Phpeel\System\Filter\Pre\IFilter as PreIFilter;
 
 /**
  * フィルタホストクラスの共通処理を定義する抽象クラスです。

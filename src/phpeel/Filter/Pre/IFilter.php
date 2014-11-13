@@ -1,5 +1,5 @@
 <?php
-namespace Phpingguo\System\Filter\Pre;
+namespace Phpeel\System\Filter\Pre;
 
 /**
  * 事前に適用するフィルタの共通処理を定義するインターフェイスです。

@@ -1,5 +1,5 @@
 <?php
-namespace Phpingguo\System\Filter\Output;
+namespace Phpeel\System\Filter\Output;
 
 /**
  * サーバーの出力に適用するフィルタの共通処理を定義するインターフェイスです。
