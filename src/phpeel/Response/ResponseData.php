@@ -1,15 +1,15 @@
 <?php
-namespace Phpingguo\System\Response;
+namespace Phpeel\System\Response;
 
-use Phpingguo\ApricotLib\Common\String;
-use Phpingguo\ApricotLib\Enums\Charset;
-use Phpingguo\ApricotLib\LibSupervisor;
-use Phpingguo\ApricotLib\Type\Enum\Enum;
-use Phpingguo\System\Core\Config;
-use Phpingguo\System\Core\Supervisor;
-use Phpingguo\System\Enums\ContentType;
-use Phpingguo\System\Enums\ResponseCode;
-use Phpingguo\System\Enums\XFrameOptions;
+use Phpeel\ApricotLib\Common\String;
+use Phpeel\ApricotLib\Enums\Charset;
+use Phpeel\ApricotLib\LibSupervisor;
+use Phpeel\ApricotLib\Type\Enum\Enum;
+use Phpeel\System\Core\Config;
+use Phpeel\System\Core\Supervisor;
+use Phpeel\System\Enums\ContentType;
+use Phpeel\System\Enums\ResponseCode;
+use Phpeel\System\Enums\XFrameOptions;
 
 /**
  * サーバーからクライアントへ送信するレスポンスデータを表すクラスです。

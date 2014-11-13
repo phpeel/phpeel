@@ -1,10 +1,10 @@
 <?php
-namespace Phpingguo\System\Response;
+namespace Phpeel\System\Response;
 
-use Phpingguo\ApricotLib\Common\Arrays;
-use Phpingguo\ApricotLib\Common\Number;
-use Phpingguo\ApricotLib\Common\String;
-use Phpingguo\System\Core\Config;
+use Phpeel\ApricotLib\Common\Arrays;
+use Phpeel\ApricotLib\Common\Number;
+use Phpeel\ApricotLib\Common\String;
+use Phpeel\System\Core\Config;
 
 /**
  * アプリケーションのAPIとなるURLアドレスを生成します。

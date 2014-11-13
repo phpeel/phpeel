@@ -1,12 +1,12 @@
 <?php
-namespace Phpingguo\System\Response;
+namespace Phpeel\System\Response;
 
-use Phpingguo\ApricotLib\Common\String;
-use Phpingguo\ApricotLib\Enums\Charset;
-use Phpingguo\System\Core\Supervisor;
-use Phpingguo\System\Enums\ContentType;
-use Phpingguo\System\Enums\ResponseCode;
-use Phpingguo\System\Enums\XFrameOptions;
+use Phpeel\ApricotLib\Common\String;
+use Phpeel\ApricotLib\Enums\Charset;
+use Phpeel\System\Core\Supervisor;
+use Phpeel\System\Enums\ContentType;
+use Phpeel\System\Enums\ResponseCode;
+use Phpeel\System\Enums\XFrameOptions;
 
 /**
  * サーバーからクライアントへレスポンスするデータを保持するクラスです。
@@ -34,7 +34,7 @@ final class Response
     public function __construct($code = null, $type = null, $charset = null)
     {
         $instance = Supervisor::getDiContainer(null)
-            ->newInstance('Phpingguo\\System\\Response\\ResponseData', [ $code, $type, $charset ]);
+            ->newInstance('Phpeel\\System\\Response\\ResponseData', [ $code, $type, $charset ]);
         
         $this->setResponseData($instance);
     }
