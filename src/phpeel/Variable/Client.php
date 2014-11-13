@@ -1,10 +1,10 @@
 <?php
-namespace Phpingguo\System\Variable;
+namespace Phpeel\System\Variable;
 
-use Phpingguo\ApricotLib\Common\Arrays;
-use Phpingguo\ApricotLib\Common\String as CString;
-use Phpingguo\System\Core\Config;
-use Phpingguo\System\Enums\HttpMethod;
+use Phpeel\ApricotLib\Common\Arrays;
+use Phpeel\ApricotLib\Common\String as CString;
+use Phpeel\System\Core\Config;
+use Phpeel\System\Enums\HttpMethod;
 
 /**
  * クライアント情報を保持するクラスです。

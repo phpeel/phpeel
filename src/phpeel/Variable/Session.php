@@ -1,9 +1,9 @@
 <?php
-namespace Phpingguo\System\Variable;
+namespace Phpeel\System\Variable;
 
-use Phpingguo\ApricotLib\Common\Arrays;
-use Phpingguo\ApricotLib\Common\String;
-use Phpingguo\System\Core\Supervisor;
+use Phpeel\ApricotLib\Common\Arrays;
+use Phpeel\ApricotLib\Common\String;
+use Phpeel\System\Core\Supervisor;
 
 /**
  * セッションデータを管理するクラスです。

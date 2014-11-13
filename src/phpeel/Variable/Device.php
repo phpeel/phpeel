@@ -1,9 +1,9 @@
 <?php
-namespace Phpingguo\System\Variable;
+namespace Phpeel\System\Variable;
 
-use Phpingguo\ApricotLib\Common\Arrays;
-use Phpingguo\ApricotLib\Common\General;
-use Phpingguo\System\Core\Supervisor;
+use Phpeel\ApricotLib\Common\Arrays;
+use Phpeel\ApricotLib\Common\General;
+use Phpeel\System\Core\Supervisor;
 
 /**
  * クライアントのデバイス情報を管理するクラスです。
