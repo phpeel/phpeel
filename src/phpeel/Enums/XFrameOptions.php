@@ -1,7 +1,7 @@
 <?php
-namespace Phpingguo\System\Enums;
+namespace Phpeel\System\Enums;
 
-use Phpingguo\ApricotLib\Type\Enum\Enum;
+use Phpeel\ApricotLib\Type\Enum\Enum;
 
 /**
  * インラインフレームの表示オプションの種類を示します。
