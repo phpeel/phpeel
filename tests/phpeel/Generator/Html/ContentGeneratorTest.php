@@ -1,11 +1,11 @@
 <?php
-namespace Phpingguo\System\Tests\Generator\Html;
+namespace Phpeel\System\Tests\Generator\Html;
 
-use Phpingguo\System\Enums\TemplateEngine;
-use Phpingguo\System\Generator\Html\ContentGenerator;
-use Phpingguo\System\Request\Request;
-use Phpingguo\System\Variable\Client;
-use Phpingguo\System\Variable\Server;
+use Phpeel\System\Enums\TemplateEngine;
+use Phpeel\System\Generator\Html\ContentGenerator;
+use Phpeel\System\Request\Request;
+use Phpeel\System\Variable\Client;
+use Phpeel\System\Variable\Server;
 
 class ContentGeneratorTest extends \PHPUnit_Framework_TestCase
 {
@@ -15,7 +15,7 @@ class ContentGeneratorTest extends \PHPUnit_Framework_TestCase
             [
                 'TWIG'   =>
                     [
-                        'class'   => 'Phpingguo\System\Generator\Html\Engine\TwigProxy',
+                        'class'   => 'Phpeel\System\Generator\Html\Engine\TwigProxy',
                         'options' =>
                             [
                                 'DebugMode'  => true,
@@ -25,7 +25,7 @@ class ContentGeneratorTest extends \PHPUnit_Framework_TestCase
                     ],
                 'SMARTY' =>
                     [
-                        'class'   => 'Phpingguo\System\Generator\Html\Engine\SmartyProxy',
+                        'class'   => 'Phpeel\System\Generator\Html\Engine\SmartyProxy',
                         'options' =>
                             [
                                 'DebugMode'      => true,
@@ -36,7 +36,7 @@ class ContentGeneratorTest extends \PHPUnit_Framework_TestCase
             ]
         );
 
-        $this->assertInstanceOf('Phpingguo\System\Generator\Html\ContentGenerator', $generator);
+        $this->assertInstanceOf('Phpeel\System\Generator\Html\ContentGenerator', $generator);
         
         return $generator;
     }
@@ -59,9 +59,9 @@ class ContentGeneratorTest extends \PHPUnit_Framework_TestCase
         Server::capture();
         Client::capture();
         
-        /** @var \Phpingguo\System\Module\BaseModule $stub */
+        /** @var \Phpeel\System\Module\BaseModule $stub */
         $stub = $this->getMockForAbstractClass(
-            'Phpingguo\System\Module\BaseModule',
+            'Phpeel\System\Module\BaseModule',
             [ Request::getInstance(true) ]
         );
         $stub->getModuleData()->setEngine($engine);

@@ -1,10 +1,10 @@
 <?php
-namespace Phpingguo\System\Tests\Generator\Xml;
+namespace Phpeel\System\Tests\Generator\Xml;
 
-use Phpingguo\System\Generator\Xml\ContentGenerator;
-use Phpingguo\System\Request\Request;
-use Phpingguo\System\Variable\Client;
-use Phpingguo\System\Variable\Server;
+use Phpeel\System\Generator\Xml\ContentGenerator;
+use Phpeel\System\Request\Request;
+use Phpeel\System\Variable\Client;
+use Phpeel\System\Variable\Server;
 
 class ContentGeneratorTest extends \PHPUnit_Framework_TestCase
 {
@@ -20,9 +20,9 @@ class ContentGeneratorTest extends \PHPUnit_Framework_TestCase
         Server::capture();
         Client::capture();
         
-        /** @var \Phpingguo\System\Module\BaseModule $stub */
+        /** @var \Phpeel\System\Module\BaseModule $stub */
         $stub = $this->getMockForAbstractClass(
-            'Phpingguo\System\Module\BaseModule',
+            'Phpeel\System\Module\BaseModule',
             [ Request::getInstance(true) ]
         );
         $stub->name = 'test';

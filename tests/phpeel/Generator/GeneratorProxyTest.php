@@ -1,12 +1,12 @@
 <?php
-namespace Phpingguo\System\Tests\Generator;
+namespace Phpeel\System\Tests\Generator;
 
-use Phpingguo\System\Core\Config;
-use Phpingguo\System\Enums\ContentType;
-use Phpingguo\System\Generator\GeneratorProxy;
-use Phpingguo\System\Request\Request;
-use Phpingguo\System\Variable\Client;
-use Phpingguo\System\Variable\Server;
+use Phpeel\System\Core\Config;
+use Phpeel\System\Enums\ContentType;
+use Phpeel\System\Generator\GeneratorProxy;
+use Phpeel\System\Request\Request;
+use Phpeel\System\Variable\Client;
+use Phpeel\System\Variable\Server;
 
 class GeneratorProxyTest extends \PHPUnit_Framework_TestCase
 {
@@ -14,7 +14,7 @@ class GeneratorProxyTest extends \PHPUnit_Framework_TestCase
     {
         $instance = GeneratorProxy::getInstance();
         
-        $this->assertInstanceOf('Phpingguo\System\Generator\GeneratorProxy', $instance);
+        $this->assertInstanceOf('Phpeel\System\Generator\GeneratorProxy', $instance);
         
         return $instance;
     }
@@ -44,9 +44,9 @@ class GeneratorProxyTest extends \PHPUnit_Framework_TestCase
         Server::capture();
         Client::capture();
         
-        /** @var \Phpingguo\System\Module\BaseModule $stub */
+        /** @var \Phpeel\System\Module\BaseModule $stub */
         $stub = $this->getMockForAbstractClass(
-            'Phpingguo\System\Module\BaseModule',
+            'Phpeel\System\Module\BaseModule',
             [ Request::getInstance(true) ]
         );
         $stub->getResponse()->setContentType($content_type);
