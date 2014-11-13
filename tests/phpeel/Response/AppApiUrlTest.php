@@ -1,8 +1,8 @@
 <?php
-namespace Phpingguo\System\Tests\Response;
+namespace Phpeel\System\Tests\Response;
 
-use Phpingguo\System\Core\Config;
-use Phpingguo\System\Response\AppApiUrl;
+use Phpeel\System\Core\Config;
+use Phpeel\System\Response\AppApiUrl;
 
 class AppApiUrlTest extends \PHPUnit_Framework_TestCase
 {

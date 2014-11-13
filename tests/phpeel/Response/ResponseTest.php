@@ -1,13 +1,13 @@
 <?php
-namespace Phpingguo\System\Tests\Response;
+namespace Phpeel\System\Tests\Response;
 
-use Phpingguo\ApricotLib\Enums\Charset;
-use Phpingguo\System\Core\Config;
-use Phpingguo\System\Enums\ContentType;
-use Phpingguo\System\Enums\ResponseCode;
-use Phpingguo\System\Enums\XFrameOptions;
-use Phpingguo\System\Response\AppApiUrl;
-use Phpingguo\System\Response\Response;
+use Phpeel\ApricotLib\Enums\Charset;
+use Phpeel\System\Core\Config;
+use Phpeel\System\Enums\ContentType;
+use Phpeel\System\Enums\ResponseCode;
+use Phpeel\System\Enums\XFrameOptions;
+use Phpeel\System\Response\AppApiUrl;
+use Phpeel\System\Response\Response;
 
 class ResponseTest extends \PHPUnit_Framework_TestCase
 {
