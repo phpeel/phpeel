@@ -1,7 +1,7 @@
 <?php
-namespace Phpingguo\System\Tests\Core;
+namespace Phpeel\System\Tests\Core;
 
-use Phpingguo\System\Core\Config;
+use Phpeel\System\Core\Config;
 
 class ConfigTest extends \PHPUnit_Framework_TestCase
 {

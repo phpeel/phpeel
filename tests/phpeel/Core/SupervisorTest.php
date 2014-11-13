@@ -1,7 +1,7 @@
 <?php
-namespace Phpingguo\System\Tests\Core;
+namespace Phpeel\System\Tests\Core;
 
-use Phpingguo\System\Core\Supervisor;
+use Phpeel\System\Core\Supervisor;
 
 class SupervisorTest extends \PHPUnit_Framework_TestCase
 {
@@ -16,7 +16,7 @@ class SupervisorTest extends \PHPUnit_Framework_TestCase
         $srv_env_path = $config_path . DIRECTORY_SEPARATOR . 'server_environments';
         
         $this->assertSame($project_path, Supervisor::getProjectPath());
-        $this->assertSame($project_path . DIRECTORY_SEPARATOR . 'phpingguo', Supervisor::getSystemPath());
+        $this->assertSame($project_path . DIRECTORY_SEPARATOR . 'phpeel', Supervisor::getSystemPath());
         $this->assertSame($config_path, Supervisor::getConfigPath());
         $this->assertSame($srv_env_path . DIRECTORY_SEPARATOR . 'local', Supervisor::getServerEnvPath());
         $this->assertSame($app_path, Supervisor::getAppPath());
