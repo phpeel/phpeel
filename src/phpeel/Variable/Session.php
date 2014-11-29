@@ -267,7 +267,7 @@ final class Session
         // ・標準ハンドラを使用中の場合
         //   セッションファイル生成先ディレクトリが書き込み可能なパーミッションかどうかを確認すること
         Arrays::clear($_SESSION);
-        Arrays::isContain($_SESSION, session_name()) && $this->setCookie(session_name(), '', time() - 42000);
+        Arrays::isContain($_COOKIE, session_name()) && $this->setCookie(session_name(), '', time() - 42000);
         ($this->isCliExecuted() === false) && session_destroy();
     }
 
