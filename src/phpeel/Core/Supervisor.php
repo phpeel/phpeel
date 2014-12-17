@@ -3,6 +3,7 @@ namespace Phpeel\System\Core;
 
 use Phpeel\ApricotLib\Common\String as CString;
 use Phpeel\CitronDI\AuraDIWrapper;
+use Phpeel\System\Enums\FilterType;
 use Phpeel\System\Request\RequestData;
 use Phpeel\System\Variable\Server;
 
@@ -214,5 +215,24 @@ final class Supervisor
         }
         
         return '';
+    }
+
+    /**
+     * あモデルフィルタクラスの名前空間の名前を取得します。
+     * 
+     * @param String $filter_type                   フィルタの種類を示す文字列
+     * @param Boolean $with_separator [初期値=true] 名前空間の語尾に区切り文字「\」を付けるかどうか
+     * 
+     * @return String 指定したサブ名前空間を持つモデルフィルタクラスの名前空間の名前
+     */
+    public static function getModelFilterNamespace($filter_type, $with_separator = true)
+    {
+        return CString::concat(
+            "Phpeel\\App\\Filters\\",
+            CString::concat(
+                FilterType::init($filter_type, FilterType::PRE)->getValue(),
+                $with_separator ? "\\" : ''
+            )
+        );
     }
 }
